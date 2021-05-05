@@ -7,5 +7,6 @@ export type productType = {
     rating: number,
     salesCount: number,
     discount: number,
+    priceNoDiscount: number,
     isFavourite: boolean,
 }

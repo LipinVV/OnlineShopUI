@@ -8,12 +8,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ProductCard
-          title='productTitle'
-          price={100}
+          title='Fullset Grey Sofa With Pillow' // шаблонные строки 
+          price={799}
           previewUrl='any URL...'
           rating={5}
-          salesCount={500}
-          discount={15}
+          salesCount={400}
+          priceNoDiscount={820}
+          discount={3}
           isFavourite={false} />
       </header>
     </div>
