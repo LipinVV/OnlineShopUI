@@ -93,4 +93,9 @@
     border: none;
     right: 15px;
     top: 15px;
+    cursor: pointer;
+}
+
+.productCard__button--liked {
+    background-image: url(../../img/liked.svg);
 }

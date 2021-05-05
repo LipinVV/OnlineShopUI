@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { productType } from './types'
 import './productCard.scss'
 import StarPath from '../../img/ratingStar.svg'
+import Like from '../../img/like.svg'
 
 export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount, isFavourite, priceNoDiscount }: productType) => {
 
@@ -14,7 +15,7 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
 
     const [isLiked, setIsLiked] = useState(isFavourite)
     const handleLikeChanger = () => {
-
+        setIsLiked(prevState => !prevState)
     }
 
     useEffect(() => {
@@ -28,8 +29,9 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             <li className='productCard__PreviewUrl'>
                 <img className='productCard__img' src={previewUrl}></img>
                 <button
-                    className='productCard__button'
+                    className={isLiked ? 'productCard__button' : 'productCard__button productCard__button--liked'}
                     type='button'
+                    onClick={handleLikeChanger}
                 >
                     {isFavourite}
                 </button>
