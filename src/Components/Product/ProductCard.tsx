@@ -16,20 +16,25 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
         handlePriceCalculator()
         console.log(handlePriceCalculator)
     }, [])
-    
+
 
     return <div>
         <ul className='productCard'>
-            <li className='productCard__PreviewUrl'>{previewUrl}</li>
-            <li className='productCard__IsFavourite'>
-                <button type='button' hidden>
-                    Like {isFavourite}
+            <li className='productCard__PreviewUrl'>
+                <img className='productCard__img' src={previewUrl}></img>
+                <button
+                    className='productCard__button'
+                    type='button'
+                >
+                    {isFavourite}
                 </button>
             </li>
-            <li className=''>{title}</li>
+            <li className='productCard__title'>{title}</li>
             <li className='productCard__Rating'>{[...Array(rating)].map(star => {
                 return <img src={StarPath}></img>
-            })} {salesCount}</li>
+            })}
+                <span className='productCard__sold'>({salesCount} Sold out)</span>
+            </li>
             <ul className='productCard__group'>
                 <li className='productCard__Price'>${totalPrice}</li>
                 <li className='productCard__priceNoDiscount'>${priceNoDiscount}</li>

@@ -1,11 +1,10 @@
 .productCard {
     margin: 0;
     padding: 0;
-    border: 1px black solid;
     width: 400px;
     height: 418px;
     color: var(--productCardText);
-    font-size: 23px;
+    font-size: 25px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -16,13 +15,15 @@
 }
 
 .productCard__PreviewUrl {
-    width: 400px;
-    height: 300px;
+    display: block;
+    position: relative;
 }
 
 .productCard__Price {
     font-weight: bold;
     font-size: 25px;
+    padding-right: 10px;
+    color: var(--productCardPrice);
 }
 
 .productCard__SalesCount {
@@ -31,8 +32,9 @@
 }
 
 .productCard__priceNoDiscount {
-    color: var(--productCardPriceNoDiscount);
+    color: var(--productCardSalesText);
     text-decoration: line-through;
+    padding-right: 5.5px;
 }
 
 .productCard__Discount {
@@ -40,10 +42,19 @@
     color: var(--productCardDiscount);
 }
 
+.productCard__Rating {
+    padding-top: 10px;
+    font-size: 16px;
+    color: var(--productCardSalesText);
+}
+
 .productCard__group {
     margin: 0;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
     display: flex;
+    line-height: 34px;
 }
 
 .productCard__star {
@@ -51,4 +62,35 @@
     height: 18px;
     background-repeat: no-repeat;
     background-image: url(/src/img/ratingStar.svg);
+}
+
+.productCard__sold {
+    padding-left: 10px;
+    max-height: 18px;
+}
+
+.productCard__img {
+    width: 400px;
+    height: 300px;
+}
+
+.productCard__title {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 31px;
+    padding-top: 13px;
+}
+
+.productCard__button {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url(/src/img/like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    right: 15px;
+    top: 15px;
 }

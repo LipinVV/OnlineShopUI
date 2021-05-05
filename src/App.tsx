@@ -8,9 +8,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ProductCard
-          title='Fullset Grey Sofa With Pillow' // шаблонные строки 
+          title='Fullset Grey Sofa With Pillow' // шаблонные строки, из базы данных по имени
           price={799}
-          previewUrl='any URL...'
+          previewUrl='https://cdn.boydforcongress.com/wp-content/uploads/fabric-sofas_89570.jpg'
           rating={5}
           salesCount={400}
           priceNoDiscount={820}
