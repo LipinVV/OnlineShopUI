@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { productType } from './types'
-import './productCard.css'
+import './productCard.scss'
 import StarPath from '../../img/ratingStar.svg'
 
 export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount, isFavourite, priceNoDiscount }: productType) => {
@@ -10,6 +10,11 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
         setTotalPrice(prevState => {
             return Math.round(priceNoDiscount / ((discount / 100) + 1));
         });
+    }
+
+    const [isLiked, setIsLiked] = useState(isFavourite)
+    const handleLikeChanger = () => {
+
     }
 
     useEffect(() => {
@@ -42,6 +47,4 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             </ul>
         </ul>
     </div>
-
-
 }
