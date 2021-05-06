@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { productType } from './types'
 import './productCard.scss'
 import StarPath from '../../img/ratingStar.svg'
-import Like from '../../img/like.svg'
 
 export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount, isFavourite, priceNoDiscount }: productType) => {
 
@@ -20,7 +19,6 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
 
     useEffect(() => {
         handlePriceCalculator()
-        console.log(handlePriceCalculator)
     }, [])
 
 
@@ -29,7 +27,7 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             <li className='productCard__PreviewUrl'>
                 <img className='productCard__img' src={previewUrl}></img>
                 <button
-                    className={isLiked ? 'productCard__button' : 'productCard__button productCard__button--liked'}
+                    className={isLiked ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                     type='button'
                     onClick={handleLikeChanger}
                 >
@@ -37,15 +35,15 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
                 </button>
             </li>
             <li className='productCard__title'>{title}</li>
-            <li className='productCard__Rating'>{[...Array(rating)].map(star => {
+            <li className='productCard__rating'>{[...Array(rating)].map(star => {
                 return <img src={StarPath}></img>
             })}
                 <span className='productCard__sold'>({salesCount} Sold out)</span>
             </li>
             <ul className='productCard__group'>
-                <li className='productCard__Price'>${totalPrice}</li>
+                <li className='productCard__price'>${totalPrice}</li>
                 <li className='productCard__priceNoDiscount'>${priceNoDiscount}</li>
-                <li className='productCard__Discount'>-{discount}%</li>
+                <li className='productCard__discount'>-{discount}%</li>
             </ul>
         </ul>
     </div>

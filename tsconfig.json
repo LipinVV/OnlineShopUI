@@ -1,26 +1,26 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
+  "compilerOptions": { // These options make up the bulk of TypeScript’s configuration and it covers how the language should work.
+    "target": "es5", // You might choose to set a lower target if your code is deployed to older environments, or a higher target if your code is guaranteed to run in newer environments.
+    "lib": [ // TypeScript includes a default set of type definitions for built-in JS APIs (like Math), as well as type definitions for things found in browser environments (like document). 
+      "dom", // TypeScript also includes APIs for newer JS features matching the target you specify; for example the definition for Map is available if target is ES6 or newer.
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "allowJs": true, // Allow JavaScript files to be imported inside your project, instead of just .ts and .tsx files.
+    "skipLibCheck": true, // in case of two libraries, TypeScript will type check the code you specifically refer to in your app’s source code.
+    "esModuleInterop": true, // With flag esModuleInterop we can import CommonJS modules in compliance with es6 modules spec. 
+    "allowSyntheticDefaultImports": true, // allows you to write an import like: import React from "react", instead of: import * as React from "react"
+    "strict": true, // enables a wide range of type checking behavior that results in stronger guarantees of program correctness - all of the strict mode family options
+    "forceConsistentCasingInFileNames": true, // TypeScript will issue an error if a program tries to include a file by a casing (File.cfg / file.cfg) different from the casing on disk.
+    "noFallthroughCasesInSwitch": true, // Ensures that any non-empty case inside a switch statement includes either break or return. So you won’t accidentally ship a case fallthrough bug.
+    "module": "esnext", // Sets the module system for the program: import { valueOfPi } from "./constants" / export const twoPi = valueOfPi * 2;
+    "moduleResolution": "node", // Specify the module resolution strategy: 'node' (Node.js) or 'classic' (used in TypeScript before the release of 1.6). 
+    "resolveJsonModule": true, // Allows importing modules with a ‘.json’ extension, which is a common practice in node projects. Includes generating a type for the import based on the static JSON shape.
+    "isolatedModules": true, // warn you if you write certain code that can’t be correctly interpreted by a single-file transpilation process, such as Babel 
+    "noEmit": true, // ? This makes room for another tool like Babel, or swc to handle converting the TypeScript file to a file which can run inside a JavaScript environment. 
+    "jsx": "react-jsx" // Controls how JSX constructs are emitted in JavaScript files. This only affects output of JS files that started in .tsx files.
   },
-  "include": [
+  "include": [ // Specifies an array of filenames or patterns to include in the program. These filenames are resolved relative to the directory containing the tsconfig.json file.
     "src"
   ]
 }

@@ -1,5 +1,3 @@
-// описываем типы продукта
-
 export type productType = {
     title: string,
     price: number,

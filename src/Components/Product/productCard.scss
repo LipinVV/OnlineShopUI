@@ -1,8 +1,8 @@
 .productCard {
     margin: 0;
     padding: 0;
-    width: 400px;
-    height: 418px;
+    max-width: 400px;
+    max-height: 418px;
     color: var(--productCardText);
     font-size: 25px;
     display: flex;
@@ -19,16 +19,11 @@
     position: relative;
 }
 
-.productCard__Price {
+.productCard__price {
     font-weight: bold;
     font-size: 25px;
     padding-right: 10px;
     color: var(--productCardPrice);
-}
-
-.productCard__SalesCount {
-    font-size: 16px;
-    color: var(--productCardSalesText);
 }
 
 .productCard__priceNoDiscount {
@@ -37,12 +32,12 @@
     padding-right: 5.5px;
 }
 
-.productCard__Discount {
+.productCard__discount {
     font-size: 25px;
     color: var(--productCardDiscount);
 }
 
-.productCard__Rating {
+.productCard__rating {
     padding-top: 10px;
     font-size: 16px;
     color: var(--productCardSalesText);
@@ -70,15 +65,15 @@
 }
 
 .productCard__img {
-    width: 400px;
-    height: 300px;
+    max-width: 400px;
+    max-height: 300px;
 }
 
 .productCard__title {
     font-size: 23px;
     font-weight: 700;
     line-height: 31px;
-    padding-top: 13px;
+    padding-top: 14.5px;
 }
 
 .productCard__button {
@@ -96,6 +91,6 @@
     cursor: pointer;
 }
 
-.productCard__button--liked {
+.productCard__button_liked {
     background-image: url(../../img/liked.svg);
 }
