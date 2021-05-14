@@ -1,50 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import { productType } from './types'
 import './productCard.scss'
-import StarPath from '../../img/ratingStar.svg'
+import starIconUrl from './img/ratingStar.svg'
 
-export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount, isFavourite, priceNoDiscount }: productType) => {
+export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
 
-    const [totalPrice, setTotalPrice] = useState(price)
-    const handlePriceCalculator = () => {
-        setTotalPrice(prevState => {
-            return Math.round(priceNoDiscount / ((discount / 100) + 1));
-        });
-    }
-
-    const [isLiked, setIsLiked] = useState(isFavourite)
+    const [isLiked, setIsLiked] = useState<boolean>(isFavourite) // <- просмотр типа сущности
     const handleLikeChanger = () => {
         setIsLiked(prevState => !prevState)
     }
 
-    useEffect(() => {
-        handlePriceCalculator()
-    }, [])
-
+    const priceNoDiscount: number = price - ((discount / 100) * price);
 
     return <div>
-        <ul className='productCard'>
-            <li className='productCard__PreviewUrl'>
-                <img className='productCard__img' src={previewUrl}></img>
+        <div className='productCard__preview-wrapper'>
+            <div className='productCard__PreviewUrl'>
+                <img className='productCard__preview' src={previewUrl}></img>
                 <button
-                    className={isLiked ? 'productCard__button productCard__button_liked' : 'productCard__button'}
+                    className={isLiked ? 'productCard__button productCard__button_divked' : 'productCard__button'}
                     type='button'
                     onClick={handleLikeChanger}
                 >
                     {isFavourite}
                 </button>
-            </li>
-            <li className='productCard__title'>{title}</li>
-            <li className='productCard__rating'>{[...Array(rating)].map(star => {
-                return <img src={StarPath}></img>
+            </div>
+            <div className='productCard__title'>{title}</div>
+            <div className='productCard__rating'>{[...Array(rating)].map(star => {
+                return <img src={starIconUrl}></img>
             })}
                 <span className='productCard__sold'>({salesCount} Sold out)</span>
-            </li>
-            <ul className='productCard__group'>
-                <li className='productCard__price'>${totalPrice}</li>
-                <li className='productCard__priceNoDiscount'>${priceNoDiscount}</li>
-                <li className='productCard__discount'>-{discount}%</li>
-            </ul>
-        </ul>
+            </div>
+            <div className='productCard__group'>
+
+                {Boolean(priceNoDiscount) && <div className='productCard__priceNoDiscount'>${priceNoDiscount}</div>}
+                <div className='productCard__price'>${price}</div>
+                {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
+            </div>
+        </div>
     </div>
 }
