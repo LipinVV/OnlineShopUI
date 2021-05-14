@@ -62,7 +62,7 @@ export const Chairs = {
 
 export const Desks = {
     first: {
-        title: 'White Ice Chair',
+        title: 'Desk 1',
         price: 180,
         discount: 10,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ae27c74c1342e16858326489c36171c3&n=13&exp=1',
@@ -71,7 +71,7 @@ export const Desks = {
         isFavourite: false,
     },
     second: {
-        title: 'Soft Dark Chair',
+        title: 'Desk 2',
         price: 95,
         discount: 5,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=b725aaef9a6fa5c512b8160f8f9b8540&n=13&exp=1',
@@ -80,7 +80,7 @@ export const Desks = {
         isFavourite: false,
     },
     third: {
-        title: 'Orange Cool Chair',
+        title: 'Desk 3',
         price: 250,
         discount: 27,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ee1cdaf660203123884873f2d8a6891a&n=13&exp=1',
@@ -92,7 +92,7 @@ export const Desks = {
 
 export const Cupboards = {
     first: {
-        title: 'White Ice Chair',
+        title: 'Cupboard 1',
         price: 180,
         discount: 10,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ae27c74c1342e16858326489c36171c3&n=13&exp=1',
@@ -101,7 +101,7 @@ export const Cupboards = {
         isFavourite: false,
     },
     second: {
-        title: 'Soft Dark Chair',
+        title: 'Cupboard 2',
         price: 95,
         discount: 5,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=b725aaef9a6fa5c512b8160f8f9b8540&n=13&exp=1',
@@ -110,7 +110,7 @@ export const Cupboards = {
         isFavourite: false,
     },
     third: {
-        title: 'Orange Cool Chair',
+        title: 'Cupboard 3',
         price: 250,
         discount: 27,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ee1cdaf660203123884873f2d8a6891a&n=13&exp=1',
@@ -122,7 +122,7 @@ export const Cupboards = {
 
 export const Carpets = {
     first: {
-        title: 'White Ice Chair',
+        title: 'Carpet 1',
         price: 180,
         discount: 10,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ae27c74c1342e16858326489c36171c3&n=13&exp=1',
@@ -131,7 +131,7 @@ export const Carpets = {
         isFavourite: false,
     },
     second: {
-        title: 'Soft Dark Chair',
+        title: 'Carpet 2',
         price: 95,
         discount: 5,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=b725aaef9a6fa5c512b8160f8f9b8540&n=13&exp=1',
@@ -140,7 +140,7 @@ export const Carpets = {
         isFavourite: false,
     },
     third: {
-        title: 'Orange Cool Chair',
+        title: 'Carpet 3',
         price: 250,
         discount: 27,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ee1cdaf660203123884873f2d8a6891a&n=13&exp=1',
@@ -152,7 +152,7 @@ export const Carpets = {
 
 export const Beds = {
     first: {
-        title: 'White Ice Chair',
+        title: 'Bed 1',
         price: 180,
         discount: 10,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ae27c74c1342e16858326489c36171c3&n=13&exp=1',
@@ -161,7 +161,7 @@ export const Beds = {
         isFavourite: false,
     },
     second: {
-        title: 'Soft Dark Chair',
+        title: 'Bed 2',
         price: 95,
         discount: 5,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=b725aaef9a6fa5c512b8160f8f9b8540&n=13&exp=1',
@@ -170,7 +170,7 @@ export const Beds = {
         isFavourite: false,
     },
     third: {
-        title: 'Orange Cool Chair',
+        title: 'Bed 3',
         price: 250,
         discount: 27,
         previewUrl: 'https://im0-tub-ru.yandex.net/i?id=ee1cdaf660203123884873f2d8a6891a&n=13&exp=1',
