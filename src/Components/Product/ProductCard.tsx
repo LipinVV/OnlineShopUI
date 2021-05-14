@@ -10,14 +10,14 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
         setIsLiked(prevState => !prevState)
     }
 
-    const priceNoDiscount: number = price - ((discount / 100) * price);
+    const priceNoDiscount: number = Math.ceil(price - ((discount / 100) * price));
 
     return <div>
         <div className='productCard__preview-wrapper'>
             <div className='productCard__PreviewUrl'>
                 <img className='productCard__preview' src={previewUrl}></img>
                 <button
-                    className={isLiked ? 'productCard__button productCard__button_divked' : 'productCard__button'}
+                    className={isLiked ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                     type='button'
                     onClick={handleLikeChanger}
                 >

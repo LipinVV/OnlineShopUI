@@ -1,27 +1,33 @@
+import React from 'react';
 import './App.scss';
-import { ProductCard } from './Components/Product/ProductCard'
+import { Categories } from './Components/Categories/Categories'
+import { ItemSofa } from './Components/Categories/ItemTypes/Sofas'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { ItemChairs } from './Components/Categories/ItemTypes/Chairs';
 
 function App() {
-  // array with goods -> categories
-  // merge changes -> new branch
-  // router wrapper
-  // 2 components:
-  // 1) ../category -> shoplist (goods from Array.map)
-  // ...product -> productcard ~ individual card with descriptions
-  //... shoplist -> goods & button 'buy'
-
   return (
     <div className="App">
-      <header className="App__header">
-        <ProductCard
-          title='Fullset Grey Sofa With Pillow' // шаблонные строки, из базы данных по имени
-          price={799}
-          discount={13}
-          previewUrl='https://cdn.boydforcongress.com/wp-content/uploads/fabric-sofas_89570.jpg'
-          rating={5}
-          salesCount={400}
-          isFavourite={false} />
-      </header>
+      <div>
+        <Router>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/categories">Categories</Link></li>
+              <li><Link to="/gallery">Gallery</Link></li>
+              <li><Link to="/articles">Articles</Link></li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route path="/categories">
+              <Categories />
+            </Route>
+            <Route exact path="/sofas"><ItemSofa /></Route>
+            <Route exact path="/chairs"><ItemChairs /></Route>
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }
