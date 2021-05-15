@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { productType } from './types'
 import './productCard.scss'
 import starIconUrl from './img/ratingStar.svg'
-import { Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 
 export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
 
@@ -35,5 +35,22 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             <div className='productCard__price'>${price}</div>
             {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
         </div>
+        <li>
+            <Link to={title}>Open card</Link>
+        </li>
+        <Router>
+            <Switch>
+                <Route exact path='/:id' children={<SingleCard />} />
+            </Switch>
+        </Router>
     </div>
+}
+
+function SingleCard() {
+    const { id } = useParams<{ id: string }>();
+    return (
+        <div>
+            <h1>{id}</h1>
+        </div>
+    )
 }
