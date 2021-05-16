@@ -4,5 +4,17 @@
   --productCardDiscount: #DF0000;
   --productCardPrice: #29293E;
   --sectionLabel: #ffffff;
+  --singleCardText: #29293E;
+}
+
+.app__links {
+  display: flex;
+  width: 100%;
+}
+
+.app__link {
+  min-width: 15%;
+  max-width: 20%;
+  list-style: none;
 }
 

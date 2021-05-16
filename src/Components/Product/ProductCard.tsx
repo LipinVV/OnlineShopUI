@@ -3,6 +3,7 @@ import { productType } from './types'
 import './productCard.scss'
 import starIconUrl from './img/ratingStar.svg'
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import { SingleCard } from './SingleCard'
 
 export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
 
@@ -35,22 +36,12 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             <div className='productCard__price'>${price}</div>
             {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
         </div>
-        <li>
-            <Link to={title}>Open card</Link>
-        </li>
         <Router>
+            <Link to={`/id/${title}`}>Open card</Link>
             <Switch>
-                <Route exact path='/:id' children={<SingleCard />} />
+                <Route path={`/id/${title}`} children={<SingleCard title={title} price={price} previewUrl={previewUrl} rating={rating} discount={discount} salesCount={salesCount} isFavourite={isFavourite} />}></Route>
             </Switch>
         </Router>
     </div>
 }
 
-function SingleCard() {
-    const { id } = useParams<{ id: string }>();
-    return (
-        <div>
-            <h1>{id}</h1>
-        </div>
-    )
-}

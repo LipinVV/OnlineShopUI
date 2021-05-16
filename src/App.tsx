@@ -8,21 +8,24 @@ import { ItemBed } from './Components/Categories/ItemTypes/Beds';
 import { ItemDesk } from './Components/Categories/ItemTypes/Desks';
 import { ItemCupboard } from './Components/Categories/ItemTypes/Cupboards';
 import { ItemCarpet } from './Components/Categories/ItemTypes/Carpets';
+import { Cart } from './Components/ShoppingCart/Cart'
 
 function App() {
   return (
     <div className='App'>
       <Router>
-        <nav>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/categories'>Categories</Link></li>
-            <li><Link to='/gallery'>Gallery</Link></li>
-            <li><Link to='/articles'>Articles</Link></li>
+        <nav className='app__navigation'>
+          <ul className='app__links'>
+            <li className='app__link'><Link to='/'>Home</Link></li>
+            <li className='app__link'><Link to='/categories'>Categories</Link></li>
+            <li className='app__link'><Link to='/gallery'>Gallery</Link></li>
+            <li className='app__link'><Link to='/articles'>Articles</Link></li>
+            <li className='app__link'><Link to='/cart'>Shop Bag</Link></li>
           </ul>
         </nav>
 
         <Switch>
+          <Route path='/cart'><Cart /></Route>
           <Route path='/categories'>
             <Categories />
           </Route>
