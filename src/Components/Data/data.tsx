@@ -1,5 +1,26 @@
-export const Sofas = {
-    first: {
+import { productType } from "../Product/types"
+// аннотация productType[] показывает то, что возвращает функция
+export const getProductsByCategory = (category: string, products: productType[]): productType[] => {
+    return products.filter(product => product.category === category);
+}
+
+export const getCategory = (category: string): productType[] => {
+    return products.filter(product => product.category === category);
+}
+
+// enumerable перечисляемые свойства = {}
+export enum CATEGORY {
+    SOFA = 'sofas',
+    CHAIR = 'chairs',
+    DESK = 'desks',
+    BED = 'beds',
+    CARPET = 'carpets',
+    CUPBOARD = 'cupboards'
+}
+export const products: productType[] = [
+    {
+        id: 3875945,
+        category: CATEGORY.SOFA,
         title: 'Fullset Grey Sofa With Pillow',
         price: 799,
         discount: 13,
@@ -8,7 +29,9 @@ export const Sofas = {
         salesCount: 400,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 34214145,
+        category: CATEGORY.SOFA,
         title: 'Green Slepper Sofa',
         price: 120,
         discount: 0,
@@ -17,7 +40,9 @@ export const Sofas = {
         salesCount: 350,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 384575475,
+        category: CATEGORY.SOFA,
         title: 'Morning Fantasy Sofa',
         price: 350,
         discount: 17,
@@ -26,10 +51,9 @@ export const Sofas = {
         salesCount: 240,
         isFavourite: false,
     },
-}
-
-export const Chairs = {
-    first: {
+    {
+        id: 97898987,
+        category: CATEGORY.CHAIR,
         title: 'White Ice Chair',
         price: 180,
         discount: 10,
@@ -38,7 +62,9 @@ export const Chairs = {
         salesCount: 205,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 1241414,
+        category: CATEGORY.CHAIR,
         title: 'Soft Dark Chair',
         price: 95,
         discount: 5,
@@ -47,7 +73,9 @@ export const Chairs = {
         salesCount: 165,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 678665,
+        category: CATEGORY.CHAIR,
         title: 'Orange Cool Chair',
         price: 250,
         discount: 27,
@@ -56,10 +84,9 @@ export const Chairs = {
         salesCount: 290,
         isFavourite: false,
     },
-}
-
-export const Desks = {
-    first: {
+    {
+        id: 214414,
+        category: CATEGORY.DESK,
         title: 'Holly Writing Desk',
         price: 200,
         discount: 20,
@@ -68,7 +95,9 @@ export const Desks = {
         salesCount: 105,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 567414,
+        category: CATEGORY.DESK,
         title: 'White Bloom Desk',
         price: 142,
         discount: 18,
@@ -77,7 +106,9 @@ export const Desks = {
         salesCount: 265,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 45745714,
+        category: CATEGORY.DESK,
         title: 'Oak Beauty Desk',
         price: 250,
         discount: 14,
@@ -86,10 +117,9 @@ export const Desks = {
         salesCount: 390,
         isFavourite: false,
     },
-}
-
-export const Cupboards = {
-    first: {
+    {
+        id: 1214414,
+        category: CATEGORY.CUPBOARD,
         title: 'Coral Fantasy',
         price: 180,
         discount: 10,
@@ -98,7 +128,9 @@ export const Cupboards = {
         salesCount: 195,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 213134,
+        category: CATEGORY.CUPBOARD,
         title: 'Hi-Tech Stylish',
         price: 95,
         discount: 5,
@@ -107,7 +139,9 @@ export const Cupboards = {
         salesCount: 230,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 2121214,
+        category: CATEGORY.CUPBOARD,
         title: 'Good Old Beauty',
         price: 250,
         discount: 27,
@@ -116,10 +150,9 @@ export const Cupboards = {
         salesCount: 450,
         isFavourite: false,
     },
-}
-
-export const Carpets = {
-    first: {
+    {
+        id: 331414,
+        category: CATEGORY.CARPET,
         title: 'Sea Breese',
         price: 254,
         discount: 14,
@@ -128,7 +161,9 @@ export const Carpets = {
         salesCount: 342,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 714814,
+        category: CATEGORY.CARPET,
         title: 'Pudding Hover',
         price: 360,
         discount: 25,
@@ -137,7 +172,9 @@ export const Carpets = {
         salesCount: 315,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 69414,
+        category: CATEGORY.CARPET,
         title: 'East Legend',
         price: 250,
         discount: 27,
@@ -146,10 +183,10 @@ export const Carpets = {
         salesCount: 220,
         isFavourite: false,
     },
-}
-
-export const Beds = {
-    first: {
+    // типизация ключей
+    {
+        id: 3426364,
+        category: CATEGORY.BED,
         title: 'Heart Perl',
         price: 380,
         discount: 20,
@@ -158,7 +195,9 @@ export const Beds = {
         salesCount: 165,
         isFavourite: false,
     },
-    second: {
+    {
+        id: 565654,
+        category: CATEGORY.BED,
         title: 'Show Seduction',
         price: 242,
         discount: 25,
@@ -167,7 +206,9 @@ export const Beds = {
         salesCount: 215,
         isFavourite: false,
     },
-    third: {
+    {
+        id: 87854,
+        category: CATEGORY.BED,
         title: 'Pink Ecstasy',
         price: 350,
         discount: 27,
@@ -176,4 +217,4 @@ export const Beds = {
         salesCount: 380,
         isFavourite: false,
     },
-}
+]

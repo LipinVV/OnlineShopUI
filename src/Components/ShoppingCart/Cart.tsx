@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import {Chairs, Desks, Sofas, Carpets, Cupboards, Beds} from '../Data/data'
 
 
 

@@ -3,9 +3,8 @@ import { productType } from './types'
 import './productCard.scss'
 import starIconUrl from './img/ratingStar.svg'
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import { SingleCard } from './SingleCard'
 
-export const ProductCard = ({ title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
+export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
 
     const [isLiked, setIsLiked] = useState<boolean>(isFavourite) // <- просмотр типа сущности
     const handleLikeChanger = () => {
@@ -36,12 +35,6 @@ export const ProductCard = ({ title, price, previewUrl, rating, salesCount, disc
             <div className='productCard__price'>${price}</div>
             {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
         </div>
-        <Router>
-            <Link to={`/id/${title}`}>Open card</Link>
-            <Switch>
-                <Route path={`/id/${title}`} children={<SingleCard title={title} price={price} previewUrl={previewUrl} rating={rating} discount={discount} salesCount={salesCount} isFavourite={isFavourite} />}></Route>
-            </Switch>
-        </Router>
+        <Link to={`/${category}/${id}`}>Open card</Link>
     </div>
-}
-
+} // : даёт информация о том, как будет называться переменная в адресной строке

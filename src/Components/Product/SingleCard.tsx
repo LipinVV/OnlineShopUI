@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-r
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 
-export const  SingleCard = ({ title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
+export const SingleCard = ({ title, price, previewUrl, rating, salesCount }: productType) => {
     // const { id } = useParams<{ id: string }>();
     return (
         <div className='single-card'>

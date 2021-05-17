@@ -1,14 +1,9 @@
 import React from 'react';
 import './App.scss';
 import { Categories } from './Components/Categories/Categories'
-import { ItemSofa } from './Components/Categories/ItemTypes/Sofas'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { ItemChairs } from './Components/Categories/ItemTypes/Chairs';
-import { ItemBed } from './Components/Categories/ItemTypes/Beds';
-import { ItemDesk } from './Components/Categories/ItemTypes/Desks';
-import { ItemCupboard } from './Components/Categories/ItemTypes/Cupboards';
-import { ItemCarpet } from './Components/Categories/ItemTypes/Carpets';
-import { Cart } from './Components/ShoppingCart/Cart'
+import { ProductPage } from './Components/Product/ProductPage';
+import { CategoryPage } from './Components/Categories/ItemTypes/CategoryPage'
 
 function App() {
   return (
@@ -20,21 +15,15 @@ function App() {
             <li className='app__link'><Link to='/categories'>Categories</Link></li>
             <li className='app__link'><Link to='/gallery'>Gallery</Link></li>
             <li className='app__link'><Link to='/articles'>Articles</Link></li>
-            <li className='app__link'><Link to='/cart'>Shop Bag</Link></li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path='/cart'><Cart /></Route>
           <Route path='/categories'>
             <Categories />
           </Route>
-          <Route exact path='/beds'><ItemBed /></Route>
-          <Route exact path='/chairs'><ItemChairs /></Route>
-          <Route exact path='/desks'><ItemDesk /></Route>
-          <Route exact path='/cupboards'><ItemCupboard /></Route>
-          <Route exact path='/sofas'><ItemSofa /></Route>
-          <Route exact path='/carpets'><ItemCarpet /></Route>
+          <Route path='/:category'><CategoryPage /></Route>
+          <Route path='/:category/:id'><ProductPage /></Route>
         </Switch>
       </Router>
     </div>
@@ -42,3 +31,21 @@ function App() {
 }
 
 export default App;
+
+
+// 1) ключи выставить
+// 2) объединить ItemTypes
+// 3) стили
+{/* <Switch>
+  <Route path='/cart'><CategoryPage /></Route>
+  <Route path='/categories'>
+    <Categories />
+  </Route>
+  <Route exact path='/beds'><ItemBed /></Route>
+  <Route exact path='/chairs'><ItemChairs /></Route>
+  <Route exact path='/desks'><ItemDesk /></Route>
+  <Route exact path='/cupboards'><ItemCupboard /></Route>
+  <Route exact path='/sofas'><ItemSofa /></Route>
+  <Route exact path='/carpets'><ItemCarpet /></Route>
+  <Route path='/:category/:id'><ProductPage /></Route>
+</Switch> */}
