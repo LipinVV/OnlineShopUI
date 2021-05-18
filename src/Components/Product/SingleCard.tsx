@@ -2,14 +2,19 @@ import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-r
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 
-export const SingleCard = ({ title, price, previewUrl, rating, salesCount }: productType) => {
+export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount }: productType) => {
     // const { id } = useParams<{ id: string }>();
     return (
         <div className='single-card'>
-            <img className='single-card__img-preview' src={previewUrl}></img>
+            <ul  className='single-card__photos'>
+                <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl}></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
+            </ul>
 
             <ul className='single-card__main' key={title}>
-                {/* <h1>ID: {id}</h1> */}
                 <li className='single-card__title'>{title}</li>
                 <li className='single-card__description'>There is some text here</li>
                 <li className='single-card__rating'>{[...Array(rating)].map(star => {
@@ -17,7 +22,7 @@ export const SingleCard = ({ title, price, previewUrl, rating, salesCount }: pro
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
-                <li className='single-card__price'>{price}</li>
+                <li className='single-card__price'>${price}</li>
                 <label>Color</label>
                 <div className='single-card__counter'>
                     <p>Quantity</p>

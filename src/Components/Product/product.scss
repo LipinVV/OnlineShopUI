@@ -1,8 +1,9 @@
 .productCard__preview-wrapper {
-    margin: 0;
-    padding: 0;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     max-width: 400px;
-    max-height: 418px;
+    max-height: 458px;
     color: var(--productCardText);
     font-size: 25px;
     display: flex;
@@ -95,32 +96,83 @@
     background-image: url(../../img/liked.svg);
 }
 
+.productCard__details {
+    max-height: 30px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 31px;
+    margin: 10px 15% 0px 15%;
+    border: none;
+    cursor: pointer;
+    background-color: var(--productCardDetails);
+}
+
+.productCard__link {
+    text-decoration: none;
+    color: var(--productCardPrice);
+}
 
 // ***********
 
 .single-card {
     display: flex;
+    max-width: 1240px;
+    max-height: 648px;
 }
 
 .single-card__main {
+    width: 100%;
     padding: 0;
     margin: 0;
     list-style: none;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    min-width: 400px;
-    min-height: 418px;
-    max-height: 748px;
-    max-width: 1440px;
+    background-size: cover;
+}
+
+.single-card__img-preview-main {
+    width: 505px;
+    height: 505px;
+}
+
+.single-card__photos {
+    display: flex;
+    list-style: none;
+    max-width: 505px;
+    max-height: 640px;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-right: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.single-card__img:first-child {
+    width: 505px;
+    height: 505px;
+    margin-bottom: 25px;
+    margin-right: 0;
+}
+
+.single-card__img:last-child {
+    margin-right: 0;
+}
+
+.single-card__img {
+    width: 107px;
+    height: 107px;
+    margin-right: 25px;
 }
 
 .single-card__img-preview {
-    min-width: 505px;
-    min-height: 505px;
+    width: 107px;
+    height: 107px;
 }
 
+
 .single-card__title {
+    width: 100%;
     color: var(--singleCardText);
     font-weight: 700;
     font-size: 40px;
@@ -132,12 +184,11 @@
     font-size: 20px;
     line-height: 32px;
     color: var(--productCardSalesText);
-    max-width: 685px;
+    width: 100%;
 }
 
 .single-card__rating {
     width: 100%;
-    padding-top: 10px;
     font-size: 16px;
     color: var(--productCardSalesText);
 }
@@ -180,7 +231,9 @@
 }
 
 .single-card__btn-close {
+    cursor: pointer;
     width: 100%;
+    max-height: 30px;
     background-color: red;
 }
 
@@ -190,4 +243,12 @@
     line-height: 27px;
     text-decoration: none;
     color: var(--productCardText);
+}
+
+.productPage {
+    display: flex;
+    max-width: 1240px;
+    max-height: 680px;
+    margin-left: 100px;
+    margin-right: 100px;
 }

@@ -22,7 +22,7 @@ function App() {
           <Route path='/categories'>
             <Categories />
           </Route>
-          <Route path='/:category'><CategoryPage /></Route>
+          <Route exact path='/:category'><CategoryPage /></Route>
           <Route path='/:category/:id'><ProductPage /></Route>
         </Switch>
       </Router>
@@ -36,16 +36,3 @@ export default App;
 // 1) ключи выставить
 // 2) объединить ItemTypes
 // 3) стили
-{/* <Switch>
-  <Route path='/cart'><CategoryPage /></Route>
-  <Route path='/categories'>
-    <Categories />
-  </Route>
-  <Route exact path='/beds'><ItemBed /></Route>
-  <Route exact path='/chairs'><ItemChairs /></Route>
-  <Route exact path='/desks'><ItemDesk /></Route>
-  <Route exact path='/cupboards'><ItemCupboard /></Route>
-  <Route exact path='/sofas'><ItemSofa /></Route>
-  <Route exact path='/carpets'><ItemCarpet /></Route>
-  <Route path='/:category/:id'><ProductPage /></Route>
-</Switch> */}

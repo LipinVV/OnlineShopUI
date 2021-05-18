@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { productType } from './types'
-import './productCard.scss'
-import starIconUrl from './img/ratingStar.svg'
+import React, { useState, useEffect } from 'react';
+import { productType } from './types';
+import './product.scss';
+import starIconUrl from './img/ratingStar.svg';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
@@ -35,6 +35,6 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
             <div className='productCard__price'>${price}</div>
             {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
         </div>
-        <Link to={`/${category}/${id}`}>Open card</Link>
+        <button className='productCard__details'><Link className='productCard__link' to={`/${category}/${id}`}>Details</Link></button>
     </div>
 } // : даёт информация о том, как будет называться переменная в адресной строке
