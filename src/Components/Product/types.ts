@@ -10,4 +10,11 @@ export type productType = {
     salesCount: number,
     discount?: number,
     isFavourite: boolean,
+    options?: optionType[]
+}
+
+export type optionType = {
+    type: 'select' | 'boolean',
+    title: string,
+    value: string[] | boolean
 }

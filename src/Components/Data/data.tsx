@@ -28,6 +28,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 400,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
         id: 34214145,
@@ -50,6 +51,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 240,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
         id: 97898987,
@@ -72,6 +74,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 165,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
         id: 678665,
@@ -83,6 +86,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 290,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
         id: 214414,
@@ -94,6 +98,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 105,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: false}]
     },
     {
         id: 567414,
@@ -116,6 +121,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 390,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: false}]
     },
     {
         id: 1214414,
@@ -138,6 +144,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 230,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
         id: 2121214,
@@ -149,6 +156,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 450,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
         id: 331414,
@@ -160,6 +168,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 342,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
         id: 714814,
@@ -171,6 +180,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 315,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
         id: 69414,
@@ -194,6 +204,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 165,
         isFavourite: false,
+        options: [{type: 'boolean', title: 'warranty', value: ['true', 'false']}]
     },
     {
         id: 565654,
@@ -216,5 +227,6 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 380,
         isFavourite: false,
+        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
 ]

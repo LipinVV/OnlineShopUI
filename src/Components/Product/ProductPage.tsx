@@ -12,7 +12,7 @@ export const ProductPage = () => {
     return (
         <div className='productPage'>
             {product && <SingleCard id={product.id} category={product.category} title={product.title} price={product.price} previewUrl={product.previewUrl} rating={product.rating}
-                salesCount={product.salesCount} discount={product.discount} isFavourite={product.isFavourite} />}
+                salesCount={product.salesCount} discount={product.discount} isFavourite={product.isFavourite} options={product.options}/>}
         </div>
     )
 }

@@ -1,9 +1,11 @@
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 
-export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount }: productType) => {
+export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount, options }: productType) => {
     // const { id } = useParams<{ id: string }>();
+    const history = useHistory();
+
     return (
         <div className='single-card'>
             <ul className='single-card__photos'>
@@ -24,6 +26,31 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
                 </li>
                 <li className='single-card__price'>${price}</li>
                 <label className='single-card__label'>Color</label>
+                {Boolean(options?.length) && <p>{options?.map(option => {
+                    if (option.type === 'select') {
+                        return (
+                            <div>
+                                <span>{option.title}</span>
+                                {Array.isArray(option.value) &&
+                                    <select>{option.value.map(value =>
+                                        <option>{value}</option>
+                                    )}</select>
+                                }
+                            </div>
+                        )
+                    }
+                    if (option.type === 'boolean') {
+                        return (
+                            <div>
+                                {console.log('TYPEOF => ', typeof option.value)}
+                                <span>{option.title}</span>
+                                {typeof option.value === 'boolean' &&
+                                    <input checked={option.value} type='checkbox' />
+                                }
+                            </div>
+                        )
+                    }
+                })}</p>}
                 <div className='single-card__counter'>
                     <p className='single-card__quantity'>Quantity</p>
                     <button>-</button>
@@ -34,10 +61,12 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
                     <button type='button' className='single-card__btn-add-to-buy'>Add to Cart</button>
                     <button type='button' className='single-card__btn-add-to-wish'>Add to Wishlist</button>
                 </div>
-                <button className='single-card__btn-close'>
-                    <Link className='single-card__link-close' to='/categories'>Close card</Link>
+                <button onClick={() => history.goBack()} className='single-card__btn-close'>Close card
                 </button>
             </ul>
         </div>
     )
 }
+
+// key -> to all array.map
+// new component Options with props
