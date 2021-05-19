@@ -1,4 +1,8 @@
+import { CATEGORY } from '../Data/data'
+
 export type productType = {
+    id: number,
+    category: CATEGORY,
     title: string,
     price: number,
     previewUrl: string,
@@ -6,4 +10,11 @@ export type productType = {
     salesCount: number,
     discount?: number,
     isFavourite: boolean,
+    options?: optionType[]
+}
+
+export type optionType = {
+    type: 'select' | 'boolean',
+    title: string,
+    value: string[] | boolean
 }

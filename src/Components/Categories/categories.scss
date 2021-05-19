@@ -1,0 +1,82 @@
+.categories__Navigation {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.categories__List {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.categories__Section {
+    position: relative;
+    list-style: none;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 500px;
+    max-height: 500px;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+    color: var(--pureWhite);
+    background-repeat: no-repeat;
+}
+
+.categories__Section-name {
+    position: absolute;
+    bottom: 107px;
+    left: 40px;
+}
+
+.categories__Section-beds {
+    background-image: url('./img/beds.png');
+}
+
+.categories__Section-chairs {
+    background-image: url('./img/chairs.png')
+}
+
+.categories__Section-desks {
+    background-image: url('./img/desks.png')
+}
+
+.categories__Section-cupboards {
+    background-image: url('./img/cupboards.png')
+}
+
+.categories__Section-sofas {
+    background-image: url('./img/sofas.png')
+}
+
+.categories__Section-carpets {
+    background-image: url('./img/carpets.png')
+}
+
+.categories__Section-link {
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--pureWhite);
+    text-decoration: none;
+}
+
+.categories__Section::before {
+    cursor: pointer;
+    position: absolute;
+    content: '';
+    width: 120px;
+    height: 120px;
+    background: url('./img/arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(90px, 380px);
+}

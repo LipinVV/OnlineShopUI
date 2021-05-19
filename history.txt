@@ -1,0 +1,9 @@
+  13.05.21
+  
+  // array with goods -> categories
+  // merge changes -> new branch
+  // router wrapper
+  // 2 components:
+  // 1) ../category -> shoplist (goods from Array.map)
+  // ...product -> productcard ~ individual card with descriptions
+  //... shoplist -> goods & button 'buy'
