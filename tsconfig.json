@@ -10,7 +10,7 @@
     "skipLibCheck": true, // in case of two libraries, TypeScript will type check the code you specifically refer to in your app’s source code.
     "esModuleInterop": true, // With flag esModuleInterop we can import CommonJS modules in compliance with es6 modules spec. 
     "allowSyntheticDefaultImports": true, // allows you to write an import like: import React from "react", instead of: import * as React from "react"
-    "strict": true, // enables a wide range of type checking behavior that results in stronger guarantees of program correctness - all of the strict mode family options
+    "strict": false, // enables a wide range of type checking behavior that results in stronger guarantees of program correctness - all of the strict mode family options
     "forceConsistentCasingInFileNames": true, // TypeScript will issue an error if a program tries to include a file by a casing (File.cfg / file.cfg) different from the casing on disk.
     "noFallthroughCasesInSwitch": true, // Ensures that any non-empty case inside a switch statement includes either break or return. So you won’t accidentally ship a case fallthrough bug.
     "module": "esnext", // Sets the module system for the program: import { valueOfPi } from "./constants" / export const twoPi = valueOfPi * 2;

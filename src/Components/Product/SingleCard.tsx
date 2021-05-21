@@ -1,26 +1,27 @@
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
+import { StateChanger } from '../reducer'
 
-export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount, options }: productType) => {
+export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount, options, isFavourite }: productType) => {
     // const { id } = useParams<{ id: string }>();
     const history = useHistory();
 
     return (
         <div className='single-card'>
             <ul className='single-card__photos'>
-                <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl}></img></li>
-                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
-                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
-                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
-                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl} alt='product'></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
             </ul>
 
             <ul className='single-card__main' key={title}>
                 <li className='single-card__title'>{title}</li>
                 <li className='single-card__description'>Knitted by the professional hands of housewives. Making a masterpiece of the best furniture in the world. Very handy and comfortable</li>
                 <li className='single-card__rating'>{[...Array(rating)].map(star => {
-                    return <img src={starIconUrl}></img>
+                    return <img src={starIconUrl} alt='rating-star'></img>
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
@@ -42,7 +43,6 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
                     if (option.type === 'boolean') {
                         return (
                             <div>
-                                {console.log('TYPEOF => ', typeof option.value)}
                                 <span>{option.title}</span>
                                 {typeof option.value === 'boolean' &&
                                     <input checked={option.value} type='checkbox' />
@@ -59,7 +59,10 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
                 </div>
                 <div className='single-card__interactions'>
                     <button type='button' className='single-card__btn-add-to-buy'>Add to Cart</button>
-                    <button type='button' className='single-card__btn-add-to-wish'>Add to Wishlist</button>
+                    <button type='button' className='single-card__btn-add-to-wish'
+
+                    >Add to Wishlist</button>
+                    <button><StateChanger /></button>
                 </div>
                 <button onClick={() => history.goBack()} className='single-card__btn-close'>Close card
                 </button>

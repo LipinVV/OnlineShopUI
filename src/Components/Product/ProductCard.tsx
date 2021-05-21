@@ -15,7 +15,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
 
     return <div className='productCard__preview-wrapper'>
         <div className='productCard__PreviewUrl'>
-            <img className='productCard__preview' src={previewUrl}></img>
+            <img className='productCard__preview' src={previewUrl} alt='product-picture'></img>
             <button
                 className={isLiked ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                 type='button'
@@ -26,7 +26,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
         </div>
         <div className='productCard__title'>{title}</div>
         <div className='productCard__rating'>{[...Array(rating)].map(star => {
-            return <img src={starIconUrl}></img>
+            return <img src={starIconUrl} alt='rating-star'></img>
         })}
             <span className='productCard__sold'>({salesCount} Sold out)</span>
         </div>
