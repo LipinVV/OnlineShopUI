@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { productType } from './types';
 import './product.scss';
 import starIconUrl from './img/ratingStar.svg';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import { StoreContext } from '../../App'
+
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
+    //@ts-ignore
+    const { state, dispatch } = useContext(StoreContext);
 
-    const [isLiked, setIsLiked] = useState<boolean>(isFavourite) // <- просмотр типа сущности
+    // const [isLiked, setIsLiked] = useState<boolean>(isFavourite) // <- просмотр типа сущности
     const handleLikeChanger = () => {
-        setIsLiked(prevState => !prevState)
+        dispatch(state)
     }
 
     const priceNoDiscount: number = Math.ceil(price - ((discount / 100) * price));
@@ -17,7 +21,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
         <div className='productCard__PreviewUrl'>
             <img className='productCard__preview' src={previewUrl} alt='product-picture'></img>
             <button
-                className={isLiked ? 'productCard__button productCard__button_liked' : 'productCard__button'}
+                className={isFavourite ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                 type='button'
                 onClick={handleLikeChanger}
             >
@@ -32,7 +36,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
         </div>
         <div className='productCard__group'>
             {Boolean(priceNoDiscount) && <div className='productCard__priceNoDiscount'>${priceNoDiscount}</div>}
-            <div className='productCard__price'>${price}</div>
+            {Boolean(priceNoDiscount !== price) && <div className='productCard__price'>${price}</div>}
             {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
         </div>
         <button className='productCard__details'><Link className='productCard__link' to={`/${category}/${id}`}>Details</Link></button>

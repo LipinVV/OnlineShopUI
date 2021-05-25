@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
-import { StateChanger } from '../reducer'
 
-export const SingleCard = ({ category, title, price, previewUrl, rating, salesCount, options, isFavourite }: productType) => {
+export const SingleCard = ({id, category, title, price, previewUrl, rating, salesCount, options, isFavourite }: productType) => {
     // const { id } = useParams<{ id: string }>();
     const history = useHistory();
 
@@ -20,8 +19,8 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
             <ul className='single-card__main' key={title}>
                 <li className='single-card__title'>{title}</li>
                 <li className='single-card__description'>Knitted by the professional hands of housewives. Making a masterpiece of the best furniture in the world. Very handy and comfortable</li>
-                <li className='single-card__rating'>{[...Array(rating)].map(star => {
-                    return <img src={starIconUrl} alt='rating-star'></img>
+                <li className='single-card__rating'>{[...Array(rating)].map((star, index) => {
+                    return <img key={id} src={starIconUrl} alt='rating-star'></img>
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
@@ -62,7 +61,6 @@ export const SingleCard = ({ category, title, price, previewUrl, rating, salesCo
                     <button type='button' className='single-card__btn-add-to-wish'
 
                     >Add to Wishlist</button>
-                    <button><StateChanger /></button>
                 </div>
                 <button onClick={() => history.goBack()} className='single-card__btn-close'>Close card
                 </button>
