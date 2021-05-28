@@ -1,11 +1,11 @@
 import { productType } from "../Product/types"
 // аннотация productType[] показывает то, что возвращает функция
 export const getProductsByCategory = (category: string, products: productType[]): productType[] => {
-    return products.filter(product => product.category === category);
+    return Products.filter(product => product.category === category);
 }
 
 export const getCategory = (category: string): productType[] => {
-    return products.filter(product => product.category === category);
+    return Products.filter(product => product.category === category);
 }
 
 // enumerable перечисляемые свойства = {}
@@ -17,7 +17,7 @@ export enum CATEGORY {
     CARPET = 'carpets',
     CUPBOARD = 'cupboards'
 }
-export const products: productType[] = [
+export const Products: productType[] = [
     {
         id: 3875945,
         category: CATEGORY.SOFA,

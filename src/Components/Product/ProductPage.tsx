@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import { products } from '../Data/data';
+import { Products } from '../Data/data';
 import { SingleCard } from './SingleCard';
 import { productType } from './types';
 
 export const ProductPage = () => {
 
     const parameters = useParams<{ id: string, category: string }>();
-    const product: productType | undefined = products.find(product => product.id.toString() === parameters.id)
+    const product: productType | undefined = Products.find(product => product.id.toString() === parameters.id)
 
     return (
         <div className='productPage'>
