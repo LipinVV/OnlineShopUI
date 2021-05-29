@@ -8,6 +8,12 @@
   --productCardDetails: #F6B24C;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .app__links {
   display: flex;
   width: 100%;

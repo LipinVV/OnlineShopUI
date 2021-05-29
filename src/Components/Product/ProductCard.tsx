@@ -7,14 +7,8 @@ import { StoreContext } from '../../App'
 
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
-    //@ts-ignore
     const { state, dispatch } = useContext(StoreContext);
-    // const [isLiked, setIsLiked] = useState<boolean>(isFavourite) // <- просмотр типа сущности
-    // const handleLikeChanger = () => {
-    //     dispatch({ action: "ADD_TO_WISH_LIST", productId: id }) // <- action 
-    // }
-    const priceNoDiscount: number = Math.ceil(price - ((discount / 100) * price));
-
+    const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
 
     return (
         <div className='productCard__preview-wrapper'>
@@ -35,14 +29,14 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
                 <span className='productCard__sold'>({salesCount} Sold out)</span>
             </div>
             <div className='productCard__group'>
-                {Boolean(priceNoDiscount) && <div className='productCard__priceNoDiscount'>${priceNoDiscount}</div>}
-                {Boolean(priceNoDiscount !== price) && <div className='productCard__price'>${price}</div>}
+                {Boolean(totalPrice) && <div className='productCard__totalPrice'>${totalPrice}</div>}
+                {Boolean(totalPrice !== price) && <div className='productCard__price'>${price}</div>}
                 {Boolean(discount) && <div className='productCard__discount'>-{discount}%</div>}
             </div>
             <button className='productCard__details'><Link className='productCard__link' to={`/${category}/${id}`}>Details</Link></button>
         </div>
     )
-} // : даёт информация о том, как будет называться переменная в адресной строке
+}
 
 
 

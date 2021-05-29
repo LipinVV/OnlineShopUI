@@ -5,7 +5,32 @@
     justify-content: center;
 }
 
+.wishlist__wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .wishlist__header {
     width: 100%;
     text-align: center;
+}
+
+.wishlist__remove-button {
+    min-width: 200px;
+    min-height: 40px;
+    border: none;
+    background-color: var(--productCardDiscount);
+    font-size: 20px;
+}
+
+.wishlist__card-wrapper {
+    margin-bottom: 40px;
+}
+
+.wishlist__expectations {
+    margin-top: 40px;
+    font-size: 20px;
 }

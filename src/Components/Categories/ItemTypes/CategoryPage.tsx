@@ -7,25 +7,24 @@ import './categoryPage.scss';
 import { StoreContext } from '../../../App'
 
 export const CategoryPage = () => {
-    //@ts-ignore
     const { state, dispatch } = useContext(StoreContext)
     const parameters = useParams<{ id: string, category: string }>();
-    // const product: productType | undefined = products.find(product => product.category === parameters.category) - ???
     return (
         <div className='categoryPage'>
-            {Object.values(getProductsByCategory(parameters.category, state.products)).map(item => {
-                return <ProductCard
-                    id={item.id}
-                    category={item.category}
-                    title={item.title}
-                    price={item.price}
-                    discount={item.discount}
-                    previewUrl={item.previewUrl}
-                    rating={item.rating}
-                    salesCount={item.salesCount}
-                    isFavourite={item.isFavourite}
+            {getProductsByCategory(parameters.category, state.products).map(product => (
+                <ProductCard
+                    id={product.id}
+                    category={product.category}
+                    title={product.title}
+                    price={product.price}
+                    discount={product.discount}
+                    previewUrl={product.previewUrl}
+                    rating={product.rating}
+                    salesCount={product.salesCount}
+                    isFavourite={product.isFavourite}
+                    toBuy={product.toBuy}
                 />
-            })}
+            ))}
         </div>
     )
 }

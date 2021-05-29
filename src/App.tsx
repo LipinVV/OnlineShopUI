@@ -7,6 +7,7 @@ import { CategoryPage } from './Components/Categories/ItemTypes/CategoryPage'
 import { Products } from './Components/Data/data'
 import { Wishlist } from './Components/WishList/WishList';
 import { productType } from './Components/Product/types';
+import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart'
 
 type InitialStateType = {
   products: productType[]
@@ -15,20 +16,30 @@ type InitialStateType = {
 export const INITIALSTATE = {
   products: Products,
 }
-//@ts-ignore
-export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>(); //{ INITIALSTATE, dispatch: () => console.log('DISPATCHED') }
+//@ts-ignore - ругается ТС
+export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
 const reducer = (currentState: any, payLoad: any) => {
   switch (payLoad.action) {
     case 'ADD_TO_WISHLIST':
       return {
         products: currentState.products.map((product: any) => {
-          console.log(product.id, payLoad.productId, typeof product.id, typeof payLoad.productId)
           if (product.id === payLoad.productId) {
-            console.log('TRUE')
             return {
               ...product,
               isFavourite: !product.isFavourite
+            }
+          }
+          return product;
+        })
+      };
+    case 'ADD_TO_BUY':
+      return {
+        products: currentState.products.map((product: any) => {
+          if (product.id === payLoad.productId) {
+            return {
+              ...product,
+              toBuy: !product.toBuy
             }
           }
           return product;
@@ -45,21 +56,20 @@ const reducer = (currentState: any, payLoad: any) => {
 }
 
 function App() {
-  // @ts-ignore
   const [state, dispatch] = useReducer(reducer, INITIALSTATE);
 
   return (
-    // @ts-ignore
     <StoreContext.Provider value={{ state, dispatch }}>
       <div className='App'>
         <Router>
           <nav className='app__navigation'>
             <ul className='app__links'>
               <li className='app__link'><Link to='/'>Home</Link></li>
+              <li className='app__link'><Link to='/shoppingCart'>Shopping Cart</Link></li>
               <li className='app__link'><Link to='/categories'>Categories</Link></li>
+              <li className='app__link'><Link to='/wishlist'>WishList</Link></li>
               <li className='app__link'><Link to='/gallery'>Gallery</Link></li>
               <li className='app__link'><Link to='/articles'>Articles</Link></li>
-              <li className='app__link'><Link to='/wishlist'>WishList</Link></li>
             </ul>
           </nav>
 
@@ -67,10 +77,10 @@ function App() {
             <Route path='/categories'>
               <Categories />
             </Route>
+            <Route exact path='/shoppingCart'><ShoppingCart /></Route>
             <Route exact path='/wishlist'><Wishlist /></Route>
             <Route exact path='/:category'><CategoryPage /></Route>
             <Route path='/:category/:id'><ProductPage /></Route>
-
           </Switch>
         </Router>
       </div>
@@ -80,5 +90,8 @@ function App() {
 
 export default App;
 
-
-// 1) ключи выставить
+// Вопросы
+// 1) state с продуктами - нужно ли прокинуть вообще везде? вызывает затроение например в Categories
+// 2) нужно прокинуть totalPrice из ProductCard -> SingleCard
+// 3) плавное прожатие кнопок
+// 4) SingleCard Color label - можно ли по-другому определить вывод с большой буквы

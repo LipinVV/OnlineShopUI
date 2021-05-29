@@ -10,6 +10,7 @@ export type productType = {
     salesCount: number,
     discount?: number,
     isFavourite: boolean,
+    toBuy: boolean,
     options?: optionType[]
 }
 
