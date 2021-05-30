@@ -4,7 +4,7 @@ import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 import { StoreContext } from '../../App'
 
-export const SingleCard = ({ id, category, title, price, previewUrl, rating, salesCount, options, isFavourite }: productType) => {
+export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, options, discount = 0 }: productType) => {
     const history = useHistory();
     const { state, dispatch } = useContext(StoreContext);
     const [counter, setCounter] = useState(1);
@@ -15,6 +15,8 @@ export const SingleCard = ({ id, category, title, price, previewUrl, rating, sal
     const countHandlerDecrementer = () => {
         setCounter(prevState => prevState <= 1 ? prevState = 1 : prevState - 1)
     }
+
+    const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
 
     return (
         <div className='single-card'>
@@ -34,7 +36,7 @@ export const SingleCard = ({ id, category, title, price, previewUrl, rating, sal
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
-                <li className='single-card__price'>${price}</li>
+                <li className='single-card__price'>${totalPrice}</li>
                 {Boolean(options?.length) && <p>{options?.map(option => {
                     if (option.type === 'select') {
                         return (
