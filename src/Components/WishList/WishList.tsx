@@ -24,7 +24,7 @@ export const Wishlist = () => {
                             salesCount={product.salesCount}
                             isFavourite={product.isFavourite}
                             toBuy={product.toBuy}
-                            />
+                        />
                     ))}
                 </div>
             </div>

@@ -9,6 +9,7 @@ import { StoreContext } from '../../../App'
 export const CategoryPage = () => {
     const { state, dispatch } = useContext(StoreContext)
     const parameters = useParams<{ id: string, category: string }>();
+    console.log('state', state)
     return (
         <div className='categoryPage'>
             {getProductsByCategory(parameters.category, state.products).map(product => (

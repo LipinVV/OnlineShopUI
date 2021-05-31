@@ -56,6 +56,9 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
             <div className='shopping-card__price-title'>Price
             {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice}</div>}
             </div>
+            <div>
+                <button type='button' onClick={() => dispatch({ action: "REMOVE" })}>Remove</button>
+            </div>
         </div>
     )
 }

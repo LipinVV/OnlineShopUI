@@ -7,7 +7,8 @@ import { StoreContext } from '../../App'
 
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
-    const { state, dispatch } = useContext(StoreContext);
+    console.log('isFavourite', isFavourite)
+    const { dispatch } = useContext(StoreContext);
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
 
     return (

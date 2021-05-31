@@ -7,7 +7,7 @@ import { CategoryPage } from './Components/Categories/ItemTypes/CategoryPage'
 import { Products } from './Components/Data/data'
 import { Wishlist } from './Components/WishList/WishList';
 import { productType } from './Components/Product/types';
-import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart'
+import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
 
 type InitialStateType = {
   products: productType[]
@@ -20,11 +20,13 @@ export const INITIALSTATE = {
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
 const reducer = (currentState: any, payLoad: any) => {
+  // console.log('payLoad', payLoad, 'currentState', currentState)
   switch (payLoad.action) {
     case 'ADD_TO_WISHLIST':
       return {
         products: currentState.products.map((product: any) => {
           if (product.id === payLoad.productId) {
+            console.log('payLoad', payLoad, 'currentState', currentState)
             return {
               ...product,
               isFavourite: !product.isFavourite
@@ -45,6 +47,10 @@ const reducer = (currentState: any, payLoad: any) => {
           return product;
         })
       };
+    case 'REMOVE':
+      return {
+        products: currentState.products.filter((product: any) => product.id)
+      }
     case 'DELETE_ALL_PRODUCTS':
       return {
         products: []
@@ -77,7 +83,7 @@ function App() {
             <Route path='/categories'>
               <Categories />
             </Route>
-            <Route exact path='/shoppingCart'><ShoppingCart /></Route>
+            <Route exact path='/shoppingCart'><ShoppingList /></Route>
             <Route exact path='/wishlist'><Wishlist /></Route>
             <Route exact path='/:category'><CategoryPage /></Route>
             <Route path='/:category/:id'><ProductPage /></Route>
