@@ -1,7 +1,7 @@
 import { productType } from "../Product/types"
 // аннотация productType[] показывает то, что возвращает функция
 export const getProductsByCategory = (category: string, products: productType[]): productType[] => {
-    return Products.filter(product => product.category === category);
+    return products.filter(product => product.category === category);
 }
 
 export const getCategory = (category: string): productType[] => {
