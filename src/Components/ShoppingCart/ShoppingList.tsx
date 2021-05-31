@@ -1,26 +1,14 @@
-import React, { useState, useContext } from 'react'
-import { StoreContext } from '../../App';
-import { ShoppingCard } from './ShoppingCard'
+import React, {useState, useContext} from 'react'
+import {StoreContext} from '../../App';
+import {ShoppingCard} from './ShoppingCard'
 import './shoppingCart.scss';
 
 export const ShoppingList = () => {
-    const { state, dispatch } = useContext(StoreContext)
-    const productsToBuy = state.products.filter(product => product.toBuy)
+    const {state, dispatch} = useContext(StoreContext)
+    const productsToBuy = state.cart
     const total = productsToBuy.map(x => Math.ceil(x.price - ((x.discount ? x.discount / 100 : 0) * x.price)))
     const [calcPrice, setCalcPrice] = useState(total);
-
-    const [counter, setCounter] = useState(1);
-    const countHandlerIncrementer = () => {
-        setCounter(prevState => prevState + 1)
-        //@ts-ignore
-        setCalcPrice(prevState => counter === 1 ? total * 2 : total * counter)
-    } // prevState === total ? prevState = total : total * counter
-    const countHandlerDecrementer = () => {
-        setCounter(prevState => prevState <= 1 ? prevState = 1 : prevState - 1)
-        //@ts-ignore
-        setCalcPrice(prevState => prevState - total)
-    }
-
+    console.log('state', state.cart)
     return (
         <div>
             <h1>
@@ -38,6 +26,8 @@ export const ShoppingList = () => {
                     salesCount={product.salesCount}
                     isFavourite={product.isFavourite}
                     toBuy={product.toBuy}
+                    quantity={product.quantity}
+                    finalPrice={product.finalPrice}
                 />
             ))}
             <div>{calcPrice}</div>

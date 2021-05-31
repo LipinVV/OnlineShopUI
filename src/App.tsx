@@ -1,5 +1,6 @@
 import React, { useContext, useReducer, Dispatch } from 'react';
 import './App.scss';
+import {CartProductInterface} from './Components/ShoppingCart/types'
 import { Categories } from './Components/Categories/Categories'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { ProductPage } from './Components/Product/ProductPage';
@@ -10,23 +11,31 @@ import { productType } from './Components/Product/types';
 import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
 
 type InitialStateType = {
-  products: productType[]
+  products: productType[],
+  cart: CartProductInterface[]
 }
 
-export const INITIALSTATE = {
+export const INITIAL_STATE: InitialStateType = {
   products: Products,
+  cart:[]
 }
 //@ts-ignore - ругается ТС
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
+export const ACTION = {
+  ADD_TO_WISHLIST: 'ADD_TO_WISHLIST',
+  ADD_TO_BUY: 'ADD_TO_BUY',
+  REMOVE: 'REMOVE',
+  DELETE_ALL_PRODUCTS: 'DELETE_ALL_PRODUCTS',
+  INCREMENT_QUANTITY: 'INCREMENT_QUANTITY'
+}
+
 const reducer = (currentState: any, payLoad: any) => {
-  // console.log('payLoad', payLoad, 'currentState', currentState)
   switch (payLoad.action) {
-    case 'ADD_TO_WISHLIST':
+    case ACTION.ADD_TO_WISHLIST:
       return {
         products: currentState.products.map((product: any) => {
           if (product.id === payLoad.productId) {
-            console.log('payLoad', payLoad, 'currentState', currentState)
             return {
               ...product,
               isFavourite: !product.isFavourite
@@ -35,23 +44,31 @@ const reducer = (currentState: any, payLoad: any) => {
           return product;
         })
       };
-    case 'ADD_TO_BUY':
+    case ACTION.ADD_TO_BUY:
+      const newCartProducts = [...currentState.cart, payLoad.product]
+
       return {
-        products: currentState.products.map((product: any) => {
-          if (product.id === payLoad.productId) {
+        ...currentState,
+        cart: newCartProducts
+      };
+    case ACTION.REMOVE:
+      return {
+        ...currentState,
+        cart: currentState.cart.filter((product: any) => product.id !== payLoad.productId),
+      }
+    case ACTION.INCREMENT_QUANTITY:
+      return {
+        ...currentState,
+        cart: currentState.cart.map((product:any) => {
+          if(product.id === payLoad.productId) {
             return {
               ...product,
-              toBuy: !product.toBuy
+              quantity: product?.quantity ? product.quantity + 1 : 1
             }
           }
-          return product;
         })
-      };
-    case 'REMOVE':
-      return {
-        products: currentState.products.filter((product: any) => product.id)
       }
-    case 'DELETE_ALL_PRODUCTS':
+    case ACTION.DELETE_ALL_PRODUCTS:
       return {
         products: []
       };
@@ -62,7 +79,7 @@ const reducer = (currentState: any, payLoad: any) => {
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, INITIALSTATE);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
     <StoreContext.Provider value={{ state, dispatch }}>

@@ -1,18 +1,19 @@
 import React, { useState, useContext } from 'react'
-import { StoreContext } from '../../App';
+import {CartProductInterface} from '../ShoppingCart/types'
+import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
-import { productType } from '../Product/types'
 
 
-export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0 }: productType) => {
+export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0, quantity }: CartProductInterface) => {
     const { state, dispatch } = useContext(StoreContext)
 
     const [counter, setCounter] = useState(1);
+
     const countHandlerIncrementer = () => {
         setCounter(prevState => prevState + 1)
     }
     const countHandlerDecrementer = () => {
-        setCounter(prevState => prevState <= 1 ? prevState = 1 : prevState - 1)
+        dispatch({action: ACTION.INCREMENT_QUANTITY, productId: id})
     }
 
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
@@ -57,7 +58,7 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
             {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice}</div>}
             </div>
             <div>
-                <button type='button' onClick={() => dispatch({ action: "REMOVE" })}>Remove</button>
+                <button type='button' onClick={() => dispatch({ action: ACTION.REMOVE, productId: id })}>Remove</button>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
-import { StoreContext } from '../../App'
+import {ACTION, StoreContext} from '../../App'
 
 export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, options, discount = 0 }: productType) => {
     const history = useHistory();
@@ -73,7 +73,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                     <button
                         type='button'
                         className='single-card__btn-add-to-buy'
-                        onClick={() => dispatch({ action: 'ADD_TO_BUY', productId: id })}
+                        onClick={() => dispatch({ action: ACTION.ADD_TO_BUY, product: { id, title, price, previewUrl, rating, salesCount, options, discount } })}
                     >
                         Add to Cart
                     </button>
