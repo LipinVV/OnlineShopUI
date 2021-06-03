@@ -4,16 +4,14 @@ import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
 
 
-export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0, quantity }: CartProductInterface) => {
-    const { state, dispatch } = useContext(StoreContext)
-
-    const [counter, setCounter] = useState(1);
+export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0, quantity = 1 }: CartProductInterface) => {
+    const { dispatch } = useContext(StoreContext)
 
     const countHandlerIncrementer = () => {
-        setCounter(prevState => prevState + 1)
+        dispatch({action: ACTION.INCREMENT_QUANTITY, productId: id})
     }
     const countHandlerDecrementer = () => {
-        dispatch({action: ACTION.INCREMENT_QUANTITY, productId: id})
+        dispatch({action: ACTION.DECREMENT_QUANTITY, productId: id})
     }
 
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
@@ -26,14 +24,14 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
                 <p className='shopping-card__quantity'>Quantity</p>
                 <div className='shopping-card__controls'>
                     <button className='shopping-card__btn-minus' type='button' onClick={countHandlerDecrementer}></button>
-                    <input className='shopping-card__input' type='number' value={counter}></input>
+                    <input className='shopping-card__input' type='number' value={quantity}></input>
                     <button className='shopping-card__btn-plus' type='button' onClick={countHandlerIncrementer}></button>
                 </div>
             </div>
             {Boolean(options?.length) && <p>{options?.map(option => {
                 if (option.type === 'select') {
                     return (
-                        <div className='shopping-card__colors'>
+                        <div className='shopping-card__colors' key={id}>
                             <label className='shopping-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                             {Array.isArray(option.value) &&
                                 <select className='shopping-card__select'>{option.value.map(value =>
@@ -55,7 +53,7 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
                 }
             })}</p>}
             <div className='shopping-card__price-title'>Price
-            {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice}</div>}
+            {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice * quantity}</div>}
             </div>
             <div>
                 <button type='button' onClick={() => dispatch({ action: ACTION.REMOVE, productId: id })}>Remove</button>

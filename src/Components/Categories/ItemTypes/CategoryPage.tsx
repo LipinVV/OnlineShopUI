@@ -7,13 +7,11 @@ import './categoryPage.scss';
 import { StoreContext } from '../../../App'
 
 export const CategoryPage = () => {
-    const { state } = useContext(StoreContext)
+    const { state, dispatch } = useContext(StoreContext)
     const parameters = useParams<{ id: string, category: string }>();
-    const productsByCategory = getProductsByCategory(parameters.category, state.products)
-
     return (
         <div className='categoryPage'>
-            {productsByCategory.map(product => (
+            {getProductsByCategory(parameters.category, state.products).map(product => (
                 <ProductCard
                     id={product.id}
                     category={product.category}

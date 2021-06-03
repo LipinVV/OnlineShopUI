@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
-import {ACTION, StoreContext} from '../../App'
+import { ACTION, StoreContext } from '../../App'
 
 export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, options, discount = 0 }: productType) => {
     const history = useHistory();
@@ -10,15 +10,27 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
     const [counter, setCounter] = useState(1);
 
     const countHandlerIncrementer = () => {
-        setCounter(prevState => prevState + 1)
+        setCounter(counter + 1)
     }
     const countHandlerDecrementer = () => {
-        setCounter(prevState => prevState <= 1 ? prevState = 1 : prevState - 1)
+        setCounter(counter <= 1 ?  1 : counter - 1)
     }
 
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
 
+    const isExistInCart = state.cart.some(element => element.id === id);
+
+    const productHandler = state.cart.find(item => item.id === id) // экземляр массива
+    useEffect(() => {
+        if(productHandler) {
+            setCounter(productHandler.quantity)
+            console.log('productHandler', productHandler)
+        }
+    }, [productHandler]) // глобальный IF
+    console.log('productHandler', productHandler)
+    console.log('isExistInCart', isExistInCart)
     return (
+
         <div className='single-card'>
             <ul className='single-card__photos'>
                 <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl} alt='product'></img></li>
@@ -40,11 +52,11 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                 {Boolean(options?.length) && <p>{options?.map(option => {
                     if (option.type === 'select') {
                         return (
-                            <div className='single-card__colors'>
+                            <div className='single-card__colors' key={id}>
                                 <label className='single-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                                 {Array.isArray(option.value) &&
                                     <select className='single-card__select'>{option.value.map(value =>
-                                        <option className='single-card__option'>{value[0].toUpperCase() + value.slice(1)}</option>
+                                        <option className='single-card__option' key={id}>{value[0].toUpperCase() + value.slice(1)}</option>
                                     )}</select>
                                 }
                             </div>
@@ -73,14 +85,27 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                     <button
                         type='button'
                         className='single-card__btn-add-to-buy'
-                        onClick={() => dispatch({ action: ACTION.ADD_TO_BUY, product: { id, title, price, previewUrl, rating, salesCount, options, discount } })}
+                        onClick={() => {
+                            if(isExistInCart) {
+                                dispatch({
+                                    action: ACTION.INCREMENT_QUANTITY,
+                                    productId: id // чтобы знать каком продукту в массиве card провести increment значения quantity
+                                })
+                            } else {
+                                dispatch({
+                                    action: ACTION.ADD_TO_BUY,
+                                    product: {id, title, price, previewUrl, rating, salesCount, options, discount, quantity: counter} // данные для модификации store
+                                })
+                            }
+                        }
+                        }
                     >
                         Add to Cart
                     </button>
                     <button
                         type='button'
                         className='single-card__btn-add-to-wish'
-                        onClick={() => dispatch({ action: 'ADD_TO_WISHLIST', productId: id })}
+                        onClick={() => dispatch({ action: ACTION.ADD_TO_WISHLIST, productId: id })}
                     >
                         Add to Wishlist
                     </button>

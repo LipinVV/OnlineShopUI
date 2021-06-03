@@ -1,6 +1,5 @@
 import React, { useContext, useReducer, Dispatch } from 'react';
 import './App.scss';
-import {CartProductInterface} from './Components/ShoppingCart/types'
 import { Categories } from './Components/Categories/Categories'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { ProductPage } from './Components/Product/ProductPage';
@@ -9,6 +8,7 @@ import { Products } from './Components/Data/data'
 import { Wishlist } from './Components/WishList/WishList';
 import { productType } from './Components/Product/types';
 import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
+import { CartProductInterface } from './Components/ShoppingCart/types'
 
 type InitialStateType = {
   products: productType[],
@@ -17,18 +17,19 @@ type InitialStateType = {
 
 export const INITIAL_STATE: InitialStateType = {
   products: Products,
-  cart:[]
+  cart: []
 }
-//@ts-ignore - ругается ТС
-export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
 export const ACTION = {
   ADD_TO_WISHLIST: 'ADD_TO_WISHLIST',
   ADD_TO_BUY: 'ADD_TO_BUY',
   REMOVE: 'REMOVE',
   DELETE_ALL_PRODUCTS: 'DELETE_ALL_PRODUCTS',
-  INCREMENT_QUANTITY: 'INCREMENT_QUANTITY'
+  INCREMENT_QUANTITY: 'INCREMENT_QUANTITY',
+  DECREMENT_QUANTITY: 'DECREMENT_QUANTITY',
 }
+//@ts-ignore - ругается ТС
+export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
 const reducer = (currentState: any, payLoad: any) => {
   switch (payLoad.action) {
@@ -36,6 +37,7 @@ const reducer = (currentState: any, payLoad: any) => {
       return {
         products: currentState.products.map((product: any) => {
           if (product.id === payLoad.productId) {
+            console.log('payLoad', payLoad, 'currentState', currentState)
             return {
               ...product,
               isFavourite: !product.isFavourite
@@ -44,14 +46,15 @@ const reducer = (currentState: any, payLoad: any) => {
           return product;
         })
       };
+
     case ACTION.ADD_TO_BUY:
       const newCartProducts = [...currentState.cart, payLoad.product]
-
       return {
         ...currentState,
         cart: newCartProducts
       };
-    case ACTION.REMOVE:
+
+      case ACTION.REMOVE:
       return {
         ...currentState,
         cart: currentState.cart.filter((product: any) => product.id !== payLoad.productId),
@@ -59,11 +62,23 @@ const reducer = (currentState: any, payLoad: any) => {
     case ACTION.INCREMENT_QUANTITY:
       return {
         ...currentState,
-        cart: currentState.cart.map((product:any) => {
-          if(product.id === payLoad.productId) {
+        cart: currentState.cart.map((product: any) => {
+            if (product.id === payLoad.productId) {
+              return {
+                ...product,
+                quantity: product?.quantity ? product.quantity + 1 : 1
+              }
+            }
+        })
+      }
+    case ACTION.DECREMENT_QUANTITY:
+      return {
+        ...currentState,
+        cart: currentState.cart.map((product: any) => {
+          if (product.id === payLoad.productId) {
             return {
               ...product,
-              quantity: product?.quantity ? product.quantity + 1 : 1
+              quantity: product?.quantity <= 1 ? product.quantity = 1 : product.quantity - 1
             }
           }
         })
@@ -117,5 +132,24 @@ export default App;
 // 1) state с продуктами - нужно ли прокинуть вообще везде? вызывает затроение например в Categories
 // 2) нужно прокинуть totalPrice из ProductCard -> SingleCard
 // 3) плавное прожатие кнопок
-// 4) SingleCard Color label - можно ли по-другому определить вывод с большой буквы
-// 5) Передача значения итоговой суммы в ShoppingPage, перерасчёт полной суммы при увеличении изделий 
+// 4) SingleCard Color labproduct - можно ли по-другому определить вывод с большой буквы
+// 5) Передача значения итоговой суммы в ShoppingPage, перерасчёт полной суммы при увеличении изделий
+
+
+
+
+
+// return {
+//   ...currentState,
+//   cart: newCartProducts
+// };
+
+
+//   payLoad.product.quantity = Number()
+//   console.log('payLoad.product', payLoad.product)
+
+//  //@ts-ignore
+//   if(currentState.cart.filter(x => x.id === payLoad.product.id)) {
+//     console.log('true')
+//     payLoad.product.quantity++
+//   }

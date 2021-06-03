@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './categories.scss'
 import { CATEGORY } from './../Data/data'
-import { StoreContext } from '../../App';
 const itemTypes = Object.values(CATEGORY);
 
 export const Categories = () => {
-    // const { state, dispatch } = useContext(StoreContext) 
     return (
         <nav className='categories__Navigation'>
             <ul className='categories__List'>

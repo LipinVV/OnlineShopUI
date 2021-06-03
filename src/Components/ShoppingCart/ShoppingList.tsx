@@ -1,14 +1,14 @@
-import React, {useState, useContext} from 'react'
-import {StoreContext} from '../../App';
-import {ShoppingCard} from './ShoppingCard'
+import React, { useState, useContext } from 'react'
+import { StoreContext } from '../../App';
+import { ShoppingCard } from './ShoppingCard'
 import './shoppingCart.scss';
 
 export const ShoppingList = () => {
-    const {state, dispatch} = useContext(StoreContext)
+    const { state, dispatch } = useContext(StoreContext)
     const productsToBuy = state.cart
-    const total = productsToBuy.map(x => Math.ceil(x.price - ((x.discount ? x.discount / 100 : 0) * x.price)))
-    const [calcPrice, setCalcPrice] = useState(total);
-    console.log('state', state.cart)
+    console.log('productsToBuy', productsToBuy)
+    // const total = productsToBuy.map(x => Math.ceil(x.price - ((x.discount ? x.discount / 100 : 0) * x.price)))
+
     return (
         <div>
             <h1>
@@ -30,7 +30,7 @@ export const ShoppingList = () => {
                     finalPrice={product.finalPrice}
                 />
             ))}
-            <div>{calcPrice}</div>
+            {/*<div className={'shoppingList__priceCalculation'}>{total.reduce((acc: any, cv: any) => acc + cv, 0)}</div>*/}
         </div>
     )
 }
