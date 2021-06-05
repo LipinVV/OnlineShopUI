@@ -15,22 +15,17 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
     const countHandlerDecrementer = () => {
         setCounter(counter <= 1 ?  1 : counter - 1)
     }
-
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
 
     const isExistInCart = state.cart.some(element => element.id === id);
-
     const productHandler = state.cart.find(item => item.id === id) // экземляр массива
+
     useEffect(() => {
         if(productHandler) {
             setCounter(productHandler.quantity)
-            console.log('productHandler', productHandler)
         }
     }, [productHandler]) // глобальный IF
-    console.log('productHandler', productHandler)
-    console.log('isExistInCart', isExistInCart)
     return (
-
         <div className='single-card'>
             <ul className='single-card__photos'>
                 <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl} alt='product'></img></li>
@@ -55,8 +50,18 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                             <div className='single-card__colors' key={id}>
                                 <label className='single-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                                 {Array.isArray(option.value) &&
-                                    <select className='single-card__select'>{option.value.map(value =>
-                                        <option className='single-card__option' key={id}>{value[0].toUpperCase() + value.slice(1)}</option>
+                                    <select
+                                        onChange={(evt) => {
+                                            const value = evt.target.value
+                                            if(isExistInCart) {
+                                                dispatch({
+                                                    action: ACTION.CHOOSE_PRODUCT_COLOR,
+                                                    productColor: value
+                                                })}
+                                            }
+                                            }
+                                        className='single-card__select'>{option.value.map(value =>
+                                        <option value={value} className='single-card__option' key={id}>{value[0].toUpperCase() + value.slice(1)}</option>
                                     )}</select>
                                 }
                             </div>
@@ -72,7 +77,9 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                             </div>
                         )
                     }
-                })}</p>}
+                })}
+                </p>
+                }
                 <div className='single-card__counter'>
                     <p className='single-card__quantity'>Quantity</p>
                     <div className='single-card__controls'>

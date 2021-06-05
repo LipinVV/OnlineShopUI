@@ -4,8 +4,8 @@ import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
 
 
-export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0, quantity = 1 }: CartProductInterface) => {
-    const { dispatch } = useContext(StoreContext)
+export const ShoppingCard = ({ id, title, price, previewUrl, options, discount = 0, quantity = 1, finalPrice }: CartProductInterface) => {
+    const {state, dispatch } = useContext(StoreContext)
 
     const countHandlerIncrementer = () => {
         dispatch({action: ACTION.INCREMENT_QUANTITY, productId: id})
@@ -15,7 +15,7 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
     }
 
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
-
+    const isExistInCart = state.cart.some(element => element.id === id);
     return (
         <div className='shopping-card'>
             <div className='shopping-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></div>
@@ -34,9 +34,19 @@ export const ShoppingCard = ({ id, title, price, previewUrl, options, discount =
                         <div className='shopping-card__colors' key={id}>
                             <label className='shopping-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                             {Array.isArray(option.value) &&
-                                <select className='shopping-card__select'>{option.value.map(value =>
-                                    <option className='shopping-card__option'>{value[0].toUpperCase() + value.slice(1)}</option>
-                                )}</select>
+                            <select
+                                onChange={(evt) => {
+                                    const value = evt.target.value
+                                    if(isExistInCart) {
+                                        dispatch({
+                                            action: ACTION.CHOOSE_PRODUCT_COLOR,
+                                            productColor: value
+                                        })}
+                                }
+                                }
+                                className='single-card__select'>{option.value.map(value =>
+                                <option value={value} className='single-card__option' key={id}>{value[0].toUpperCase() + value.slice(1)}</option>
+                            )}</select>
                             }
                         </div>
                     )

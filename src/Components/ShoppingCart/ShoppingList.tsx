@@ -4,9 +4,8 @@ import { ShoppingCard } from './ShoppingCard'
 import './shoppingCart.scss';
 
 export const ShoppingList = () => {
-    const { state, dispatch } = useContext(StoreContext)
+    const { state } = useContext(StoreContext)
     const productsToBuy = state.cart
-    console.log('productsToBuy', productsToBuy)
     // const total = productsToBuy.map(x => Math.ceil(x.price - ((x.discount ? x.discount / 100 : 0) * x.price)))
 
     return (
@@ -26,13 +25,12 @@ export const ShoppingList = () => {
                     salesCount={product.salesCount}
                     isFavourite={product.isFavourite}
                     toBuy={product.toBuy}
+                    options={product.options}
                     quantity={product.quantity}
                     finalPrice={product.finalPrice}
                 />
             ))}
-            {/*<div className={'shoppingList__priceCalculation'}>{total.reduce((acc: any, cv: any) => acc + cv, 0)}</div>*/}
+            <div className={'shoppingList__priceCalculation'}>{'total: '}</div>
         </div>
     )
 }
-
-// попробовать прямо тут отрисовать, вместо отдельного элемента Card?

@@ -27,17 +27,17 @@ export const ACTION = {
   DELETE_ALL_PRODUCTS: 'DELETE_ALL_PRODUCTS',
   INCREMENT_QUANTITY: 'INCREMENT_QUANTITY',
   DECREMENT_QUANTITY: 'DECREMENT_QUANTITY',
+  CHOOSE_PRODUCT_COLOR: 'CHOOSE_PRODUCT_COLOR',
 }
 //@ts-ignore - ругается ТС
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
-
 const reducer = (currentState: any, payLoad: any) => {
+  console.log('currentState.cart', currentState.cart, 'payLoad.product', payLoad.product)
   switch (payLoad.action) {
     case ACTION.ADD_TO_WISHLIST:
       return {
         products: currentState.products.map((product: any) => {
           if (product.id === payLoad.productId) {
-            console.log('payLoad', payLoad, 'currentState', currentState)
             return {
               ...product,
               isFavourite: !product.isFavourite
@@ -81,6 +81,18 @@ const reducer = (currentState: any, payLoad: any) => {
               quantity: product?.quantity <= 1 ? product.quantity = 1 : product.quantity - 1
             }
           }
+        })
+      }
+    case ACTION.CHOOSE_PRODUCT_COLOR:
+      const options = currentState.cart.map((x:any) => x.options.map((x:any) => x.value)).map((product: any) => product.filter((x:any) => x === payLoad.productColor))
+      return {
+        ...currentState,
+        cart: currentState.cart.map((product: any) => {
+            return {
+              ...product,
+              color: payLoad.productColor
+            }
+
         })
       }
     case ACTION.DELETE_ALL_PRODUCTS:
@@ -138,18 +150,12 @@ export default App;
 
 
 
-
-// return {
-//   ...currentState,
-//   cart: newCartProducts
-// };
-
-
-//   payLoad.product.quantity = Number()
-//   console.log('payLoad.product', payLoad.product)
-
-//  //@ts-ignore
-//   if(currentState.cart.filter(x => x.id === payLoad.product.id)) {
-//     console.log('true')
-//     payLoad.product.quantity++
+// cart: options.map((product: any) => {
+//   if (product.filter((x:any) => x === payLoad.productColor)) {
+//     console.log('YES', payLoad.productColor)
+//     return {
+//       ...product,
+//       color: payLoad.productColor
+//     }
 //   }
+// })
