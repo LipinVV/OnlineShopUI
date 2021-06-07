@@ -8,8 +8,9 @@ export type productType = {
     previewUrl: string,
     rating: number,
     salesCount: number,
-    discount?: number,
+    discount: number,
     isFavourite: boolean,
+    toBuy: boolean,
     options?: optionType[]
 }
 

@@ -5,7 +5,7 @@ export const getProductsByCategory = (category: string, products: productType[])
 }
 
 export const getCategory = (category: string): productType[] => {
-    return products.filter(product => product.category === category);
+    return Products.filter(product => product.category === category);
 }
 
 // enumerable перечисляемые свойства = {}
@@ -17,7 +17,7 @@ export enum CATEGORY {
     CARPET = 'carpets',
     CUPBOARD = 'cupboards'
 }
-export const products: productType[] = [
+export const Products: productType[] = [
     {
         id: 3875945,
         category: CATEGORY.SOFA,
@@ -28,6 +28,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 400,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
@@ -40,6 +41,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 350,
         isFavourite: false,
+        toBuy: false,
     },
     {
         id: 384575475,
@@ -51,6 +53,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 240,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
@@ -63,6 +66,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 205,
         isFavourite: false,
+        toBuy: false,
     },
     {
         id: 1241414,
@@ -74,6 +78,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 165,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
@@ -86,6 +91,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 290,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
@@ -98,6 +104,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 105,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: false}]
     },
     {
@@ -110,6 +117,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 265,
         isFavourite: false,
+        toBuy: false,
     },
     {
         id: 45745714,
@@ -121,6 +129,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 390,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: false}]
     },
     {
@@ -133,6 +142,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 195,
         isFavourite: false,
+        toBuy: false,
     },
     {
         id: 213134,
@@ -144,6 +154,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 230,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
@@ -156,6 +167,7 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 450,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
@@ -168,6 +180,7 @@ export const products: productType[] = [
         rating: 3,
         salesCount: 342,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
     {
@@ -180,6 +193,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 315,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
@@ -192,8 +206,8 @@ export const products: productType[] = [
         rating: 5,
         salesCount: 220,
         isFavourite: false,
+        toBuy: false,
     },
-    // типизация ключей
     {
         id: 3426364,
         category: CATEGORY.BED,
@@ -204,6 +218,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 165,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'boolean', title: 'warranty', value: ['true', 'false']}]
     },
     {
@@ -216,6 +231,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 215,
         isFavourite: false,
+        toBuy: false,
     },
     {
         id: 87854,
@@ -227,6 +243,7 @@ export const products: productType[] = [
         rating: 4,
         salesCount: 380,
         isFavourite: false,
+        toBuy: false,
         options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
     },
 ]
