@@ -2,11 +2,16 @@ import React, { useState, useContext } from 'react'
 import { StoreContext } from '../../App';
 import { ShoppingCard } from './ShoppingCard'
 import './shoppingCart.scss';
+import {getTotalPriceForProduct} from "../../Services/products";
 
 export const ShoppingList = () => {
     const { state } = useContext(StoreContext)
     const productsToBuy = state.cart
-    // const total = productsToBuy.map(x => Math.ceil(x.price - ((x.discount ? x.discount / 100 : 0) * x.price)))
+
+    const priceCalculationHandler = state.cart.reduce((acc, item) => {
+        const totalPricePerProduct: number = getTotalPriceForProduct(item)
+        return acc + (totalPricePerProduct * item.quantity);
+    }, 0)
 
     return (
         <div>
@@ -15,22 +20,10 @@ export const ShoppingList = () => {
             </h1>
             {productsToBuy.map((product: any) => (
                 <ShoppingCard
-                    id={product.id}
-                    category={product.category}
-                    title={product.title}
-                    price={product.price}
-                    discount={product.discount}
-                    previewUrl={product.previewUrl}
-                    rating={product.rating}
-                    salesCount={product.salesCount}
-                    isFavourite={product.isFavourite}
-                    toBuy={product.toBuy}
-                    options={product.options}
-                    quantity={product.quantity}
-                    finalPrice={product.finalPrice}
+                    product = {product}
                 />
             ))}
-            <div className={'shoppingList__priceCalculation'}>{'total: '}</div>
+            <div className={'shoppingList__priceCalculation'}>total: {priceCalculationHandler}</div>
         </div>
     )
 }

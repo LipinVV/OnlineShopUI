@@ -52,7 +52,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                                 {Array.isArray(option.value) &&
                                     <select
                                         onChange={(evt) => {
-                                            const value = evt.target.value
+                                            const {value} = evt.target
                                             if(isExistInCart) {
                                                 dispatch({
                                                     action: ACTION.CHOOSE_PRODUCT_COLOR,

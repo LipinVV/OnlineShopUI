@@ -31,8 +31,8 @@ export const ACTION = {
 }
 //@ts-ignore - ругается ТС
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
+
 const reducer = (currentState: any, payLoad: any) => {
-  console.log('currentState.cart', currentState.cart, 'payLoad.product', payLoad.product)
   switch (payLoad.action) {
     case ACTION.ADD_TO_WISHLIST:
       return {
@@ -69,6 +69,7 @@ const reducer = (currentState: any, payLoad: any) => {
                 quantity: product?.quantity ? product.quantity + 1 : 1
               }
             }
+            return product
         })
       }
     case ACTION.DECREMENT_QUANTITY:
@@ -81,6 +82,7 @@ const reducer = (currentState: any, payLoad: any) => {
               quantity: product?.quantity <= 1 ? product.quantity = 1 : product.quantity - 1
             }
           }
+          return product
         })
       }
     case ACTION.CHOOSE_PRODUCT_COLOR:
@@ -88,6 +90,7 @@ const reducer = (currentState: any, payLoad: any) => {
       return {
         ...currentState,
         cart: currentState.cart.map((product: any) => {
+
             return {
               ...product,
               color: payLoad.productColor
