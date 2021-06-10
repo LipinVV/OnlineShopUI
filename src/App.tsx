@@ -127,8 +127,8 @@ function App() {
             <Route path='/:category/:id'><ProductPage /></Route>
           </Switch>
         </Router>
-        <Footer/>
       </div>
+      <Footer/>
     </StoreContext.Provider>
   );
 }

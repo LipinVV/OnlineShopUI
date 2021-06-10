@@ -1,37 +1,42 @@
+@import "src/App";
+
 .categories__Navigation {
-    width: 100%;
     margin: 0;
     padding: 0;
-
-    @media (min-width: 1440px) {
-        width: 1440px;
-    }
 }
 
 .categories__List {
-    display: flex;
+    display: grid;
+    grid-gap: 20px;
     list-style: none;
     flex-wrap: wrap;
     width: 100%;
-    padding: 0;
+    padding: 20px;
     margin: 0;
-    justify-content: center;
+
+    @media screen and (min-width: $tabletDevice) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: $desktopDevice) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 .categories__Section {
+    background-size: cover;
     position: relative;
     list-style: none;
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 500px;
-    max-height: 500px;
+    border-radius: 10px;
+    //min-width: 400px;
+    //max-width: 400px;
+    //min-height: 500px;
+    height: 500px;
     font-weight: 800;
     font-size: 40px;
     line-height: 54px;
     color: var(--pureWhite);
     background-repeat: no-repeat;
-    margin-right: 20px;
-    margin-bottom: 50px;
 }
 
 .categories__Section-name {
