@@ -11,9 +11,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 14px;
+
+  @media (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 ;
+
+  @media (min-width: 660px) {
+    width: 660px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

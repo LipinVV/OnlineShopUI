@@ -23,7 +23,7 @@ export const ShoppingList = () => {
                     product = {product}
                 />
             ))}
-            <div className={'shoppingList__priceCalculation'}>total: {priceCalculationHandler}</div>
+            <div className={'shopping-list__price-calculation'}>total: {priceCalculationHandler}</div>
         </div>
     )
 }

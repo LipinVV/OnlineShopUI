@@ -9,6 +9,8 @@ import { Wishlist } from './Components/WishList/WishList';
 import { productType } from './Components/Product/types';
 import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
 import { CartProductInterface } from './Components/ShoppingCart/types'
+import {Footer} from "./Components/Footer/Footer";
+import {Navigation} from "./Components/Navigation/Navigation";
 
 type InitialStateType = {
   products: productType[],
@@ -90,12 +92,10 @@ const reducer = (currentState: any, payLoad: any) => {
       return {
         ...currentState,
         cart: currentState.cart.map((product: any) => {
-
             return {
               ...product,
               color: payLoad.productColor
             }
-
         })
       }
     case ACTION.DELETE_ALL_PRODUCTS:
@@ -115,16 +115,7 @@ function App() {
     <StoreContext.Provider value={{ state, dispatch }}>
       <div className='App'>
         <Router>
-          <nav className='app__navigation'>
-            <ul className='app__links'>
-              <li className='app__link'><Link to='/'>Home</Link></li>
-              <li className='app__link'><Link to='/shoppingCart'>Shopping Cart</Link></li>
-              <li className='app__link'><Link to='/categories'>Categories</Link></li>
-              <li className='app__link'><Link to='/wishlist'>WishList</Link></li>
-              <li className='app__link'><Link to='/gallery'>Gallery</Link></li>
-              <li className='app__link'><Link to='/articles'>Articles</Link></li>
-            </ul>
-          </nav>
+          <Navigation />
 
           <Switch>
             <Route path='/categories'>
@@ -136,6 +127,7 @@ function App() {
             <Route path='/:category/:id'><ProductPage /></Route>
           </Switch>
         </Router>
+        <Footer/>
       </div>
     </StoreContext.Provider>
   );
@@ -145,20 +137,8 @@ export default App;
 
 // Вопросы
 // 1) state с продуктами - нужно ли прокинуть вообще везде? вызывает затроение например в Categories
-// 2) нужно прокинуть totalPrice из ProductCard -> SingleCard
-// 3) плавное прожатие кнопок
-// 4) SingleCard Color labproduct - можно ли по-другому определить вывод с большой буквы
-// 5) Передача значения итоговой суммы в ShoppingPage, перерасчёт полной суммы при увеличении изделий
+// 2) сохранение резиновости при прохождении через брейкопойнты
+// 3) организация стилей в проекте
+// 4) оносительные величины и константы для верстки, например шрифты, цвета - организация
+//5) гриды на примере футера
 
-
-
-
-// cart: options.map((product: any) => {
-//   if (product.filter((x:any) => x === payLoad.productColor)) {
-//     console.log('YES', payLoad.productColor)
-//     return {
-//       ...product,
-//       color: payLoad.productColor
-//     }
-//   }
-// })

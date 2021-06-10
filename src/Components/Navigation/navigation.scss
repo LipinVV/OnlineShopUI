@@ -1,0 +1,15 @@
+.app__navigation {
+  width: 100%;
+}
+
+.app__links {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-left: 100px;
+  padding-right: 100px;
+  min-height: 120px;
+}

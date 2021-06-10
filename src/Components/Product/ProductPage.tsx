@@ -10,7 +10,7 @@ export const ProductPage = () => {
     const product: productType | undefined = Products.find(product => product.id.toString() === parameters.id)
 
     return (
-        <div className='productPage'>
+        <div className='product-page'>
             {product && <SingleCard id={product.id} category={product.category} title={product.title} price={product.price} previewUrl={product.previewUrl} rating={product.rating}
                 salesCount={product.salesCount} discount={product.discount} isFavourite={product.isFavourite} toBuy={product.toBuy} options={product.options}/>}
         </div>
