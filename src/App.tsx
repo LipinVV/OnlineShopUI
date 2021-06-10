@@ -34,10 +34,11 @@ export const ACTION = {
 //@ts-ignore - ругается ТС
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
-const reducer = (currentState: any, payLoad: any) => {
+const reducer = (currentState: any, payLoad: any): InitialStateType  => {
   switch (payLoad.action) {
     case ACTION.ADD_TO_WISHLIST:
       return {
+        ...currentState,
         products: currentState.products.map((product: any) => {
           if (product.id === payLoad.productId) {
             return {
@@ -100,6 +101,7 @@ const reducer = (currentState: any, payLoad: any) => {
       }
     case ACTION.DELETE_ALL_PRODUCTS:
       return {
+        ...currentState,
         products: []
       };
     default: {
@@ -127,8 +129,8 @@ function App() {
             <Route path='/:category/:id'><ProductPage /></Route>
           </Switch>
         </Router>
-        <Footer/>
       </div>
+      <Footer/>
     </StoreContext.Provider>
   );
 }

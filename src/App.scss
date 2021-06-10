@@ -8,6 +8,11 @@
   --productCardDetails: #777888;
 }
 
+$mobileDevice: 768px;
+$tabletDevice: 992px;
+$desktopDevice: 1024px;
+$largeDesktopDevice: 1440px;
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -15,10 +20,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .App {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+    margin: 0 auto;
+  }
 }
 
 .app__links {

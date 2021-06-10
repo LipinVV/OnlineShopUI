@@ -8,7 +8,7 @@ export const Footer = () => {
         <div className='footer'>
             <div className='footer-main'>
                 <div className='footer-shop'>
-                    <span className='footer-shop__title'>Shop Bag</span>
+                    <h4 className='footer-shop__title'>Shop Bag</h4>
                     <span className='footer-shop__text'>
                         We are the best furniture platform. We are already working on thousands of future home projects. Trust us, you will surely be satisfied
                     </span>
