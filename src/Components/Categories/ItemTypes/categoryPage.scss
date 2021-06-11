@@ -1,32 +1,51 @@
-.categoryPage {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-start;
+@import 'src/App';
 
-    @media (min-width: 1440px) {
-        width: 1440px;
-    }
+.categoryPage {
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  @media (min-width: $mobileDevice) {
+    grid-template-columns: 1fr;
+    min-width: $mobileDevice;
+  }
+
+  @media (min-width: $tabletDevice) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $desktopDevice) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
 
 .categoryPage__header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+  margin: 0;
+  @media (min-width: $mobileDevice) {
+    grid-column: auto;
+  }
+  @media (min-width: $tabletDevice) {
+    grid-column: 1/ span 2;
+  }
+  @media (min-width: $desktopDevice) {
+    grid-column: 1/ span 3;
+  }
+  grid-template-columns: 1fr 1fr;
+}
+
+.categoryPage__info {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
 
 .categoryPage__name {
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 55px;
-    margin-bottom: 50px;
-    margin-top: 0;
+  font-size: 40px;
+  font-weight: 800;
 }
 
 .categoryPage__seeProducts {
-    margin-top: 25px;
-    font-size: 20px;
-    font-weight: 600;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right;
 }

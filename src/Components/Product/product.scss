@@ -1,20 +1,22 @@
+@import 'src/App';
+
 .productCard__preview-wrapper {
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    max-width: 400px;
-    max-height: 460px;
     color: var(--pureBlack);
     font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    list-style: none;
+    display: grid;
+    background-size: cover;
+    max-width: 100%;
+    margin: 0 auto;
+    @media (min-width: $mobileDevice) {
+        margin: 0;
+    }
 }
 
 .productCard__PreviewUrl {
     display: block;
     position: relative;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .productCard__price {
@@ -64,10 +66,9 @@
 }
 
 .productCard__preview {
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 300px;
-    max-height: 300px;
+    background-size: cover;
+    min-height: 100%;
+    max-width: 100%;
 }
 
 .productCard__title {
@@ -87,8 +88,8 @@
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    right: 15px;
-    top: 15px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 }
 

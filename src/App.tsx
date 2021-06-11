@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, Dispatch } from 'react';
+import React, { useReducer, Dispatch } from 'react';
 import './App.scss';
 import { Categories } from './Components/Categories/Categories'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
