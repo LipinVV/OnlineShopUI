@@ -31,7 +31,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
             <div className='single-card__header'>Product Detail</div>
             <div className='single-card__details'>
             <ul className='single-card__photos'>
-                <li className='single-card__img'><img className='single-card__img-preview-main' src={previewUrl} alt='product'></img></li>
+                <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
                 <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
                 <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
                 <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl} alt='product'></img></li>
