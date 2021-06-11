@@ -35,15 +35,15 @@ export const Footer = () => {
                         <li className='footer-content__support-item'>Talent Guide</li>
                         <li className='footer-content__support-item'>Online Text</li>
                     </ul>
-                </div>
-                <div className='footer-contacts'>Contact Us
-                    <li className='footer-contacts__mail'><a className='footer-contacts__mail-link'  href = "mailto: Hello@shopbag.com">Hello@shopbag.com</a></li>
-                    <li className='footer-contacts__phone'><a className='footer-contacts__phone-number' href='tel:+081437650889'>081437650889</a></li>
-                    <li className='footer-contacts__social-media'>
-                        <span className='footer-contacts__social-media-item'><a href='https://facebook.com' className='footer-contacts__social-media-item-fb'></a></span>
-                        <span className='footer-contacts__social-media-item'><a href='https://twitter.com' className='footer-contacts__social-media-item-twitter'></a></span>
-                        <span className='footer-contacts__social-media-item'><a href='https://linkedin.com' className='footer-contacts__social-media-item-linked'></a></span>
-                    </li>
+                    <ul className='footer-contacts'>Contact Us
+                        <li className='footer-contacts__mail'><a className='footer-contacts__mail-link'  href = "mailto: Hello@shopbag.com">Hello@shopbag.com</a></li>
+                        <li className='footer-contacts__phone'><a className='footer-contacts__phone-number' href='tel:+081437650889'>081437650889</a></li>
+                        <li className='footer-contacts__social-media'>
+                            <span className='footer-contacts__social-media-item'><a href='https://facebook.com' className='footer-contacts__social-media-item-fb'></a></span>
+                            <span className='footer-contacts__social-media-item'><a href='https://twitter.com' className='footer-contacts__social-media-item-twitter'></a></span>
+                            <span className='footer-contacts__social-media-item'><a href='https://linkedin.com' className='footer-contacts__social-media-item-linked'></a></span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div className='footer-underline'>
