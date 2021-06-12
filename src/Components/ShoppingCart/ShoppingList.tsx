@@ -15,15 +15,13 @@ export const ShoppingList = () => {
 
     return (
         <div>
-            <h1>
-                Here you can complete your order!
-            </h1>
+            {productsToBuy.length === 0 ? <h1>Please put something into your shopping cart!</h1> : <h1>Shopping Cart</h1>}
             {productsToBuy.map((product: any) => (
                 <ShoppingCard
                     product = {product}
                 />
             ))}
-            <div className={'shopping-list__price-calculation'}>total: {priceCalculationHandler}</div>
+            {productsToBuy.length === 0 ? null : <div className={'shopping-list__price-calculation'}>total: {priceCalculationHandler}</div>}
         </div>
     )
 }

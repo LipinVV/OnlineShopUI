@@ -20,7 +20,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
     const isExistInCart = state.cart.some(element => element.id === product.id);
     return (
         <div className='shopping-card'>
-            <div className='shopping-card__img'><img className='single-card__img-preview' src={product.previewUrl} alt='product'></img></div>
+            <div className='shopping-card__img'><img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
             <div className='shopping-card__title'>{product.title}</div>
             <div className='shopping-card__counter'>
                 <p className='shopping-card__quantity'>Quantity</p>
@@ -46,7 +46,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                                         })}
                                 }
                                 }
-                                className='single-card__select'>{option.value.map(value =>
+                                className='shopping-card__select'>{option.value.map(value =>
                                 <option value={value} className='single-card__option' key={product.id}>{value[0].toUpperCase() + value.slice(1)}</option>
                             )}</select>
                             }
