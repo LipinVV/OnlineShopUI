@@ -89,7 +89,6 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
         })
       }
     case ACTION.CHOOSE_PRODUCT_COLOR:
-      const options = currentState.cart.map((x:any) => x.options.map((x:any) => x.value)).map((product: any) => product.filter((x:any) => x === payLoad.productColor))
       return {
         ...currentState,
         cart: currentState.cart.map((product: any) => {
@@ -148,5 +147,6 @@ export default App;
 // с учетом фракционности - как настраивать нужные размеры элементов? на примере сингл карда
 // 4) оносительные величины и константы для верстки
 // 5) количество в инпуте количества товара при покупке - до 100
+// 6) попадание в вишлист - очередность нарушена
 
 // 1) state с продуктами - нужно ли прокинуть вообще везде? вызывает затроение например в Categories

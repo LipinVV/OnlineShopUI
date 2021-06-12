@@ -1,15 +1,131 @@
+@import 'src/App';
+
 .app__navigation {
-  width: 100%;
+  margin: 0 auto;
+  color: var(--pureBlack);
+
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    display: grid;
+    font-size: 20px;
+
+  }
+}
+
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 25px 20px 25px 20px;
+  display: grid;
+  @media (min-width: $mobileDevice) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 4fr 1fr;
+  }
+}
+
+.navigation__shop {
+  position: relative;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__shop:before {
+  position: absolute;
+  content: '';
+  width: 27px;
+  height: 27px;
+  background-repeat: no-repeat;
+  background-image: url('./img/bag.svg');
+  transform: translate(-30px, -5px);
+}
+
+.navigation__shop-link {
+  color: var(--pureBlack);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navigation__search {
+  @media (min-width: $mobileDevice) {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+  }
+}
+
+.navigation__search-input {
+  @media (min-width: $mobileDevice) {
+    min-height: 36px;
+  }
+}
+
+.navigation__search-btn {
+  position: relative;
+  border: none;
+  background-color: var(--pureWhite);
+}
+
+.navigation__search-btn:after {
+  position: absolute;
+  content: '';
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-image: url('./img/search.svg');
+  transform: translate(-20px, -8px);
+}
+
+.navigation__menu-btn {
+  position: relative;
+  border: none;
+  background-color: var(--pureWhite);
+  cursor: pointer;
+}
+
+.navigation__menu-btn:after {
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-image: url('./img/menu.svg');
+  transform: translate(10px, -6px);
 }
 
 .app__links {
+  display: grid;
+  padding: 0;
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+
+.app__link {
+
+  @media (min-width: $mobileDevice) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 320px;
+    border-radius: 10px;
+    max-width: $mobileDevice;
+    margin: 0 auto;
+    min-height: 52px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--menuBackground);
+    }
+  }
+
+}
+
+.app__link-route {
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: none;
+  color: var(--pureBlack);
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding-left: 100px;
-  padding-right: 100px;
-  min-height: 120px;
+  text-align: center;
 }
