@@ -10,7 +10,7 @@ export const Wishlist = () => {
     return (
         <div className='wishlist'>
             <div className='wishlist__wrapper'>
-                <h1 className='wishlist__header'>Your WishList:</h1>
+                {favouriteProducts.length === 0 ? <h1 className='wishlist__header'>Please add something!</h1> : <h1 className='wishlist__header'>Your WishList:</h1>}
                 <div className='wishlist__card-wrapper'>
                     {favouriteProducts.map((product: any) => (
                         <ProductCard
@@ -33,7 +33,7 @@ export const Wishlist = () => {
                 type='button'
                 onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS" })}>
                 Delete all products
-                </button> : <div className='wishlist__expectations'>Still no wishes, we're waiting for them!</div>
+                </button> : null
             }
         </div>
     )

@@ -47,7 +47,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
                 <li className='single-card__price'>${totalPrice}</li>
-                {Boolean(options?.length) && <p>{options?.map(option => {
+                {Boolean(options?.length) && <div >{options?.map(option => {
                     if (option.type === 'select') {
                         return (
                             <div className='single-card__colors' key={id}>
@@ -81,7 +81,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                         )
                     }
                 })}
-                </p>
+                </div>
                 }
                 <div className='single-card__counter'>
                     <p className='single-card__quantity'>Quantity</p>

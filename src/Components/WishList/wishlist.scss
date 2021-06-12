@@ -1,16 +1,10 @@
-.wishlist {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+@import "src/App";
 
-.wishlist__wrapper {
+.wishlist {
+    display: grid;
+    padding: 0 20px;
+    grid-template-rows: 7fr 0.1fr;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .wishlist__header {
@@ -19,15 +13,42 @@
 }
 
 .wishlist__remove-button {
-    min-width: 200px;
-    min-height: 40px;
-    border: none;
-    background-color: var(--productCardDiscount);
+    min-height: 50px;
+    border-radius: 10px;
+    background-color: var(--pureWhite);
+    color: var(--pureBlack);
     font-size: 20px;
+    margin: auto auto 30px auto;
+    border: 1px solid var(--pureBlack);
+    padding: 0;
+    width: 100%;
+    &:hover {
+        background-color: var(--productCardDiscount);
+    }
 }
 
 .wishlist__card-wrapper {
-    margin-bottom: 40px;
+    display: grid;
+    padding-bottom: 30px;
+    @media (min-width: $mobileDevice) {
+        max-width: $mobileDevice;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+    }
+    @media (min-width: $tabletDevice) {
+        max-width: $tabletDevice;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+    }
+    @media (min-width: $desktopDevice) {
+        max-width: $desktopDevice;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: $largeDesktopDevice) {
+        max-width: $largeDesktopDevice;
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .wishlist__expectations {
