@@ -20,17 +20,17 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
     const isExistInCart = state.cart.some(element => element.id === product.id);
     return (
         <div className='shopping-card'>
-            <div className='shopping-card__img'><img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
+            <div className='shopping-card__img'>Product<img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
             <div className='shopping-card__title'>{product.title}</div>
             <div className='shopping-card__counter'>
-                <p className='shopping-card__quantity'>Quantity</p>
+                <div className='shopping-card__quantity'>Quantity</div>
                 <div className='shopping-card__controls'>
                     <button className='shopping-card__btn-minus' type='button' onClick={countHandlerDecrementer}></button>
                     <input className='shopping-card__input' type='number' value={product.quantity}></input>
                     <button className='shopping-card__btn-plus' type='button' onClick={countHandlerIncrementer}></button>
                 </div>
             </div>
-            {Boolean(product.options?.length) && <p>{product.options?.map(option => {
+            {Boolean(product.options?.length) && <div>{product.options?.map(option => {
                 if (option.type === 'select') {
                     return (
                         <div className='shopping-card__colors' key={product.id}>
@@ -63,13 +63,11 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                         </div>
                     )
                 }
-            })}</p>}
+            })}</div>}
             <div className='shopping-card__price-title'>Price
             {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice * product.quantity}</div>}
             </div>
-            <div>
-                <button type='button' onClick={() => dispatch({ action: ACTION.REMOVE, productId: product.id })}>Remove</button>
-            </div>
+                <button className='shopping-card__remove-item' type='button' onClick={() => dispatch({ action: ACTION.REMOVE, productId: product.id })}></button>
         </div>
     )
 }

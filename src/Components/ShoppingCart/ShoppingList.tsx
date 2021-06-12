@@ -14,14 +14,14 @@ export const ShoppingList = () => {
     }, 0)
 
     return (
-        <div>
-            {productsToBuy.length === 0 ? <h1>Please put something into your shopping cart!</h1> : <h1>Shopping Cart</h1>}
+        <div className='shopping-cart'>
+            {productsToBuy.length === 0 ? <h1 className='shopping-cart__title'>Please put something into your shopping cart!</h1> : <h1 className='shopping-cart__title'>Shopping Cart</h1>}
             {productsToBuy.map((product: any) => (
                 <ShoppingCard
                     product = {product}
                 />
             ))}
-            {productsToBuy.length === 0 ? null : <div className={'shopping-list__price-calculation'}>total: {priceCalculationHandler}</div>}
+            {productsToBuy.length === 0 ? null : <div className='shopping-cart__price-calculation'>Total: ${priceCalculationHandler}</div>}
         </div>
     )
 }

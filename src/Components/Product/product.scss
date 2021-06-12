@@ -257,6 +257,8 @@
   border-radius: 10px;
   font-size: 25px;
   cursor: pointer;
+  padding-left: 35px;
+  position: relative;
 }
 
 .single-card__option {
@@ -277,7 +279,7 @@
 }
 
 .single-card__input {
-  max-width: 25px;
+  max-width: 34px;
   margin-bottom: 40px;
   text-align: center;
   border: none;
