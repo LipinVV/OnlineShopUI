@@ -8,8 +8,15 @@
     max-width: $mobileDevice;
     display: grid;
     font-size: 20px;
-
   }
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
+
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+  }
+
 }
 
 .navigation {
@@ -18,8 +25,11 @@
   padding: 25px 20px 25px 20px;
   display: grid;
   @media (min-width: $mobileDevice) {
-    grid-template-rows: 1fr;
     grid-template-columns: 3fr 4fr 1fr;
+  }
+  @media (min-width: $desktopDevice) {
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -77,6 +87,12 @@
   transform: translate(-20px, -8px);
 }
 
+.navigation__mobile-menu {
+  @media (min-width: $desktopDevice) {
+    display: none;
+  }
+}
+
 .navigation__menu-btn {
   position: relative;
   border: none;
@@ -118,6 +134,7 @@
 .app__link {
   font-size: 16px;
   line-height: 22px;
+  text-align: center;
   @media (min-width: $mobileDevice) {
     display: flex;
     justify-content: center;
@@ -147,4 +164,46 @@
   color: var(--pureBlack);
   width: 100%;
   text-align: center;
+}
+
+.app__link-desktop {
+  @media (min-width: $mobileDevice) {
+    display:  none;
+  }
+
+  @media (min-width: $desktopDevice) {
+    display: grid;
+    position: relative;
+  }
+}
+
+.app__link-desktop__subroutes {
+  display: grid;
+  position: absolute;
+  grid-template-rows:  repeat(8, 1fr);
+  grid-gap: 25px;
+  padding-top: 30px;
+  background-color: var(--pureWhite);
+  z-index: 1;
+}
+
+.app__link-desktop__subroute {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--pureBlack);
+}
+
+.app__link-desktop__gallery,
+.app__link-desktop__cart,
+.app__link-desktop__wishlist,
+.app__link-desktop__sign,
+.app__link-desktop__login {
+  display: none;
+  @media (min-width: $desktopDevice) {
+    display: grid;
+  }
+}
+
+.app__link-desktop__cart {
+  text-decoration: none;
 }

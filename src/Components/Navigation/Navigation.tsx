@@ -1,6 +1,7 @@
 import {Link, Route} from "react-router-dom";
 import React, {useState} from "react";
 import './navigation.scss'
+import '../../App.scss'
 
 export const Navigation = () => {
 
@@ -12,15 +13,34 @@ export const Navigation = () => {
     const subMenuToggleHandler = () => {
         setSubMenu(!subMenu)
     }
+
     return (
         <nav className='app__navigation'>
             <ul className='navigation'>
                 <li className='navigation__shop'><Link className='navigation__shop-link' to='/'>Shop Bag</Link></li>
+                <li onClick={subMenuToggleHandler} className='app__link-desktop'>Categories
+                    {!subMenu ?
+                        <div className='app__link-desktop__subroutes'>
+                            <Link className='app__link-desktop__subroute' to='/categories'>All Categories</Link>
+                            <Link className='app__link-desktop__subroute' to='/sofas'>Sofas</Link>
+                            <Link className='app__link-desktop__subroute' to='/chairs'>Chairs</Link>
+                            <Link className='app__link-desktop__subroute' to='/desks'>Desks</Link>
+                            <Link className='app__link-desktop__subroute' to='/beds'>Beds</Link>
+                            <Link className='app__link-desktop__subroute' to='/carpets'>Carpets</Link>
+                            <Link className='app__link-desktop__subroute' to='/cupboards'>Cupboards</Link>
+                        </div>
+                        : null}
+                </li>
+                <li className='app__link-desktop__gallery'><Link className='app__link-subroute' to='/gallery'>Gallery</Link></li>
                 <li className='navigation__search'>
                         <input className='navigation__search-input' type='text' placeholder='Search' />
                     <button className='navigation__search-btn'></button>
                 </li>
-                <li className='navigation__menu'>
+                <Link className='app__link-desktop__cart' to='/shoppingCart'>Shopping Cart</Link>
+                <Link className='app__link-desktop__wishlist' to='/wishlist'>WishList</Link>
+                <Link className='app__link-desktop__sign' to='/'>Sign Up</Link>
+                <Link className='app__link-desktop__login' to='/'>Login</Link>
+                <li className='navigation__mobile-menu'>
                     <button onClick={menuToggleHandler} className='navigation__menu-btn'></button>
                 </li>
             </ul>
