@@ -18,7 +18,7 @@ export const Navigation = () => {
         <nav className='app__navigation'>
             <ul className='navigation'>
                 <li className='navigation__shop'><Link className='navigation__shop-link' to='/'>Shop Bag</Link></li>
-                <li onClick={subMenuToggleHandler} className='app__link-desktop'>Categories
+                <li onClick={subMenuToggleHandler} className='app__caterogies-desktop'>Categories
                     {!subMenu ?
                         <div className='app__link-desktop__subroutes'>
                             <Link className='app__link-desktop__subroute' to='/categories'>All Categories</Link>
@@ -31,13 +31,13 @@ export const Navigation = () => {
                         </div>
                         : null}
                 </li>
-                <li className='app__link-desktop__gallery'><Link className='app__link-subroute' to='/gallery'>Gallery</Link></li>
+                <li className='app__link-desktop__gallery'><Link className='app__link-gallery' to='/gallery'>Gallery</Link></li>
                 <li className='navigation__search'>
                         <input className='navigation__search-input' type='text' placeholder='Search' />
                     <button className='navigation__search-btn'></button>
                 </li>
-                <Link className='app__link-desktop__cart' to='/shoppingCart'>Shopping Cart</Link>
-                <Link className='app__link-desktop__wishlist' to='/wishlist'>WishList</Link>
+                <Link className='app__link-desktop__cart' to='/shoppingCart'></Link>
+                <Link className='app__link-desktop__wishlist' to='/wishlist'></Link>
                 <Link className='app__link-desktop__sign' to='/'>Sign Up</Link>
                 <Link className='app__link-desktop__login' to='/'>Login</Link>
                 <li className='navigation__mobile-menu'>
