@@ -3,7 +3,7 @@
 .footer {
   width: 100%;
   height: 100%;
-  background-color: var(--pureBlack);
+  background-color: $pureBlack;
 }
 
 .footer-main {
@@ -55,7 +55,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: var(--pureWhite);
+  color: $pureWhite;
 }
 
 .footer-content__community,
@@ -67,7 +67,7 @@
   font-weight: 800;
   font-size: 18px;
   line-height: 25px;
-  color: var(--pureWhite);
+  color: $pureWhite;
 }
 
 .footer-content__support,
@@ -168,7 +168,7 @@
 .footer-contacts__phone-number,
 .footer-contacts__mail-link {
   text-decoration: none ;
-  color: var(--pureWhite);
+  color: $pureWhite;
 }
 
 .footer-contacts__social-media {

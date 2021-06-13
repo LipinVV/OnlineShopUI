@@ -2,7 +2,7 @@
 
 .app__navigation {
   margin: 0 auto;
-  color: var(--pureBlack);
+  color: $pureBlack;
 
   @media (min-width: $mobileDevice) {
     max-width: $mobileDevice;
@@ -56,7 +56,7 @@
 }
 
 .navigation__shop-link {
-  color: var(--pureBlack);
+  color: $pureBlack;
   font-weight: 600;
   text-decoration: none;
   font-size: 19px;
@@ -71,7 +71,7 @@
 
 .navigation__search-input {
   border: none;
-  border-bottom: 1px solid var(--pureBlack);
+  border-bottom: 1px solid $pureBlack;
   @media (min-width: $mobileDevice) {
     min-height: 36px;
   }
@@ -80,7 +80,7 @@
 .navigation__search-btn {
   position: relative;
   border: none;
-  background-color: var(--pureWhite);
+  background-color: $pureWhite;
   padding: 0;
 }
 
@@ -103,7 +103,7 @@
 .navigation__menu-btn {
   position: relative;
   border: none;
-  background-color: var(--pureWhite);
+  background-color: $pureWhite;
   cursor: pointer;
 }
 
@@ -127,20 +127,14 @@
 .app__link-subroute {
   font-weight: bold;
   text-decoration: none;
-  color: var(--pureBlack);
+  color: $pureBlack;
 }
 
 .app__link-gallery {
   font-weight: 400;
   font-size: 20px;
   text-decoration: none;
-  color: var(--pureBlack);
-
-  //@media (min-width: $desktopDevice) {
-  //  display: flex;
-  //  justify-content: center;
-  //  align-items: center;
-  //}
+  color: $pureBlack;
 }
 
 .app__links {
@@ -167,7 +161,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--menuBackground);
+      background-color: $menuBackground;
     }
   }
 }
@@ -181,7 +175,7 @@
   font-size: 16px;
   line-height: 22px;
   text-decoration: none;
-  color: var(--pureBlack);
+  color: $pureBlack;
   width: 100%;
   text-align: center;
 }
@@ -208,8 +202,8 @@
   position: absolute;
   grid-template-rows:  repeat(7, 1fr);
   grid-gap: 25px;
-  padding: 0 0 20px 0;
-  background-color: var(--pureWhite);
+  padding: 15px 0 20px 0;
+  background-color: $pureWhite;
   transform: translate(10px, 230px);
   width: 200px;
   text-align: center;
@@ -219,7 +213,7 @@
 .app__link-desktop__subroute {
   font-weight: bold;
   text-decoration: none;
-  color: var(--pureBlack);
+  color: $pureBlack;
 }
 
 .app__link-desktop__gallery,
@@ -233,7 +227,14 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    color: $pureBlack;
   }
+}
+
+.app__link-desktop__login {
+  background-color: $menuBackground;
+  border: none;
+  border-radius: 10px;
 }
 
 .app__link-desktop__cart {

@@ -15,15 +15,15 @@
 .wishlist__remove-button {
     min-height: 50px;
     border-radius: 10px;
-    background-color: var(--pureWhite);
-    color: var(--pureBlack);
+    background-color: $pureWhite;
+    color: $pureBlack;
     font-size: 20px;
     margin: auto auto 30px auto;
-    border: 1px solid var(--pureBlack);
+    border: 1px solid $pureBlack;
     padding: 0;
     width: 100%;
     &:hover {
-        background-color: var(--productCardDiscount);
+        background-color: $productCardDiscount;
     }
 }
 

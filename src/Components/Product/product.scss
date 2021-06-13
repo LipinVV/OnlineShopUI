@@ -1,7 +1,7 @@
 @import 'src/App';
 
 .productCard__preview-wrapper {
-  color: var(--pureBlack);
+  color: $pureBlack;
   font-size: 25px;
   display: grid;
   background-size: cover;
@@ -20,7 +20,7 @@
 }
 
 .productCard__price {
-  color: var(--productCardSalesText);
+  color: $productCardSalesText;
   text-decoration: line-through;
   padding-right: 5.5px;
 }
@@ -29,18 +29,18 @@
   font-weight: bold;
   font-size: 25px;
   padding-right: 10px;
-  color: var(--productCardPrice);
+  color: $productCardPrice;
 }
 
 .productCard__discount {
   font-size: 25px;
-  color: var(--productCardDiscount);
+  color: $productCardDiscount;
 }
 
 .productCard__rating {
   padding-top: 10px;
   font-size: 16px;
-  color: var(--productCardSalesText);
+  color: $productCardSalesText;
 }
 
 .productCard__group {
@@ -104,14 +104,14 @@
   line-height: 31px;
   border: none;
   cursor: pointer;
-  background-color: var(--pureBlack);
+  background-color: $pureBlack;
   padding: 10px;
   border-radius: 10px;
 }
 
 .productCard__link {
   text-decoration: none;
-  color: var(--pureWhite);
+  color: $pureWhite;
 }
 
 // ***********
@@ -197,7 +197,7 @@
 }
 
 .single-card__title {
-  color: var(--singleCardText);
+  color: $singleCardText;
   font-weight: 700;
   font-size: 40px;
   line-height: 54px;
@@ -208,7 +208,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
-  color: var(--productCardSalesText);
+  color: $productCardSalesText;
   width: 100%;
   margin-bottom: 25px;
 }
@@ -216,7 +216,7 @@
 .single-card__rating {
   width: 100%;
   font-size: 16px;
-  color: var(--productCardSalesText);
+  color: $productCardSalesText;
   margin-bottom: 15px;
 }
 
@@ -231,7 +231,7 @@
   font-size: 45px;
   line-height: 61px;
   padding-right: 10px;
-  color: var(--productCardPrice);
+  color: $productCardPrice;
   margin-bottom: 15px;
 }
 
@@ -253,7 +253,7 @@
 .single-card__select {
   width: 197px;
   height: 60px;
-  border: 1px solid var(--pureBlack);
+  border: 1px solid $pureBlack;
   border-radius: 10px;
   font-size: 25px;
   cursor: pointer;
@@ -294,7 +294,7 @@
 .single-card__btn-plus,
 .single-card__btn-minus {
   border: none;
-  background-color: var(--pureWhite);
+  background-color: $pureWhite;
   position: relative;
   width: 15px;
   height: 34px;
@@ -328,8 +328,8 @@
 
 .single-card__btn-add-to-buy {
   min-height: 60px;
-  background-color: var(--pureBlack);
-  color: var(--pureWhite);
+  background-color: $pureBlack;
+  color: $pureWhite;
   font-weight: 600;
   font-size: 20px;
   line-height: 27px;
@@ -352,14 +352,14 @@
 .single-card__btn-add-to-wish {
   position: relative;
   min-height: 60px;
-  color: var(--singleCardText);
+  color: $singleCardText;
   font-weight: 600;
   font-size: 20px;
   line-height: 27px;
   margin: 0;
-  border: 1px solid var(--pureBlack);
+  border: 1px solid $pureBlack;
   border-radius: 10px;
-  background-color: var(--pureWhite);
+  background-color: $pureWhite;
   padding-left: 20px;
   cursor: pointer;
 }
@@ -388,9 +388,9 @@
   cursor: pointer;
   margin-top: 15px;
   min-height: 40px;
-  background-color: var(--productCardDetails);
+  background-color: $productCardDetails;
   border-radius: 10px;
-  color: var(--pureBlack);
+  color: $pureBlack;
   font-size: 20px;
   font-weight: 600;
   border: none;
@@ -402,7 +402,7 @@
   font-size: 20px;
   line-height: 27px;
   text-decoration: none;
-  color: var(--pureBlack);
+  color: $pureBlack;
 }
 
 .product-page {

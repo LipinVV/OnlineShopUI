@@ -1,13 +1,13 @@
-:root {
-  --pureBlack: #000000;
-  --productCardSalesText: #78788C;
-  --productCardDiscount: #DF0000;
-  --productCardPrice: #29293E;
-  --pureWhite: #ffffff;
-  --singleCardText: #29293E;
-  --productCardDetails: #777888;
-  --menuBackground: #E0EBED;
-}
+// colors
+  $pureBlack: #000000;
+  $productCardSalesText: #78788C;
+  $productCardDiscount: #DF0000;
+  $productCardPrice: #29293E;
+  $pureWhite: #ffffff;
+  $singleCardText: #29293E;
+  $productCardDetails: #777888;
+  $menuBackground: #E0EBED;
+
 
 $mobileDevice: 768px;
 $tabletDevice: 992px;

@@ -34,7 +34,7 @@
 }
 
 .shopping-card__title {
-    color: var(--singleCardText);
+    color: $singleCardText;
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
@@ -44,7 +44,7 @@
 .shopping-card__select {
     min-width: 197px;
     max-height: 60px;
-    border: 1px solid var(--pureBlack);
+    border: 1px solid $pureBlack;
     border-radius: 10px;
     font-size: 25px;
     cursor: pointer;
@@ -98,7 +98,7 @@
 .shopping-card__btn-plus,
 .shopping-card__btn-minus {
     border: none;
-    background-color: var(--pureWhite);
+    background-color: $pureWhite;
     width: 15px;
     height: 34px;
 }
@@ -141,7 +141,7 @@
     font-size: 30px;
     font-weight: 800;
     line-height: 41px;
-    color: var(--productCardPrice);
+    color: $productCardPrice;
     margin-top: 69px;
 }
 
@@ -157,7 +157,7 @@
     display: block;
     position: relative;
     border: none;
-    background-color: var(--pureWhite);
+    background-color: $pureWhite;
     cursor: pointer;
     width: 24px;
     height: 24px;
