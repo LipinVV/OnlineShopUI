@@ -25,7 +25,6 @@ export const Navigation = () => {
         setSearch(value);
     }
 
-    const [filtered, setFiltered] = useState([]);
     const filterLogic = searchedProducts.filter(value => {
         if (search === '') {
             return search
@@ -33,15 +32,10 @@ export const Navigation = () => {
         if (value?.title.toLowerCase().includes(search?.toLowerCase())) {
             return value
         }
-
     })
 
-    console.log(filterLogic.map(elem => {
-        console.log('HERE')
-        return (
-            <div>elem.title</div>
-        )
-    }))
+    const [style, setStyle] = useState(false)
+
     return (
         <div className='navigation__wrapper'>
             <nav className='app__navigation'>
@@ -100,20 +94,25 @@ export const Navigation = () => {
                     <li className='app__link'><Link className='app__link-route' to='/'>Login</Link></li>
                 </ul> : null}
             </nav>
-            {search !== '' && search.length >= 1 ? <div className='navigation__dropdown '>{filterLogic.map(elem => {
-                return <ProductCard
-                    key={elem.id}
-                    id={elem.id}
-                    category={elem.category}
-                    title={elem.title}
-                    price={elem.price}
-                    discount={elem.discount}
-                    isFavourite={elem.isFavourite}
-                    toBuy={elem.toBuy}
-                    options={elem.options}
-                previewUrl={elem.previewUrl} rating={elem.rating} salesCount={elem.salesCount}
-                />
-            })}</div> : <div>NO</div>}
+            {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown '>{filterLogic.map(elem => {
+                // return <ProductCard
+                //     key={elem.id}
+                //     id={elem.id}
+                //     category={elem.category}
+                //     title={elem.title}
+                //     price={elem.price}
+                //     discount={elem.discount}
+                //     isFavourite={elem.isFavourite}
+                //     toBuy={elem.toBuy}
+                //     options={elem.options}
+                //     previewUrl={elem.previewUrl} rating={elem.rating} salesCount={elem.salesCount}
+                // />
+                return <div>{elem.title}
+                    <button style={{ display: (style ? 'none' : 'block') }} className='productCard__details' onClick={() => setStyle(!style)}>
+                        <Link className='productCard__link' to={`/${elem.category}/${elem.id}`}>Details</Link>
+                    </button>
+                </div>
+            })}</div> : null}
         </div>
     )
 }
