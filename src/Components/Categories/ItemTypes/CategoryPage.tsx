@@ -19,6 +19,7 @@ export const CategoryPage = () => {
             </h1>
             {getProductsByCategory(parameters.category, state.products).map(product => (
                 <ProductCard
+                    key={product.id}
                     id={product.id}
                     category={product.category}
                     title={product.title}

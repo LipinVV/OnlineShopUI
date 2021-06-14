@@ -31,7 +31,7 @@ export const Wishlist = () => {
             {favouriteProducts.length > 0 ? <button
                 className='wishlist__remove-button'
                 type='button'
-                onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS" })}>
+                onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS_IN_WISHLIST" })}>
                 Delete all products
                 </button> : null
             }

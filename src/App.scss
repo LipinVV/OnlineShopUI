@@ -8,7 +8,7 @@
   $productCardDetails: #777888;
   $menuBackground: #E0EBED;
 
-
+// media queries
 $mobileDevice: 768px;
 $tabletDevice: 992px;
 $desktopDevice: 1024px;
@@ -25,15 +25,4 @@ input[type="number"]::-webkit-inner-spin-button {
     max-width: $largeDesktopDevice;
     margin: 0 auto;
   }
-}
-
-.app__links {
-  display: flex;
-  width: 100%;
-}
-
-.app__link {
-  min-width: 15%;
-  max-width: 20%;
-  list-style: none;
 }
