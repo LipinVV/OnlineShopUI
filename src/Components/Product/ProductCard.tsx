@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { productType } from './types';
 import './product.scss';
 import starIconUrl from './img/ratingStar.svg';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 import { StoreContext } from '../../App'
 import {keyHandler} from "../../Services/key-handler";
@@ -16,7 +17,6 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
     return (
         <div className='productCard__preview-wrapper'>
             <div className='productCard__PreviewUrl' style={styles}>
-                {/*<img className='productCard__preview' src={previewUrl} alt='product'></img>*/}
                 <button
                     className={isFavourite ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                     type='button'

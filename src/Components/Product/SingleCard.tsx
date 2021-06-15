@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
@@ -50,7 +51,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                 {Boolean(options?.length) && <div >{options?.map(option => {
                     if (option.type === 'select') {
                         return (
-                            <div className='single-card__colors' key={id}>
+                            <div className='single-card__colors' key={keyHandler(id)}>
                                 <label className='single-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                                 {Array.isArray(option.value) &&
                                     <select
@@ -64,7 +65,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                                             }
                                             }
                                         className='single-card__select'>{option.value.map(value =>
-                                        <option value={value} className='single-card__option' key={id}>{value[0].toUpperCase() + value.slice(1)}</option>
+                                        <option value={value} className='single-card__option' key={keyHandler(id)}>{value[0].toUpperCase() + value.slice(1)}</option>
                                     )}</select>
                                 }
                             </div>
@@ -87,7 +88,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                     <p className='single-card__quantity'>Quantity</p>
                     <div className='single-card__controls'>
                         <button className='single-card__btn-minus' type='button' onClick={countHandlerDecrementer}></button>
-                        <input className='single-card__input' type='number' value={counter}></input>
+                        <input className='single-card__input' type='number' value={counter} onChange={() => console.log(counter)}></input>
                         <button className='single-card__btn-plus' type='button' onClick={countHandlerIncrementer}></button>
                     </div>
                 </div>

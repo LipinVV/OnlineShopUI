@@ -1,6 +1,7 @@
 import React, { useReducer, Dispatch } from 'react';
 import './App.scss';
 import { Categories } from './Components/Categories/Categories'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { ProductPage } from './Components/Product/ProductPage';
 import { CategoryPage } from './Components/Categories/ItemTypes/CategoryPage'

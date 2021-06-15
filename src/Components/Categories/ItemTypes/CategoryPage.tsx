@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {BrowserRouter as Router, Switch, Route, Link, useParams} from 'react-router-dom';
 import {getProductsByCategory} from '../../Data/data';
 import {ProductCard} from '../../Product/ProductCard';

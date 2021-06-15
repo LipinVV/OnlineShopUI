@@ -1,9 +1,8 @@
-import { Link, Route } from "react-router-dom";
-import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import React, { useContext, useState} from "react";
 import './navigation.scss'
 import '../../App.scss'
 import { StoreContext } from '../../App';
-import { ProductCard } from "../Product/ProductCard";
 
 export const Navigation = () => {
 
@@ -16,7 +15,7 @@ export const Navigation = () => {
         setSubMenu(!subMenu)
     }
 
-    const { state, dispatch } = useContext(StoreContext)
+    const { state } = useContext(StoreContext)
     const searchedProducts = state.products;
 
     const [search, setSearch] = useState('');
@@ -25,7 +24,7 @@ export const Navigation = () => {
         const { value } = evt.target;
         setSearch(value);
     }
-    const [style, setStyle] = useState(false)
+    const [style] = useState(false)
     const filterLogic = searchedProducts.filter(value => {
         if (search === '') {
             return search

@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 import { Products } from '../Data/data';
 import { SingleCard } from './SingleCard';
