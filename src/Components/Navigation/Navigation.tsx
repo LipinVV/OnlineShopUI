@@ -1,12 +1,12 @@
-import {Link, Route} from "react-router-dom";
-import React, {useContext, useState} from "react";
+import { Link, Route } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
 import './navigation.scss'
 import '../../App.scss'
-import {StoreContext} from '../../App';
-import {ProductCard} from "../Product/ProductCard";
+import { StoreContext } from '../../App';
+import { ProductCard } from "../Product/ProductCard";
 
 export const Navigation = () => {
-
+    
     const [menu, setMenu] = useState(false);
     const menuToggleHandler = () => {
         setMenu(!menu)
@@ -16,15 +16,16 @@ export const Navigation = () => {
         setSubMenu(!subMenu)
     }
 
-    const {state, dispatch} = useContext(StoreContext)
+    const { state, dispatch } = useContext(StoreContext)
     const searchedProducts = state.products;
 
     const [search, setSearch] = useState('');
+
     const handleSearcher = (evt: any) => {
-        const {value} = evt.target;
+        const { value } = evt.target;
         setSearch(value);
     }
-
+    const [style, setStyle] = useState(false)
     const filterLogic = searchedProducts.filter(value => {
         if (search === '') {
             return search
@@ -34,7 +35,12 @@ export const Navigation = () => {
         }
     })
 
-    const [style, setStyle] = useState(false)
+    const handleKeyPress:any = (evt:any) => {
+        if (evt.keyCode === 13) {
+            console.log('ENTER')
+            setSearch('')
+        }
+    }
 
     return (
         <div className='navigation__wrapper'>
@@ -62,6 +68,7 @@ export const Navigation = () => {
                             type='text'
                             placeholder='Search'
                             onChange={handleSearcher}
+                            onKeyDown={handleKeyPress}
                             value={search}
                         />
                         <button className='navigation__search-btn'></button>
@@ -95,20 +102,13 @@ export const Navigation = () => {
                 </ul> : null}
             </nav>
             {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown '>{filterLogic.map(elem => {
-                // return <ProductCard
-                //     key={elem.id}
-                //     id={elem.id}
-                //     category={elem.category}
-                //     title={elem.title}
-                //     price={elem.price}
-                //     discount={elem.discount}
-                //     isFavourite={elem.isFavourite}
-                //     toBuy={elem.toBuy}
-                //     options={elem.options}
-                //     previewUrl={elem.previewUrl} rating={elem.rating} salesCount={elem.salesCount}
-                // />
                 return <div>{elem.title}
-                    <button style={{ display: (style ? 'none' : 'block') }} className='productCard__details' onClick={() => setStyle(!style)}>
+                    <div
+                        style={{ 'backgroundImage': `url(${elem.previewUrl})` }}
+                        className='productCard__PreviewUrl'
+                    >
+                    </div>
+                    <button style={{ display: (style ? 'none' : 'block') }} className='productCard__details' onClick={() => setSearch('')}> 
                         <Link className='productCard__link' to={`/${elem.category}/${elem.id}`}>Details</Link>
                     </button>
                 </div>
