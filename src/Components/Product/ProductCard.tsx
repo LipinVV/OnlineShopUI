@@ -4,6 +4,7 @@ import './product.scss';
 import starIconUrl from './img/ratingStar.svg';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 import { StoreContext } from '../../App'
+import {keyHandler} from "../../Services/key-handler";
 
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
@@ -26,7 +27,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
             </div>
             <div className='productCard__title'>{title}</div>
             <div className='productCard__rating'>{[...Array(rating)].map(star => {
-                return <img src={starIconUrl} alt='rating-star'></img>
+                return <img id={keyHandler(rating)} src={starIconUrl} alt='rating-star'></img>
             })}
                 <span className='productCard__sold'>({salesCount} Sold out)</span>
             </div>

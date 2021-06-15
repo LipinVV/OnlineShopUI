@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../../App';
 import { ProductCard } from '../Product/ProductCard';
 import './wishlist.scss';
-
+import {keyHandler} from "../../Services/key-handler";
 
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)
@@ -15,7 +15,7 @@ export const Wishlist = () => {
                 <div className='wishlist__card-wrapper'>
                     {favouriteProducts.map((product: any) => (
                         <ProductCard
-                            key={product.id}
+                            key={keyHandler(product.id)}
                             id={product.id}
                             category={product.category}
                             title={product.title}

@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 import { ACTION, StoreContext } from '../../App'
+import {keyHandler} from "../../Services/key-handler";
 
 export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, options, discount = 0 }: productType) => {
     const history = useHistory();
     const { state, dispatch } = useContext(StoreContext);
     const [counter, setCounter] = useState(1);
-    console.log('state', state)
 
     const countHandlerIncrementer = () => {
         setCounter(counter + 1)
@@ -42,7 +42,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                 <li className='single-card__title'>{title}</li>
                 <li className='single-card__description'>Knitted by the professional hands of housewives. Making a masterpiece of the best furniture in the world. Very handy and comfortable</li>
                 <li className='single-card__rating'>{[...Array(rating)].map((star, index) => {
-                    return <img key={id} src={starIconUrl} alt='rating-star'></img>
+                    return <img key={keyHandler(rating)} src={starIconUrl} alt='rating-star'></img>
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
                 </li>
