@@ -7,6 +7,7 @@ import './wishlist.scss';
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)
     const favouriteProducts = state.products.filter(product => product.isFavourite)
+    console.log('favouriteProducts', favouriteProducts)
     return (
         <div className='wishlist'>
             <div className='wishlist__wrapper'>
@@ -14,6 +15,7 @@ export const Wishlist = () => {
                 <div className='wishlist__card-wrapper'>
                     {favouriteProducts.map((product: any) => (
                         <ProductCard
+                            key={product.id}
                             id={product.id}
                             category={product.category}
                             title={product.title}
@@ -31,7 +33,7 @@ export const Wishlist = () => {
             {favouriteProducts.length > 0 ? <button
                 className='wishlist__remove-button'
                 type='button'
-                onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS" })}>
+                onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS_IN_WISHLIST" })}>
                 Delete all products
                 </button> : null
             }

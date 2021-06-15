@@ -30,6 +30,7 @@ export const ACTION = {
   INCREMENT_QUANTITY: 'INCREMENT_QUANTITY',
   DECREMENT_QUANTITY: 'DECREMENT_QUANTITY',
   CHOOSE_PRODUCT_COLOR: 'CHOOSE_PRODUCT_COLOR',
+  DELETE_ALL_PRODUCTS_IN_WISHLIST: 'DELETE_ALL_PRODUCTS_IN_WISHLIST'
 }
 //@ts-ignore - ругается ТС
 export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
@@ -103,12 +104,22 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
         ...currentState,
         products: []
       };
+      case ACTION.DELETE_ALL_PRODUCTS_IN_WISHLIST:
+      return {
+        ...currentState,
+        products: currentState.products.map((product: productType )=> {
+          return {
+            ...product,
+            isFavourite: false
+          }
+        })
+      };
     default: {
       return currentState
     }
   }
 }
-
+//
 function App() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
@@ -136,19 +147,15 @@ function App() {
 
 export default App;
 
+// генерация айдишника + точного времени
+
 // a) описываем цвета в виде константных значений на импорт и экспорт
 // b) использовать css in js
 
 // Вопросы
 
-// 1) если в вишлист залетает только 1 товар на большом разрешении - как можно обыграть пустую страницу?
-// 2) чудеса с вишлистом - после удаления всех товаров в любой категории товаров пустоы
 // 3) product detail правая часть - настройка ширин и высот описания товара (у нас где-то может не быть доп опций, как цвет и гарантия - как гридом отработать это?)
-// с учетом фракционности - как настраивать нужные размеры элементов? на примере сингл карда
 // 4) оносительные величины и константы для верстки
 // 5) количество в инпуте количества товара при покупке - до 100
-// 6) попадание в вишлист - очередность нарушена
 // 7) более детальный роутинг - нужно или нет?
-// 8) звезды рендерятся и множатся при переходе по категориям
 
-// 1) state с продуктами - нужно ли прокинуть вообще везде? вызывает затроение например в Categories
