@@ -6,7 +6,7 @@ import { StoreContext } from '../../App';
 import { ProductCard } from "../Product/ProductCard";
 
 export const Navigation = () => {
-    
+
     const [menu, setMenu] = useState(false);
     const menuToggleHandler = () => {
         setMenu(!menu)
@@ -35,9 +35,8 @@ export const Navigation = () => {
         }
     })
 
-    const handleKeyPress:any = (evt:any) => {
+    const handleKeyPress: any = (evt: any) => {
         if (evt.keyCode === 13) {
-            console.log('ENTER')
             setSearch('')
         }
     }
@@ -102,14 +101,12 @@ export const Navigation = () => {
                 </ul> : null}
             </nav>
             {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown '>{filterLogic.map(elem => {
-                return <div>{elem.title}
-                    <div
-                        style={{ 'backgroundImage': `url(${elem.previewUrl})` }}
-                        className='productCard__PreviewUrl'
-                    >
-                    </div>
-                    <button style={{ display: (style ? 'none' : 'block') }} className='productCard__details' onClick={() => setSearch('')}> 
-                        <Link className='productCard__link' to={`/${elem.category}/${elem.id}`}>Details</Link>
+                return <div
+                    style={{ 'backgroundImage': `url(${elem.previewUrl})` }}
+                    className='navigation__PreviewUrl'
+                >
+                    <button style={{ display: (style ? 'none' : 'block') }} className='navigation__details' onClick={() => setSearch('')}>
+                        <Link className='navigation__link' to={`/${elem.category}/${elem.id}`}>{elem.title}</Link>
                     </button>
                 </div>
             })}</div> : null}
