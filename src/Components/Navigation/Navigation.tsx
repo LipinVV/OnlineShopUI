@@ -103,7 +103,7 @@ export const Navigation = () => {
             {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown '>{filterLogic.map(elem => {
                 return <div
                     style={{ 'backgroundImage': `url(${elem.previewUrl})` }}
-                    className='navigation__PreviewUrl'
+                    className='navigation__card-preview'
                 >
                     <button style={{ display: (style ? 'none' : 'block') }} className='navigation__details' onClick={() => setSearch('')}>
                         <Link className='navigation__link' to={`/${elem.category}/${elem.id}`}>{elem.title}</Link>
