@@ -27,7 +27,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
             </div>
             <div className='productCard__title'>{title}</div>
             <div className='productCard__rating'>{[...Array(rating)].map(star => {
-                return <img id={keyHandler(rating)} src={starIconUrl} alt='rating-star'></img>
+                return <img key={keyHandler(id)} id={id.toString()} src={starIconUrl} alt='rating-star'>{star}</img>
             })}
                 <span className='productCard__sold'>({salesCount} Sold out)</span>
             </div>

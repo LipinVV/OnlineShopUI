@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import {CartProductInterface} from '../ShoppingCart/types'
 import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
 import {getTotalPriceForProduct} from "../../Services/products";
+import {keyHandler} from "../../Services/key-handler";
 
 interface ShoppingCardProps {
     product: CartProductInterface
@@ -33,7 +34,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
             {Boolean(product.options?.length) && <div>{product.options?.map(option => {
                 if (option.type === 'select') {
                     return (
-                        <div className='shopping-card__colors' key={product.id}>
+                        <div className='shopping-card__colors' key={keyHandler(product.id)}>
                             <label className='shopping-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                             {Array.isArray(option.value) &&
                             <select

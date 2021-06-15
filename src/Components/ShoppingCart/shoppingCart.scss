@@ -3,9 +3,19 @@
 .shopping-card {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 0.1fr 0.3fr 0.2fr 0.2fr 0.2fr 0.1fr;
+    
+    @media (min-width: $mobileDevice)  {
+        max-width: $mobileDevice;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, minmax(50px, 1fr));
+        padding: 30px 20px 30px 20px;
+        margin: 0 auto;
+        max-height: $mobileDevice;
+        text-align: center;
+    }
 
     @media (min-width: $largeDesktopDevice) {
+        grid-template-columns: 0.1fr 0.3fr 0.2fr 0.2fr 0.2fr 0.1fr;
         max-width: $largeDesktopDevice;
         margin:  30px 100px 0 100px;
         padding-bottom: 30px;
@@ -38,7 +48,12 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
-    padding-top: 105px;
+    @media (min-width: $mobileDevice)  {
+        padding: 0;
+    }
+    @media (min-width: $largeDesktopDevice)  {
+        padding-top: 105px;
+    }
 }
 
 .shopping-card__select {
