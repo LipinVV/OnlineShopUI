@@ -121,6 +121,7 @@
 .single-card__details {
   margin: 0 auto;
   padding-bottom: 20px;
+  position: relative;
 
   @media (min-width: $desktopDevice) {
     display: grid;
@@ -415,5 +416,30 @@
 
   @media (min-width: $largeDesktopDevice) {
     max-width: $largeDesktopDevice;
+  }
+}
+
+.single-card__pop-up {
+  display: none;
+}
+
+
+.single-card__pop-up-increment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  min-width: 200px;
+  min-height: 80px;
+  background-color: $pureBlack;
+  color: $pureWhite;
+  z-index: 1;
+  @media (min-width: $mobileDevice) {
+    bottom: 90px;
+    right: 0;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    left: 500px;
   }
 }

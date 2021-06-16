@@ -71,7 +71,7 @@ export const Navigation = () => {
                         />
                         <button className='navigation__search-btn'></button>
                     </li>
-                    <Link className='app__link-desktop__cart' to='/shoppingCart'></Link>
+                    <Link className='app__link-desktop__cart' to='/shoppingCart'>{state.cart.length === 0 ? '' : state.cart.length}</Link>
                     <Link className='app__link-desktop__wishlist' to='/wishlist'></Link>
                     <Link className='app__link-desktop__sign' to='/'>Sign Up</Link>
                     <Link className='app__link-desktop__login' to='/'>Login</Link>

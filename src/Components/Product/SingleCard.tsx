@@ -27,6 +27,12 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
             setCounter(productHandler.quantity)
         }
     }, [productHandler]) // глобальный IF
+
+    const [popUp, setPopUp] = useState(0)
+    const clickHandler = () => { 
+        setPopUp(popUp + 1)
+    }
+
     return (
         <div className='single-card'>
             <div className='single-card__header'>Product Detail</div>
@@ -102,7 +108,9 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                                     action: ACTION.INCREMENT_QUANTITY,
                                     productId: id // чтобы знать каком продукту в массиве card провести increment значения quantity
                                 })
+                                clickHandler()
                             } else {
+                                clickHandler()
                                 dispatch({
                                     action: ACTION.ADD_TO_BUY,
                                     product: {id, title, price, previewUrl, rating, salesCount, options, discount, quantity: counter} // данные для модификации store
@@ -112,6 +120,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                         }
                     >
                         Add to Cart
+                        <div className={popUp <= 0 ? 'single-card__pop-up':'single-card__pop-up-increment'}>В корзину добавлено: {popUp}</div>
                     </button>
                     <button
                         type='button'

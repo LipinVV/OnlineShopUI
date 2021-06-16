@@ -289,15 +289,21 @@
 .app__link-desktop__cart {
   text-decoration: none;
   position: relative;
+  color: $productCardDiscount;
+  font-size: 24px;
+  min-width: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.app__link-desktop__cart:after {
+.app__link-desktop__cart:before {
   position: absolute;
   content: '';
   width: 24px;
   height: 24px;
   background-repeat: no-repeat;
   background-image: url('./img/cart.svg');
+  transform: translateX(-20px);
 }
 
 .app__link-desktop__wishlist {
