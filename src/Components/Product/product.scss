@@ -435,6 +435,8 @@
   background-color: $pureBlack;
   color: $pureWhite;
   z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
   @media (min-width: $mobileDevice) {
     bottom: 90px;
     right: 0;
