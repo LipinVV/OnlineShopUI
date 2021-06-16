@@ -20,7 +20,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
     const totalPrice: number = getTotalPriceForProduct(product)
     const isExistInCart = state.cart.some(element => element.id === product.id);
     return (
-        <div className='shopping-card'>
+        <div className='shopping-card' key={keyHandler(product.id)} >
             <div className='shopping-card__img'>Product<img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
             <div className='shopping-card__title'>{product.title}</div>
             <div className='shopping-card__counter'>
@@ -48,7 +48,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                                 }
                                 }
                                 className='shopping-card__select'>{option.value.map(value =>
-                                <option value={value} className='single-card__option' key={product.id}>{value[0].toUpperCase() + value.slice(1)}</option>
+                                <option value={value} className='single-card__option' key={keyHandler(product.id)}>{value[0].toUpperCase() + value.slice(1)}</option>
                             )}</select>
                             }
                         </div>
@@ -56,7 +56,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                 }
                 if (option.type === 'boolean') {
                     return (
-                        <div>
+                        <div key={keyHandler(product.id)} >
                             <span>{option.title}</span>
                             {typeof option.value === 'boolean' &&
                                 <input checked={option.value} type='checkbox'/>

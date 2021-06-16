@@ -48,7 +48,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
             <ul className='single-card__main' key={title}>
                 <li className='single-card__title'>{title}</li>
                 <li className='single-card__description'>Knitted by the professional hands of housewives. Making a masterpiece of the best furniture in the world. Very handy and comfortable</li>
-                <li className='single-card__rating'>{[...Array(rating)].map((star, index) => {
+                <li key={keyHandler(rating)}  className='single-card__rating'>{[...Array(rating)].map((star, index) => {
                     return <img key={keyHandler(rating)} src={starIconUrl} alt='rating-star'></img>
                 })}
                     <span className='single-card__sold'>({salesCount} Sold out)</span>
@@ -79,10 +79,10 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                     }
                     if (option.type === 'boolean') {
                         return (
-                            <div>
+                            <div key={keyHandler(rating)} >
                                 <span>{option.title}</span>
                                 {typeof option.value === 'boolean' &&
-                                    <input checked={option.value} type='checkbox' />
+                                    <input  key={keyHandler(rating)} checked={option.value} type='checkbox' />
                                 }
                             </div>
                         )

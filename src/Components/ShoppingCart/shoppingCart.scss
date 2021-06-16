@@ -4,6 +4,7 @@
     display: grid;
     grid-template-rows: 1fr;
     border-bottom: 1px $pureBlack solid;
+    margin: 0 auto;
     @media (min-width: $mobileDevice)  {
         max-width: $mobileDevice;
         grid-template-columns: 1fr;
@@ -188,16 +189,6 @@
     }
 }
 
-.shopping-cart__title {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    line-height: 45px;
-    @media (min-width: $largeDesktopDevice)  {
-        padding-bottom: 60px;
-    }
-}
-
 .shopping-card__remove-item {
     display: block;
     position: relative;
@@ -226,15 +217,22 @@
 }
 
 .shopping-cart {
-
     @media (min-width: $mobileDevice)  {
-        padding-left: 100px;
-        padding-right: 100px;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));;
     }
     padding: 0;
+}
+
+.shopping-cart__title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    line-height: 45px;
+    @media (min-width: $largeDesktopDevice)  {
+        padding-bottom: 60px;
+    }
 }
 
 .shopping-cart__price-calculation {
