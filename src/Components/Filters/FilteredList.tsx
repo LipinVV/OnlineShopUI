@@ -1,20 +1,20 @@
 import {Filter} from "./Filter";
-import {ProductList} from "./ProductList";
+import {ProductsToFilter} from "./ProductsToFilter";
 import { StoreContext } from '../../App';
 import {useContext, useState} from "react";
 import {filterTypes} from "./types";
+import {getTotalPriceForProduct} from "../../Services/products";
 
 export const FilteredList = () => {
     const { state } = useContext(StoreContext)
     const products = state.products;
 
-    const [filter, setFilter] = useState({colors: [], categories: [], rating: false, minPrice: 5, maxPrice: 999})
+    const [filter, setFilter] = useState({colors: [], categories: [], rating: false, minPrice: 0, maxPrice: 0})
 
     const getFilteredProducts = (productsFromGlobalState:any, filter:filterTypes) => {
         let filteredProducts = productsFromGlobalState;
         if(Boolean(filter.categories.length)) {
             filteredProducts = filteredProducts.filter((product:any) => {
-                console.log('FILTER', filter)
                 return filter.categories.includes(product.category)
             })
         }
@@ -23,18 +23,25 @@ export const FilteredList = () => {
                 return product.rating > 3
             })
         }
-
+        if(Boolean(filter.maxPrice)) {
+            filteredProducts = filteredProducts.filter((product: any) => {
+                return   getTotalPriceForProduct(product) <= filter.maxPrice;
+            })
+        }
+        if(Boolean(filter.minPrice)) {
+            filteredProducts = filteredProducts.filter((product: any) => {
+                return   getTotalPriceForProduct(product) >= filter.minPrice;
+            })
+        }
         return filteredProducts;
     }
 
     const filteredProducts = getFilteredProducts(products, filter);
 
-
-
     return (
-        <div>RESULTS:
+        <div className='filtered-results'>
         <Filter options={filter} optionsChanged={(newFilter:any) => setFilter(newFilter)}/>
-        <ProductList  products={filteredProducts}/>
+        <ProductsToFilter products={filteredProducts}/>
         </div>
 
     )

@@ -3,5 +3,5 @@ export  type filterTypes = {
     categories: string[],
     rating: boolean,
     minPrice: number,
-    maxPrice: number
+    maxPrice: number,
 }

@@ -5,6 +5,7 @@
   font-size: 25px;
   max-width: 100%;
   margin: 0 auto;
+  display: grid;
   @media (min-width: $mobileDevice) {
     margin: 0;
   }
