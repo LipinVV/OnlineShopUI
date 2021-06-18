@@ -437,6 +437,7 @@
   z-index: 1;
   padding: 10px;
   border-radius: 5px;
+  pointer-events: none;
   @media (min-width: $mobileDevice) {
     bottom: 90px;
     right: 0;

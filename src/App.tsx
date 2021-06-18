@@ -12,6 +12,7 @@ import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
 import { CartProductInterface } from './Components/ShoppingCart/types'
 import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
+import {FilteredList} from "./Components/Filters/FilteredList";
 
 type InitialStateType = {
   products: productType[],
@@ -129,7 +130,7 @@ function App() {
       <div className='App'>
         <Router>
           <Navigation />
-
+          <FilteredList />
           <Switch>
             <Route path='/categories'>
               <Categories />
@@ -148,15 +149,9 @@ function App() {
 
 export default App;
 
-// генерация айдишника + точного времени
-
-// a) описываем цвета в виде константных значений на импорт и экспорт
-// b) использовать css in js
 
 // Вопросы
 
-// 3) product detail правая часть - настройка ширин и высот описания товара (у нас где-то может не быть доп опций, как цвет и гарантия - как гридом отработать это?)
-// 4) оносительные величины и константы для верстки
 // 5) количество в инпуте количества товара при покупке - до 100
 // 7) более детальный роутинг - нужно или нет?
 

@@ -75,11 +75,11 @@
 
 .navigation__dropdown {
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  background-color: $pureWhite;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background-color: transparent;
   position: absolute;
-  max-width: 50%;
+  max-width: 60%;
   max-height: 500px;
   margin-left: 25%;
   top: 100px;

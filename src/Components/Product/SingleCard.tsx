@@ -120,7 +120,7 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
                         }
                     >
                         Add to Cart
-                        <div className={popUp <= 0 ? 'single-card__pop-up':'single-card__pop-up-increment'}>В корзину добавлено: {popUp}</div>
+                        <div className={popUp <= 0 ? 'single-card__pop-up':'single-card__pop-up-increment'}>Added to cart: {popUp}</div>
                     </button>
                     <button
                         type='button'

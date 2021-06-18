@@ -35,7 +35,7 @@ export const Navigation = () => {
     })
 
     const handleKeyPress: any = (evt: any) => {
-        if (evt.keyCode === 13) {
+        if (evt.keyCode === 27) {
             setSearch('')
         }
     }

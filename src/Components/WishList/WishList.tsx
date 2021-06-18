@@ -7,7 +7,6 @@ import {keyHandler} from "../../Services/key-handler";
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)
     const favouriteProducts = state.products.filter(product => product.isFavourite)
-    console.log('favouriteProducts', favouriteProducts)
     return (
         <div className='wishlist'>
             <div className='wishlist__wrapper'>
