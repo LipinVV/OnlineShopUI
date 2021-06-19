@@ -1,8 +1,78 @@
+@import 'src/App';
+
 .filtered-results {
   display: grid;
+  @media (min-width: $mobileDevice)  {
+    max-width: $mobileDevice;
+    padding: 20px;
+  }
+
+  @media (min-width: $tabletDevice) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+    padding: 0 100px 50px 20px;
+  }
+}
+
+.filtered-results-menu {
+  position: relative;
+}
+
+.filtered-results-header {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  border: 1px $pureBlack solid;
+  background-color: $pureWhite;
+  color: $pureBlack;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.filtered-results-controls {
+  display: grid;
+  padding: 45px 20px 20px 20px;
+  font-size: 20px;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 3fr;
-  padding: 0 100px 50px 20px;
+  @media (min-width: $mobileDevice)  {
+    max-width: $mobileDevice;
+  }
+}
+
+.filtered-results-categories {
+
+}
+
+.filtered-results-max-price,
+.filtered-results-min-price {
+  display: flex;
+  justify-content: flex-start;
+  border: $greyBorder 1px solid;
+  @media (min-width: $mobileDevice)  {
+    min-height: 52px;
+  }
+}
+
+.filtered-results-price-label {
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $greyBackground;
+}
+
+.filtered-results-price-input {
+  border: none;
+  width: 100%;
+}
+
+.filtered-results-category,
+.filtered-results-rating {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 8fr;
 }
 
 .products-to-filter {
