@@ -20,8 +20,8 @@ export const Filter = ({options, optionsChanged}: any) => {
         })
     }
 
-    const [maxValue, setMaxValue] = useState(0)
-    const [minValue, setMinValue] = useState(0)
+    const [maxValue, setMaxValue] = useState(0);
+    const [minValue, setMinValue] = useState(0);
     const handleChangeMaxValue = ((evt: any) => {
         const {value} = evt.target
         setMaxValue(value)
@@ -45,15 +45,18 @@ export const Filter = ({options, optionsChanged}: any) => {
             })
         }
     })
-
-    const [showFilter, setShowFilter] = useState(false);
+    const windowSize = window.outerWidth;
+    const renderFilterHandler= ((size:number) => {
+        return size >= 1024;
+    })
+    const [showFilter, setShowFilter] = useState(renderFilterHandler(windowSize));
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
     }
 
     return (
         <div className='filtered-results-menu'>
-            <h3 className='filtered-results-header' onClick={filterShowHandler}>unroll to filter</h3>
+            <h3 className='filtered-results-header' onClick={filterShowHandler}>Filter</h3>
             {showFilter ?
                 <div className='filtered-results-controls'>
                     <div className='filtered-results-categories'>

@@ -2,15 +2,27 @@
 
 .filtered-results {
   display: grid;
+  margin: 0 auto;
   @media (min-width: $mobileDevice)  {
     max-width: $mobileDevice;
     padding: 20px;
   }
 
   @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
     padding: 0 100px 50px 20px;
+  }
+
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
   }
 }
 
@@ -28,6 +40,15 @@
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
+
+  @media (min-width: $tabletDevice) {
+    text-align: left;
+    left: 0;
+  }
+
+  @media (min-width: $desktopDevice) {
+
+  }
 }
 
 .filtered-results-controls {
@@ -38,6 +59,14 @@
   grid-template-rows: 1fr;
   @media (min-width: $mobileDevice)  {
     max-width: $mobileDevice;
+  }
+  @media (min-width: $tabletDevice)  {
+    max-width: $tabletDevice;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: $desktopDevice) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 2fr;
   }
 }
 
