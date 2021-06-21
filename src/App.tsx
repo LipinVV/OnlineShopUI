@@ -131,7 +131,7 @@ function App() {
       <div className='App'>
         <Router>
           <Navigation />
-          {/* <FilteredList /> */}
+           {/*<FilteredList />*/}
           <Pagination />
           <Switch>
             <Route path='/categories'>
