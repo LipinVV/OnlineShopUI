@@ -1,5 +1,5 @@
-import {filterTypes} from "./types";
-import {useState} from "react";
+import { filterTypes } from "./types";
+import { useState } from "react";
 
 const availableOptions: filterTypes = {
     colors: ['black', 'white', 'grey'],
@@ -9,7 +9,7 @@ const availableOptions: filterTypes = {
     rating: false
 };
 
-export const Filter = ({options, optionsChanged}: any) => {
+export const Filter = ({ options, optionsChanged }: any) => {
 
     const [rating, setRating] = useState(false);
     const handleChangeCheckBox = () => {
@@ -23,7 +23,7 @@ export const Filter = ({options, optionsChanged}: any) => {
     const [maxValue, setMaxValue] = useState(0);
     const [minValue, setMinValue] = useState(0);
     const handleChangeMaxValue = ((evt: any) => {
-        const {value} = evt.target
+        const { value } = evt.target
         setMaxValue(value)
         let newMaxPrice = +value;
         if (value >= availableOptions.maxPrice || !value) {
@@ -35,7 +35,7 @@ export const Filter = ({options, optionsChanged}: any) => {
     })
 
     const handleChangeMinValue = ((evt: any) => {
-        const {value} = evt.target
+        const { value } = evt.target
         setMinValue(value)
         let newMinPrice = +value;
         if (value >= availableOptions.minPrice) {
@@ -46,7 +46,7 @@ export const Filter = ({options, optionsChanged}: any) => {
         }
     })
     const windowSize = window.outerWidth;
-    const renderFilterHandler= ((size:number) => {
+    const renderFilterHandler = ((size: number) => {
         return size >= 1024;
     })
     const [showFilter, setShowFilter] = useState(renderFilterHandler(windowSize));
@@ -96,25 +96,51 @@ export const Filter = ({options, optionsChanged}: any) => {
                             />4 Star Up
                         </label>
                     </div>
+                    <div><h4>Color</h4>
+                        {availableOptions.colors.map((color: any) => {
+                            return (
+                                <div key={color}>
+                                    <label className='' >
+                                        <input
+                                            type='checkbox'
+                                            onChange={(evt) => {
+                                                let newColors = options.colors;
+                                                if (evt.target.checked) {
+                                                    newColors.push(color)
+                                                } else {
+                                                    newColors = newColors.filter(
+                                                        (selectedColor: any) => color !== selectedColor)
+                                                }
+                                                optionsChanged({
+                                                    ...options,
+                                                    colors: newColors
+                                                })
+                                            }}
+                                        />{color}
+                                    </label>
+                                </div>
+                            )
+                        })}
+                    </div>
                     <div>
                         <div>
                             <h4>Price</h4>
                             <form className='filtered-results-max-price'>
                                 <label className='filtered-results-price-label'>$</label>
-                                    <input
-                                        className='filtered-results-price-input'
-                                        placeholder='Maximum Price'
-                                        type='number'
-                                        onChange={handleChangeMaxValue}
-                                    />
+                                <input
+                                    className='filtered-results-price-input'
+                                    placeholder='Maximum Price'
+                                    type='number'
+                                    onChange={handleChangeMaxValue}
+                                />
                             </form>
                             <form className='filtered-results-min-price'>
                                 <label className='filtered-results-price-label'>$</label>
-                                    <input className='filtered-results-price-input'
-                                        placeholder='Minimum Price'
-                                        type='number'
-                                        onChange={handleChangeMinValue}
-                                    />
+                                <input className='filtered-results-price-input'
+                                    placeholder='Minimum Price'
+                                    type='number'
+                                    onChange={handleChangeMinValue}
+                                />
                             </form>
                         </div>
                     </div>

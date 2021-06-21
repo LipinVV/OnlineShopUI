@@ -29,7 +29,7 @@ export const Products: productType[] = [
         salesCount: 400,
         isFavourite: false,
         toBuy: false,
-        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
+        options: [{type: 'select', title: 'color', value: ['black', 'white']}]
     },
     {
         id: 34214145,
@@ -79,7 +79,7 @@ export const Products: productType[] = [
         salesCount: 165,
         isFavourite: false,
         toBuy: false,
-        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
+        options: [{type: 'select', title: 'color', value: ['black', 'grey']}]
     },
     {
         id: 678665,
@@ -219,7 +219,7 @@ export const Products: productType[] = [
         salesCount: 165,
         isFavourite: false,
         toBuy: false,
-        options: [{type: 'boolean', title: 'warranty', value: ['true', 'false']}]
+        options: [{type: 'boolean', title: 'warranty', value: true}]
     },
     {
         id: 565654,
@@ -244,6 +244,6 @@ export const Products: productType[] = [
         salesCount: 380,
         isFavourite: false,
         toBuy: false,
-        options: [{type: 'select', title: 'color', value: ['black', 'white', 'grey']}]
+        options: [{type: 'select', title: 'color', value: ['white', 'grey']}]
     },
 ]

@@ -45,10 +45,6 @@
     text-align: left;
     left: 0;
   }
-
-  @media (min-width: $desktopDevice) {
-
-  }
 }
 
 .filtered-results-controls {
@@ -66,12 +62,8 @@
   }
   @media (min-width: $desktopDevice) {
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 1.5fr 2fr;
   }
-}
-
-.filtered-results-categories {
-
 }
 
 .filtered-results-max-price,

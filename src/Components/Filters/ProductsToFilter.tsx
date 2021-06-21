@@ -1,16 +1,17 @@
-import {keyHandler} from "../../Services/key-handler";
+import { keyHandler } from "../../Services/key-handler";
 import './filter.scss'
-import {SingleCard} from "../Product/SingleCard";
-import {ProductCard} from "../Product/ProductCard";
+import { SingleCard } from "../Product/SingleCard";
+import { ProductCard } from "../Product/ProductCard";
 
-export const ProductsToFilter = ({products = []}: any) => {
-console.log(products)
+export const ProductsToFilter = ({ products = [] }: any) => {
+    // console.log('products', products)
     return (
         <div className='products-to-filter-wrapper'>
             <h3>ProductList</h3>
             <div className='products-to-filter'>
                 {products.map((product: any) => (
                     <ProductCard
+                        key={keyHandler(product.id)}
                         id={product.id}
                         category={product.category}
                         title={product.title}
