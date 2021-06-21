@@ -13,6 +13,7 @@ import { CartProductInterface } from './Components/ShoppingCart/types'
 import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
+import {Pagination} from './Components/Pagination/Pagination';
 
 type InitialStateType = {
   products: productType[],
@@ -130,7 +131,8 @@ function App() {
       <div className='App'>
         <Router>
           <Navigation />
-          <FilteredList />
+          {/* <FilteredList /> */}
+          <Pagination />
           <Switch>
             <Route path='/categories'>
               <Categories />
