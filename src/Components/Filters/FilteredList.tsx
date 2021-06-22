@@ -33,8 +33,9 @@ export const FilteredList = () => {
 
         if(Boolean(filter.sortByAlphabet && filter.sortFromTheTop)) {
             filteredProducts = filteredProducts.sort((productA: any, productB:any) => {
+                filter.sortFromTheTop = !filter.sortFromTheTop
                 if(getTotalPriceForProduct(productA) === getTotalPriceForProduct(productB)) {
-                    return productA.title.localeCompare(productB.title)
+                    return productA.title.localeCompare(productB.title) 
                 }
                 return productA.title.localeCompare(productB.title)
             })
