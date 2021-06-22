@@ -31,22 +31,11 @@ export const FilteredList = () => {
             })
         }
 
-        if(Boolean(filter.sortByAlphabet && filter.sortFromTheTop)) {
+        if(Boolean(filter.sortByAlphabet)) {
             filteredProducts = filteredProducts.sort((productA: any, productB:any) => {
-                filter.sortFromTheTop = !filter.sortFromTheTop
-                if(getTotalPriceForProduct(productA) === getTotalPriceForProduct(productB)) {
-                    return productA.title.localeCompare(productB.title) 
-                }
-                return productA.title.localeCompare(productB.title)
-            })
-        }
-
-        if(Boolean(filter.sortByAlphabet && filter.sortFromTheBottom)) {
-            filteredProducts = filteredProducts.sort((productA: any, productB:any) => {
-                if(getTotalPriceForProduct(productA) === getTotalPriceForProduct(productB)) {
+                filter.sortFromTheTop = false;
+                filter.sortFromTheBottom = false;
                     return productA.title.localeCompare(productB.title)
-                }
-                return productA.title.localeCompare(productB.title)
             })
         }
 
@@ -70,11 +59,13 @@ export const FilteredList = () => {
 
         if (Boolean(filter.colors.length)) {
             filteredProducts = filteredProducts.filter((product: any, index: any) => {
-                console.log(product.options?.filter((a:any,i:any) => filter.colors.includes(a.value[i])).filter((x:any,o:any) => console.log(x.value[o])))
-                return product.options?.filter((a:any,i:any) => filter.colors.includes(a.value[i]))
+                const productColors = product?.options?.find((option: any) => option.title === 'color')
+                if(productColors?.value?.length) {
+                    return productColors.value.some((color:any) => filter.colors.includes(color))
+                }
             })
         }
-
+        console.log('filteredProducts', filteredProducts)
         return filteredProducts;
     }
 

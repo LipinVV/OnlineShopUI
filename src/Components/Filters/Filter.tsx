@@ -51,7 +51,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const windowSize = window.outerWidth;
     const renderFilterHandler = ((size: number) => {
         return size >= 1024;
-    })
+    }) // css
     const [showFilter, setShowFilter] = useState(renderFilterHandler(windowSize));
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
@@ -131,7 +131,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                 type='checkbox'
                                 checked={rating}
                                 onChange={handleChangeCheckBox}
-                            />4 Star Up
+                            />4 Stars Up
                         </label>
                     </div>
                     <div><h4>Color</h4>
