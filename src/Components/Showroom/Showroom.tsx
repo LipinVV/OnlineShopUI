@@ -2,9 +2,9 @@ import React, {useState, useContext} from "react";
 import {StoreContext} from '../../App';
 import {ProductCard} from "../Product/ProductCard";
 import {keyHandler} from '../../Services/key-handler'
-import './pagination.scss'
+import './showroom.scss'
 
-export const Pagination = () => {
+export const Showroom = () => {
 
     const {state} = useContext(StoreContext)
     const items = state.products;
@@ -25,8 +25,8 @@ export const Pagination = () => {
         setPage(prevState => prevState - 1);
     }
     return (
-        <div>
-            <div className='pagination-test'>
+        <div className='show-room-wrapper'>
+            <div className='show-room'>
                 {currentItems.map((product) => {
                     return <ProductCard
                             key={keyHandler(product.id)}
@@ -43,12 +43,12 @@ export const Pagination = () => {
                         />
                 })}
             </div>
-            <div className='pagination-test-controls'>
-                <div className='pagination-test-buttons'>
-                        <button disabled={page === 1} className='pagination-test-button' onClick={handleClickDecrease}>{'Previous page'}</button>
-                        <button disabled={indexOfLastItem === items.length} className='pagination-test-button' onClick={handleClickIncrease}>{'Next page'}</button>
+            <div className='show-room-controls'>
+                <div className='show-room-buttons'>
+                        <button disabled={page === 1} className='show-room-button' onClick={handleClickDecrease}>{'Previous page'}</button>
+                        <button disabled={indexOfLastItem === items.length} className='show-room-button' onClick={handleClickIncrease}>{'Next page'}</button>
                 </div>
-                <div className='pagination-test-current-page'>
+                <div className='show-room-current-page'>
                     You are on the: {page} page
                 </div>
             </div>

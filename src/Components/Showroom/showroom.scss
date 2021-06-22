@@ -1,37 +1,57 @@
 @import "src/App";
 
-.pagination-test {
+.show-room {
     display: grid;
     width: 100%;
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     padding: 20px;
+    grid-gap: 20px;
 }
 
-.pagination-test-controls,
-.pagination-test-buttons {
+.show-room-wrapper {
+    background-image: url('./img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: grid;
+    @media (min-width: $mobileDevice) {
+        min-height: 700px;
+    }
+
+}
+
+.show-room-wrapper-opener {
+    //position: absolute;
+    //bottom: 0;
+    min-height: 50px;
+    padding-top: 50px;
+}
+
+.show-room-controls,
+.show-room-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.pagination-test-buttons {
+.show-room-buttons {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
 }
 
-.pagination-test-button {
-    font-size: 22px;
-    border: 1px solid $pureBlack;
+.show-room-button {
+    font-size: 20px;
+    border: 2px solid $pureBlack;
     border-radius: 10px;
     background-color: $pureWhite;
-    padding: 15px;
+    padding: 10px;
 }
 
-.pagination-test-current-page {
+.show-room-current-page {
     font-size: 22px;
     display: grid;
     grid-template-rows: 1fr;
