@@ -131,8 +131,8 @@ function App() {
       <div className='App'>
         <Router>
           <Navigation />
-           {/*<FilteredList />*/}
-          <Pagination />
+           <FilteredList />
+          {/* <Pagination /> */}
           <Switch>
             <Route path='/categories'>
               <Categories />
@@ -154,6 +154,7 @@ export default App;
 
 // Вопросы
 
-// 5) количество в инпуте количества товара при покупке - до 100
-// 7) более детальный роутинг - нужно или нет?
-
+// 1) цветовой выбор
+// 2) изменение меню при смене разрешения экрана
+// 2.5) чекбоксы
+// 3) пагинация как сервис

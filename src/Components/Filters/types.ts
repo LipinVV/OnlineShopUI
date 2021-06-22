@@ -4,4 +4,7 @@ export  type filterTypes = {
     rating: boolean,
     minPrice: number,
     maxPrice: number,
+    sortByAlphabet: boolean,
+    sortFromTheTop: boolean,
+    sortFromTheBottom: boolean,
 }

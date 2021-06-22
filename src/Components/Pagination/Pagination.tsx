@@ -24,14 +24,11 @@ export const Pagination = () => {
     function handleClickDecrease() {
         setPage(prevState => prevState - 1);
     }
-
-    console.log('indexOfLastItem', indexOfLastItem)
     return (
         <div>
             <div className='pagination-test'>
                 {currentItems.map((product) => {
-                    return <div>
-                        <ProductCard
+                    return <ProductCard
                             key={keyHandler(product.id)}
                             id={product.id}
                             category={product.category}
@@ -44,7 +41,6 @@ export const Pagination = () => {
                             isFavourite={product.isFavourite}
                             toBuy={product.toBuy}
                         />
-                    </div>
                 })}
             </div>
             <div className='pagination-test-controls'>

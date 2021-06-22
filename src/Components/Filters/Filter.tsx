@@ -6,7 +6,10 @@ const availableOptions: filterTypes = {
     categories: ['sofas', 'chairs', 'desks', 'beds', 'carpets', 'cupboards'],
     minPrice: 1,
     maxPrice: 1,
-    rating: false
+    rating: false,
+    sortByAlphabet: false,
+    sortFromTheTop: true,
+    sortFromTheBottom: false,
 };
 
 export const Filter = ({ options, optionsChanged }: any) => {
@@ -52,6 +55,41 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const [showFilter, setShowFilter] = useState(renderFilterHandler(windowSize));
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
+    }
+    
+    const [sortByAlphabet, setSortByAlphabet] = useState(false);
+    const sortByAlphabetHandler = () => {
+        setSortByAlphabet((prevState: any) => !prevState)
+        optionsChanged({
+            ...options,
+            sortByAlphabet: !sortByAlphabet
+        })
+    }
+
+    const [sortByTheHighest, setSortByTheHighest] = useState(true);
+    const sortingByTheHighestHandler = () => {
+        if(sortByTheLowest) {
+            setSortByTheLowest((prevState: any) => !prevState)
+        }
+        setSortByTheHighest((prevState: any) => !prevState)
+        optionsChanged({
+            ...options,
+            sortFromTheTop: !sortByTheHighest,
+            sortFromTheBottom: !sortByTheLowest
+        })
+    }
+
+    const [sortByTheLowest, setSortByTheLowest] = useState(false);
+    const sortingByTheLowestHandler = () => {
+        if(sortByTheHighest) {
+            setSortByTheHighest((prevState: any) => !prevState)
+        }
+        setSortByTheLowest((prevState: any) => !prevState)
+        optionsChanged({
+            ...options,
+            sortFromTheBottom: !sortByTheLowest,
+            sortFromTheTop: !sortByTheHighest,
+        })
     }
 
     return (
@@ -142,6 +180,37 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                     onChange={handleChangeMinValue}
                                 />
                             </form>
+                            <div>
+                                <h4>Sort by the name</h4>
+                                <label className='filtered-results-sort-by-the-name' >
+                                    <input
+                                        type='checkbox'
+                                        checked={sortByAlphabet}
+                                        onChange={sortByAlphabetHandler}
+                                    />
+                                </label>
+                            </div>
+                            <div>
+                                <h4>Sort by price ∇</h4>
+                                <label className='filtered-results-sort-from-highest' >
+                                    <input
+                                        type='checkbox'
+                                        checked={sortByTheHighest}
+                                        onChange={sortingByTheHighestHandler}
+                                    />
+                                </label>
+                            </div>
+                            <div>
+                                <h4>Sort by price ∆</h4>
+                                <label className='filtered-results-sort-from-lowest' >
+                                    <input
+                                        type='checkbox'
+                                        // disabled={sortByTheLowest}
+                                        checked={sortByTheLowest}
+                                        onChange={sortingByTheLowestHandler}
+                                    />
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div> : null}
