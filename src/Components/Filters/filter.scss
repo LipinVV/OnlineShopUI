@@ -87,6 +87,7 @@
 .filtered-results-price-input {
   border: none;
   width: 100%;
+  padding-left: 20px;
 }
 
 .filtered-results-category,
@@ -101,4 +102,10 @@
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));;
   grid-gap: 20px;
+}
+
+.filtered-results-products {
+  @media (min-width: $desktopDevice) {
+    display: grid;
+  }
 }

@@ -13,7 +13,7 @@ import { CartProductInterface } from './Components/ShoppingCart/types'
 import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
-import {Showroom} from "./Components/Showroom/Showroom";
+import {Pagination} from "./Components/Pagination/Pagination";
 
 type InitialStateType = {
   products: productType[],
@@ -131,8 +131,6 @@ function App() {
       <div className='App'>
         <Router>
           <Navigation />
-           {/*<FilteredList />*/}
-           <Showroom />
           <Switch>
             <Route path='/categories'>
               <Categories />
@@ -141,6 +139,7 @@ function App() {
             <Route exact path='/wishlist'><Wishlist /></Route>
             <Route exact path='/:category'><CategoryPage /></Route>
             <Route path='/:category/:id'><ProductPage /></Route>
+            <Route path='/'><FilteredList /></Route>
           </Switch>
         </Router>
       </div>
@@ -154,4 +153,5 @@ export default App;
 
 // Вопросы
 
-// 3) пагинация как сервис
+// 1) пагинация на фильтре : определить ли все стили из фильтра.ссс или можно брать из пагинации.ссс
+// 2)

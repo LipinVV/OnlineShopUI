@@ -1,6 +1,6 @@
 @import "src/App";
 
-.show-room {
+.pagination {
     display: grid;
     width: 100%;
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
@@ -9,7 +9,7 @@
     grid-gap: 20px;
 }
 
-.show-room-wrapper {
+.pagination-wrapper {
     background-image: url('./img/background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,29 +21,33 @@
 
 }
 
-.show-room-wrapper-opener {
+.pagination-wrapper-opener {
     //position: absolute;
     //bottom: 0;
     min-height: 50px;
     padding-top: 50px;
 }
 
-.show-room-controls,
-.show-room-buttons {
+.pagination-controls,
+.pagination-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.show-room-buttons {
+.pagination-controls {
+    padding: 40px 20px 0 20px;
+}
+
+.pagination-buttons {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
 }
 
-.show-room-button {
+.pagination-button {
     font-size: 20px;
     border: 2px solid $pureBlack;
     border-radius: 10px;
@@ -51,7 +55,7 @@
     padding: 10px;
 }
 
-.show-room-current-page {
+.pagination-current-page {
     font-size: 22px;
     display: grid;
     grid-template-rows: 1fr;
