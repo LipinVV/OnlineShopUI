@@ -30,4 +30,30 @@
   width: 100%;
   margin: 0;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bestsellers__header-link {
+  text-decoration: none;
+  color: $darkBlue;
+}
+
+// ******
+
+.bestsellers-base__products {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 20px;
+}
+
+.bestsellers-base-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 800;
+  margin: 0;
 }

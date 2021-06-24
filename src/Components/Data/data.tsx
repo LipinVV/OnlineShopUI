@@ -204,7 +204,7 @@ export const Products: productType[] = [
         discount: 27,
         previewUrl: 'https://cdn1.ozone.ru/s3/multimedia-c/wc1200/6017860764.jpg',
         rating: 5,
-        salesCount: 220,
+        salesCount: 375,
         isFavourite: false,
         toBuy: false,
     },
@@ -241,7 +241,7 @@ export const Products: productType[] = [
         discount: 27,
         previewUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSASrG9dDTVd1wXF8WG29wOXampnl6RLF6frg&usqp=CAU',
         rating: 4,
-        salesCount: 380,
+        salesCount: 333,
         isFavourite: false,
         toBuy: false,
         options: [{type: 'select', title: 'color', value: ['white', 'grey']}]

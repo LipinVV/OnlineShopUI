@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {LandingCategories} from "./LandingCategories/LandingCategories";
 import {Categories} from "../Categories/Categories";
 import {BestSellers} from "./BestSellers/BestSellers";
+import {ShowRoom} from "./ShowRoom/ShowRoom";
 
 export const Landing = () => {
 
@@ -28,6 +29,7 @@ export const Landing = () => {
             </div>
             <BestSellers/>
             <LandingCategories/>
+            <ShowRoom />
             <Categories/>
         </div>
     )
