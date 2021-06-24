@@ -9,7 +9,7 @@ export const BestSellersBase = () => {
     const currentItems = state.products.filter((a: any) => a.salesCount > SALES_COUNTER).sort((a, b) => b.salesCount - a.salesCount);
     return (
         <div className='bestsellers-base'>
-            <h1 className='bestsellers-base-header'>Our products with top-selling rate: more than {SALES_COUNTER} were sold out!</h1>
+            <h1 className='bestsellers-base-header'>Our products with top-selling rate: more than {SALES_COUNTER} of each one sold out!</h1>
             <div className='bestsellers-base__products'>
                 {currentItems.map((product => (
                     <ProductCard

@@ -22,6 +22,20 @@
   margin: 0;
 }
 
+.landing__wrapper {
+  width: 100%;
+  @media (min-width: $desktopDevice) {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+    //max-width: $desktopDevice;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    //max-width: $largeDesktopDevice;
+  }
+}
+
 .landing__header {
   display: grid;
   margin: 0 auto;
@@ -29,6 +43,10 @@
     width: 100%;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+  }
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice / 2;
+    grid-template-rows: 2fr 1fr;
   }
 }
 
@@ -40,7 +58,7 @@
     aspect-ratio: 1.1/1;
   }
   @media (min-width: $desktopDevice) {
-    aspect-ratio: 7/5;
+    aspect-ratio: auto;
   }
 }
 
@@ -48,7 +66,9 @@
   @media (min-width: $mobileDevice) {
     margin: 0 40px 0 40px;
   }
-  //margin: 0;
+  @media (min-width: $desktopDevice) {
+    margin: 120px 0 40px 0;
+  }
 }
 
 .landing__header-heading {
@@ -58,6 +78,10 @@
     font-weight: 800;
     margin: 20px 0 20px 0;
   }
+  @media (min-width: $desktopDevice) {
+    font-size: 50px;
+    line-height: 68px;
+  }
 }
 
 .landing__header-description {
@@ -66,10 +90,13 @@
     font-size: 16px;
     line-height: 25px;
   }
+  @media (min-width: $desktopDevice) {
+    font-size: 20px;
+    line-height: 32px;
+  }
 }
 
 .landing__header-buttons {
-
   @media (min-width: $mobileDevice) {
     max-width: $mobileDevice;
     display: grid;
@@ -81,15 +108,17 @@
   @media (min-width: $tabletDevice) {
   max-width: $tabletDevice;
   }
-
   @media (min-width: $desktopDevice) {
-    max-width: $desktopDevice;
+    max-width: $desktopDevice / 2;
+    padding-bottom: 0;
+    max-height: 100px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   @media (min-width: $largeDesktopDevice) {
     max-width: $largeDesktopDevice;
   }
-
 }
 
 .landing__header-button:first-child {
@@ -112,5 +141,9 @@
     border-radius: 10px;
     color: $pureBlack;
     border: 1px solid $pureBlack;
+  }
+  @media (min-width: $desktopDevice) {
+    min-width: 200px;
+    max-height: 50px;
   }
 }

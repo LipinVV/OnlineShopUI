@@ -8,13 +8,12 @@ export const ShowRoom = () => {
     const {state} = useContext(StoreContext);
     const currentItems = state.products;
     const [timer, setTimer] = useState(30);
-    const [running, setRunning] = useState(true);
+    const [running] = useState(true);
 
     useEffect(() => {
         if (running) {
             const id = window.setInterval(() => {
-                //@ts-ignore
-                setTimer(seconds => seconds > 1 ? seconds - 1 : 0);
+                setTimer((seconds:number )=> seconds > 1 ? seconds - 1 : 0);
             }, 1000)
             return () => window.clearInterval(id);
         }
@@ -49,12 +48,13 @@ export const ShowRoom = () => {
         if(seconds < 30) {
             return item[5];
         }
-
-        console.log('TIME', seconds)
     }
 
     const current = slider(timer, array)
+
     return (
+        <div>
+            <h1 className='showroom__header'>Our ShowRoom:</h1>
         <div className='showroom'>
             {timer === 30 ? sofas.map((product:any )=> (
                     <ProductCard
@@ -85,6 +85,7 @@ export const ShowRoom = () => {
                     toBuy={product.toBuy}
                 />
             ))}
+        </div>
         </div>
     )
 }
