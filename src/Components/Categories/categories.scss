@@ -1,18 +1,21 @@
 @import "src/App";
 
-.categories__Navigation {
+.categories__navigation {
     margin: 0;
     padding: 0;
 }
 
-.categories__List {
+.categories__list {
     display: grid;
     grid-gap: 20px;
     list-style: none;
     width: 100%;
     padding: 20px;
     margin: 0;
-
+    @media screen and (min-width: $mobileDevice) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
     @media screen and (min-width: $tabletDevice) {
         grid-template-columns: 1fr 1fr;
     }

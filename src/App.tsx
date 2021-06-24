@@ -14,6 +14,7 @@ import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
 import {Landing} from "./Components/Landing/Landing";
+import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
 
 type InitialStateType = {
   products: productType[],
@@ -135,6 +136,7 @@ function App() {
             <Route path='/categories'>
               <Categories />
             </Route>
+            <Route path='/bestsellers'><BestSellersBase/></Route>
             <Route exact path='/filter'><FilteredList/></Route>
             <Route exact path='/shoppingCart'><ShoppingList /></Route>
             <Route exact path='/wishlist'><Wishlist /></Route>

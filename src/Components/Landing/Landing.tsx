@@ -1,15 +1,17 @@
 import '../../App.scss'
-import {FilteredList} from "../Filters/FilteredList";
 import './landing.scss'
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {LandingCategories} from "./LandingCategories/LandingCategories";
+import {Categories} from "../Categories/Categories";
+import {BestSellers} from "./BestSellers/BestSellers";
 
 export const Landing = () => {
 
 
     return (
         <div className='landing'>
+            <div className='landing__header-img'></div>
             <div className='landing__header'>
-                <div className='landing__header-img'></div>
                 <div className='landing__header-motto'>
                     <h1 className='landing__header-heading'>
                         Crafting Better Experience For Your Family
@@ -24,6 +26,9 @@ export const Landing = () => {
                     <Link className='landing__header-button' to='/'>Interior Designer</Link>
                 </div>
             </div>
+            <BestSellers/>
+            <LandingCategories/>
+            <Categories/>
         </div>
     )
 }

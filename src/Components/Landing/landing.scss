@@ -2,21 +2,18 @@
 
 .landing {
   @media (min-width: $mobileDevice) {
-    max-width: 100%;
     min-height: $mobileDevice;
-  }
-  @media (min-width: $desktopDevice) {
-    max-width: $desktopDevice;
-    min-height: $desktopDevice;
   }
 
   @media (min-width: $tabletDevice) {
-    max-width: $tabletDevice;
     min-height: $tabletDevice;
   }
 
+  @media (min-width: $desktopDevice) {
+    min-height: $desktopDevice;
+  }
+
   @media (min-width: $largeDesktopDevice) {
-    max-width: $largeDesktopDevice;
     min-height: $largeDesktopDevice;
   }
 }
@@ -27,10 +24,11 @@
 
 .landing__header {
   display: grid;
+  margin: 0 auto;
   @media (min-width: $mobileDevice) {
     width: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: 5fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
 
@@ -39,16 +37,18 @@
   @media (min-width: $mobileDevice) {
     background-repeat: no-repeat;
     background-size: cover;
+    aspect-ratio: 1.1/1;
   }
-
+  @media (min-width: $desktopDevice) {
+    aspect-ratio: 7/5;
+  }
 }
 
 .landing__header-motto {
   @media (min-width: $mobileDevice) {
-    max-width: $mobileDevice;
-    margin: 0 20px 0 20px;
+    margin: 0 40px 0 40px;
   }
-  margin: 0;
+  //margin: 0;
 }
 
 .landing__header-heading {
@@ -69,13 +69,27 @@
 }
 
 .landing__header-buttons {
+
   @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    margin: 0 20px 0 20px;
+    margin: 0 auto 0 auto;
     grid-gap: 15px;
     padding-bottom: 40px;
   }
+  @media (min-width: $tabletDevice) {
+  max-width: $tabletDevice;
+  }
+
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
+
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+  }
+
 }
 
 .landing__header-button:first-child {
@@ -89,7 +103,7 @@
   text-decoration: none;
   @media (min-width: $mobileDevice) {
     display: flex;
-    width: 100%;
+    min-width: 300px;
     align-items: center;
     justify-content: center;
     font-size: 16px;

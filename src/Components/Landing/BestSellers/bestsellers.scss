@@ -1,0 +1,33 @@
+@import "src/App";
+
+.bestsellers {
+  margin: 0 auto;
+  @media (min-width: $mobileDevice) {
+    display: grid;
+    padding: 20px;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+  }
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  @media (min-width: $largeDesktopDevice) {
+    min-width: $largeDesktopDevice;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: 1fr;
+  }
+}
+
+.bestsellers__header {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+}

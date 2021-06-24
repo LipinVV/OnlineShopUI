@@ -10,8 +10,8 @@ const itemTypes = Object.values(CATEGORY);
 
 export const Categories = () => {
     return (
-        <nav className='categories__Navigation'>
-            <ul className='categories__List'>
+        <nav className='categories__navigation'>
+            <ul className='categories__list'>
                 {itemTypes.map(item =>  (
                         <li key={keyHandler(item.length)} className={`categories__Section categories__Section-${item.toLowerCase()}`}>
                             <span className='categories__Section-name'>{getFullProductName(item)}</span>
