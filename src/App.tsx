@@ -13,7 +13,7 @@ import { CartProductInterface } from './Components/ShoppingCart/types'
 import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
-import {Pagination} from "./Components/Pagination/Pagination";
+import {Landing} from "./Components/Landing/Landing";
 
 type InitialStateType = {
   products: productType[],
@@ -135,11 +135,12 @@ function App() {
             <Route path='/categories'>
               <Categories />
             </Route>
+            <Route exact path='/filter'><FilteredList/></Route>
             <Route exact path='/shoppingCart'><ShoppingList /></Route>
             <Route exact path='/wishlist'><Wishlist /></Route>
             <Route exact path='/:category'><CategoryPage /></Route>
             <Route path='/:category/:id'><ProductPage /></Route>
-            <Route path='/'><FilteredList /></Route>
+            <Route path='/'><Landing /></Route>
           </Switch>
         </Router>
       </div>

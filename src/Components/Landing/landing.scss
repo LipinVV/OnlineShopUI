@@ -1,0 +1,102 @@
+@import 'src/App';
+
+.landing {
+  @media (min-width: $mobileDevice) {
+    max-width: 100%;
+    min-height: $mobileDevice;
+  }
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    min-height: $desktopDevice;
+  }
+
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+    min-height: $tabletDevice;
+  }
+
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+    min-height: $largeDesktopDevice;
+  }
+}
+
+.landing {
+  margin: 0;
+}
+
+.landing__header {
+  display: grid;
+  @media (min-width: $mobileDevice) {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr 1fr;
+  }
+}
+
+.landing__header-img {
+  background-image: url('./img/landing-header.png');
+  @media (min-width: $mobileDevice) {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+}
+
+.landing__header-motto {
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    margin: 0 20px 0 20px;
+  }
+  margin: 0;
+}
+
+.landing__header-heading {
+  @media (min-width: $mobileDevice) {
+    font-size: 34px;
+    line-height: 34px;
+    font-weight: 800;
+    margin: 20px 0 20px 0;
+  }
+}
+
+.landing__header-description {
+  @media (min-width: $mobileDevice) {
+    margin: 0 0 25px 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+
+.landing__header-buttons {
+  @media (min-width: $mobileDevice) {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 20px 0 20px;
+    grid-gap: 15px;
+    padding-bottom: 40px;
+  }
+}
+
+.landing__header-button:first-child {
+  @media (min-width: $mobileDevice) {
+    background-color: $pureBlack;
+    color: $pureWhite;
+  }
+}
+
+.landing__header-button {
+  text-decoration: none;
+  @media (min-width: $mobileDevice) {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    color: $pureBlack;
+    border: 1px solid $pureBlack;
+  }
+}
