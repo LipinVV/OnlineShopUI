@@ -12,11 +12,11 @@
     width: 100%;
     padding: 20px;
     margin: 0;
-    @media screen and (min-width: $mobileDevice) {
+    @media screen and (min-width: $tabletDevice) {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
     }
-    @media screen and (min-width: $tabletDevice) {
+    @media screen and (min-width: $largeTabletDevice) {
         grid-template-columns: 1fr 1fr;
     }
 

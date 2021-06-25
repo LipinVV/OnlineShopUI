@@ -1,17 +1,30 @@
 @import "src/App";
 
+.bestsellers-wrapper {
+  display: grid;
+  //margin: 0 auto;
+}
+
 .bestsellers {
+  display: grid;
   margin: 0 auto;
+  grid-gap: 15px;
+  //padding: 20px;
+  width: 100%;
   @media (min-width: $mobileDevice) {
-    display: grid;
-    padding: 20px;
-    grid-gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr 1fr;
-    margin: 0 auto;
+    max-width: $mobileDevice;
   }
+
+
   @media (min-width: $tabletDevice) {
     max-width: $tabletDevice;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr 1fr;
+    padding: 0;
+  }
+  @media (min-width: $largeTabletDevice) {
+    max-width: $largeTabletDevice;
   }
 
   @media (min-width: $desktopDevice) {

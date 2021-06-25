@@ -45,7 +45,7 @@ export const Navigation = () => {
             <nav className='app__navigation'>
                 <ul className='navigation'>
                     <li className='navigation__shop'><Link className='navigation__shop-link' to='/'>Shop Bag</Link></li>
-                    <li onClick={subMenuToggleHandler} className='app__caterogies-desktop'>Categories
+                    <li onClick={subMenuToggleHandler} className='app__categories-desktop'>Categories
                         {!subMenu ?
                             <div className='app__link-desktop__subroutes'>
                                 <Link className='app__link-desktop__subroute' to='/categories'>All Categories</Link>

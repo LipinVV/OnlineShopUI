@@ -6,6 +6,10 @@
 
   @media (min-width: $mobileDevice) {
     max-width: $mobileDevice;
+  }
+
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
     display: grid;
     font-size: 20px;
   }
@@ -22,9 +26,13 @@
 .navigation {
   list-style: none;
   margin: 0;
-  padding: 25px 20px 25px 20px;
+  padding: 25px 0 25px 0;
   display: grid;
   @media (min-width: $mobileDevice) {
+    grid-template-columns: 4fr 5fr 1fr;
+  }
+  @media (min-width: $tabletDevice) {
+    padding: 25px 20px 25px 20px;
     grid-template-columns: 3fr 4fr 1fr;
   }
   @media (min-width: $desktopDevice) {
@@ -63,7 +71,7 @@
 }
 
 .navigation__search {
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     display: grid;
     grid-template-columns: 6fr 1fr;
   }
@@ -75,16 +83,22 @@
 
 .navigation__dropdown {
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   background-color: transparent;
   position: absolute;
   max-width: 60%;
   max-height: 500px;
-  margin-left: 25%;
   top: 100px;
   border: 1px $pureWhite solid;
   z-index: 1;
+
+  @media (min-width: $mobileDevice) {
+    left: 25%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  @media (min-width: $tabletDevice) {
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
 .navigation__card-preview {
@@ -121,7 +135,7 @@
 .navigation__search-input {
   border: none;
   border-bottom: 1px solid $pureBlack;
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     min-height: 36px;
   }
 }
@@ -140,7 +154,12 @@
   height: 18px;
   background-repeat: no-repeat;
   background-image: url('./img/search.svg');
-  transform: translate(-10px, -8px);
+  @media (min-width: $mobileDevice) {
+    transform: translate(10px, -15px);
+  }
+  @media (min-width: $tabletDevice) {
+    transform: translate(-10px, -8px);
+  }
 }
 
 .navigation__mobile-menu {
@@ -163,7 +182,13 @@
   height: 16px;
   background-repeat: no-repeat;
   background-image: url('./img/menu.svg');
-  transform: translate(10px, -6px);
+
+  @media (min-width: $mobileDevice) {
+    transform: translate(-10px, -14px);
+  }
+  @media (min-width: $tabletDevice) {
+    transform: translate(10px, -6px);
+  }
 }
 
 .app__link-subroutes {
@@ -189,8 +214,8 @@
 .app__links {
   display: grid;
   padding: 0;
-  @media (min-width: $mobileDevice) {
-    max-width: $mobileDevice;
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
   }
 }
 
@@ -198,13 +223,13 @@
   font-size: 16px;
   line-height: 22px;
   text-align: center;
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 320px;
     border-radius: 10px;
-    max-width: $mobileDevice;
+    max-width: $tabletDevice;
     margin: 0 auto;
     min-height: 52px;
     cursor: pointer;
@@ -229,7 +254,8 @@
   text-align: center;
 }
 
-.app__caterogies-desktop {
+.app__categories-desktop {
+
   @media (min-width: $mobileDevice) {
     display: none;
   }

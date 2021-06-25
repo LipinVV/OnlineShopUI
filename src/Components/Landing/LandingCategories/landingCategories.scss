@@ -3,7 +3,13 @@
 .landing-categories {
   display: grid;
   width: 100%;
-  @media (min-width: $mobileDevice) {
+  //@media (min-width: $mobileDevice) {
+  //  max-width: $mobileDevice;
+  //  grid-template-columns: 1fr;
+  //  grid-template-rows: 1fr 1fr;
+  //}
+
+  @media (min-width: $tabletDevice) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -18,13 +24,18 @@
   background-repeat: no-repeat;
   min-height: 300px;
   min-width: 100%;
-  aspect-ratio: 7/3;
   background-position-y: 25%;
   text-decoration: none;
   font-size: 40px;
   font-weight: 800;
   line-height: 54px;
   color: $pureWhite;
+  @media (min-width: $mobileDevice) {
+    aspect-ratio: auto;
+  }
+  @media (min-width: $tabletDevice) {
+    aspect-ratio: 7/3;
+  }
 }
 
 .landing-categories__link:first-child {

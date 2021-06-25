@@ -3,8 +3,6 @@
 .productCard__preview-wrapper {
   color: $pureBlack;
   font-size: 25px;
-  max-width: 100%;
-  margin: 0 auto;
   display: grid;
   @media (min-width: $mobileDevice) {
     margin: 0;
@@ -403,12 +401,12 @@
 .product-page {
   margin: 0 auto;
   padding: 0 20px;
-  @media (min-width: $mobileDevice) {
-    max-width: $mobileDevice;
-  }
-
   @media (min-width: $tabletDevice) {
     max-width: $tabletDevice;
+  }
+
+  @media (min-width: $largeTabletDevice) {
+    max-width: $largeTabletDevice;
   }
 
   @media (min-width: $desktopDevice) {
@@ -439,7 +437,7 @@
   padding: 10px;
   border-radius: 5px;
   pointer-events: none;
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     bottom: 90px;
     right: 0;
   }

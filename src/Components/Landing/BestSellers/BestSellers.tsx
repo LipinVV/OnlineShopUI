@@ -10,7 +10,7 @@ export const BestSellers = () => {
 
     const currentItems = state.products.filter((a: any) => a.salesCount > 250).sort((a, b) => b.salesCount - a.salesCount).slice(0, 4);
     return (
-        <div >
+        <div className='bestsellers-wrapper'>
             <h1 className='bestsellers__header'>Best Sellers: <Link className='bestsellers__header-link' to='/bestsellers'>See All</Link></h1>
             <div className='bestsellers'>
                 {currentItems.map((product => (

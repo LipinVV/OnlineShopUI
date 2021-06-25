@@ -5,8 +5,8 @@
     grid-template-rows: 1fr;
     border-bottom: 1px $pureBlack solid;
     margin: 0 auto;
-    @media (min-width: $mobileDevice)  {
-        max-width: $mobileDevice;
+    @media (min-width: $tabletDevice)  {
+        max-width: $tabletDevice;
         grid-template-columns: 1fr;
         grid-template-rows: 0.1fr 0.3fr 0.2fr 0.2fr 0.2fr 0.1fr;
         padding: 30px 20px 30px 20px;
@@ -26,7 +26,7 @@
 
 .shopping-card__img {
 
-    @media (min-width: $mobileDevice)  {
+    @media (min-width: $tabletDevice)  {
         margin: 0;
         align-items: center;
         justify-content: center;
@@ -55,7 +55,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
-    @media (min-width: $mobileDevice)  {
+    @media (min-width: $tabletDevice)  {
         padding: 0;
     }
     @media (min-width: $largeDesktopDevice)  {
@@ -100,7 +100,7 @@
 }
 
 .shopping-card__quantity {
-    @media (min-width: $mobileDevice)  {
+    @media (min-width: $tabletDevice)  {
         display: none;
     }
     @media (min-width: $largeDesktopDevice)  {
@@ -217,7 +217,7 @@
 }
 
 .shopping-cart {
-    @media (min-width: $mobileDevice)  {
+    @media (min-width: $tabletDevice)  {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));;

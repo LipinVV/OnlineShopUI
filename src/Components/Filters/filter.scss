@@ -3,13 +3,13 @@
 .filtered-results {
   display: grid;
   margin: 0 auto;
-  @media (min-width: $mobileDevice)  {
-    max-width: $mobileDevice;
+  @media (min-width: $tabletDevice)  {
+    max-width: $tabletDevice;
     padding: 20px;
   }
 
-  @media (min-width: $tabletDevice) {
-    max-width: $tabletDevice;
+  @media (min-width: $largeTabletDevice) {
+    max-width: $largeTabletDevice;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
@@ -41,7 +41,7 @@
   padding: 5px;
   border-radius: 5px;
 
-  @media (min-width: $tabletDevice) {
+  @media (min-width: $largeTabletDevice) {
     text-align: left;
     left: 0;
   }
@@ -53,11 +53,11 @@
   font-size: 20px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  @media (min-width: $mobileDevice)  {
-    max-width: $mobileDevice;
-  }
   @media (min-width: $tabletDevice)  {
     max-width: $tabletDevice;
+  }
+  @media (min-width: $largeTabletDevice)  {
+    max-width: $largeTabletDevice;
     grid-template-columns: 1fr;
   }
   @media (min-width: $desktopDevice) {
@@ -71,7 +71,7 @@
   display: flex;
   justify-content: flex-start;
   border: $greyBorder 1px solid;
-  @media (min-width: $mobileDevice)  {
+  @media (min-width: $tabletDevice)  {
     min-height: 52px;
   }
 }

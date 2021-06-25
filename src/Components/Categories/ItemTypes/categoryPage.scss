@@ -5,12 +5,12 @@
   grid-gap: 20px;
   padding: 20px;
   margin: 0 auto;
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     grid-template-columns: 1fr;
-    min-width: $mobileDevice;
+    min-width: $tabletDevice;
   }
 
-  @media (min-width: $tabletDevice) {
+  @media (min-width: $largeTabletDevice) {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -22,10 +22,10 @@
 
 .categoryPage__header {
   margin: 0;
-  @media (min-width: $mobileDevice) {
+  @media (min-width: $tabletDevice) {
     grid-column: auto;
   }
-  @media (min-width: $tabletDevice) {
+  @media (min-width: $largeTabletDevice) {
     grid-column: 1/ span 2;
   }
   @media (min-width: $desktopDevice) {
