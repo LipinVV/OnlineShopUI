@@ -3,7 +3,7 @@ import {CartProductInterface} from '../ShoppingCart/types'
 import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
 import {getTotalPriceForProduct} from "../../Services/products";
-import {keyHandler} from "../../Services/key-handler";
+import {keyHandler} from "../../Services/keyHandler";
 
 interface ShoppingCardProps {
     product: CartProductInterface

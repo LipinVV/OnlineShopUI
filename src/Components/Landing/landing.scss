@@ -51,7 +51,7 @@
 }
 
 .landing__header-img {
-  background-image: url('./img/landing-header.png');
+  background-image: url('img/landingHeader.png');
   @media (min-width: $mobileDevice) {
     background-repeat: no-repeat;
     background-size: cover;

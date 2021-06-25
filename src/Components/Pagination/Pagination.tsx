@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import {StoreContext} from '../../App';
 import {ProductCard} from "../Product/ProductCard";
-import {keyHandler} from '../../Services/key-handler'
+import {keyHandler} from '../../Services/keyHandler'
 import './pagination.scss'
 
 export const Pagination = () => {

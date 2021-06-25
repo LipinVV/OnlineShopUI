@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './categories.scss'
 import { CATEGORY } from '../Data/data'
 import {getFullProductName} from "../../Services/naming";
-import {keyHandler} from "../../Services/key-handler";
+import {keyHandler} from "../../Services/keyHandler";
 
 const itemTypes = Object.values(CATEGORY);
 

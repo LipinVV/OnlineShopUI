@@ -1,4 +1,4 @@
-import { keyHandler } from "../../Services/key-handler";
+import { keyHandler } from "../../Services/keyHandler";
 import './filter.scss'
 import { SingleCard } from "../Product/SingleCard";
 import { ProductCard } from "../Product/ProductCard";

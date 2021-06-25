@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../../App';
 import { ProductCard } from '../Product/ProductCard';
 import './wishlist.scss';
-import {keyHandler} from "../../Services/key-handler";
+import {keyHandler} from "../../Services/keyHandler";
 
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)

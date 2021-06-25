@@ -6,7 +6,7 @@ import {ProductCard} from '../../Product/ProductCard';
 import './categoryPage.scss';
 import {StoreContext} from '../../../App'
 import {getFullProductName} from "../../../Services/naming";
-import {keyHandler} from "../../../Services/key-handler";
+import {keyHandler} from "../../../Services/keyHandler";
 
 export const CategoryPage = () => {
     const {state} = useContext(StoreContext)

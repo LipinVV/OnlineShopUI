@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from "react";
 import {StoreContext} from "../../../App";
 import {ProductCard} from "../../Product/ProductCard";
-import {keyHandler} from "../../../Services/key-handler";
+import {keyHandler} from "../../../Services/keyHandler";
 import './showroom.scss'
 
 export const ShowRoom = () => {

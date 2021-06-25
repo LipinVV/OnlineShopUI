@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-
 import { productType } from './types'
 import starIconUrl from './img/ratingStar.svg'
 import { ACTION, StoreContext } from '../../App'
-import {keyHandler} from "../../Services/key-handler";
+import {keyHandler} from "../../Services/keyHandler";
 
 export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, options, discount = 0 }: productType) => {
     const history = useHistory();

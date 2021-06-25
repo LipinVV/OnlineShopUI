@@ -3,7 +3,7 @@ import { StoreContext } from '../../App';
 import { ShoppingCard } from './ShoppingCard'
 import './shoppingCart.scss';
 import {getTotalPriceForProduct} from "../../Services/products";
-import {keyHandler} from "../../Services/key-handler";
+import {keyHandler} from "../../Services/keyHandler";
 
 export const ShoppingList = () => {
     const { state } = useContext(StoreContext)

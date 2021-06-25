@@ -1,7 +1,7 @@
 import {StoreContext} from "../../../App";
 import {useContext} from "react";
 import {ProductCard} from "../../Product/ProductCard";
-import {keyHandler} from "../../../Services/key-handler";
+import {keyHandler} from "../../../Services/keyHandler";
 import './bestsellers.scss'
 import {Link} from "react-router-dom";
 
