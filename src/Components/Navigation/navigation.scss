@@ -5,7 +5,7 @@
   color: $pureBlack;
 
   @media (min-width: $mobileDevice) {
-    max-width: $mobileDevice;
+    //max-width: $mobileDevice;
   }
 
   @media (min-width: $tabletDevice) {
@@ -29,7 +29,7 @@
   padding: 25px 0 25px 0;
   display: grid;
   @media (min-width: $mobileDevice) {
-    grid-template-columns: 4fr 5fr 1fr;
+    grid-template-columns: 2fr 1fr 0.5fr;
   }
   @media (min-width: $tabletDevice) {
     padding: 25px 20px 25px 20px;
@@ -135,6 +135,10 @@
 .navigation__search-input {
   border: none;
   border-bottom: 1px solid $pureBlack;
+  @media (min-width: $mobileDevice) {
+    min-height: 36px;
+    min-width: 150px;
+  }
   @media (min-width: $tabletDevice) {
     min-height: 36px;
   }
@@ -145,6 +149,12 @@
   border: none;
   background-color: $pureWhite;
   padding: 0;
+  @media (min-width: $mobileDevice) {
+    display: none;
+  }
+  @media (min-width: $tabletDevice) {
+    display: inherit;
+  }
 }
 
 .navigation__search-btn:after {
@@ -158,7 +168,7 @@
     transform: translate(10px, -15px);
   }
   @media (min-width: $tabletDevice) {
-    transform: translate(-10px, -8px);
+    transform: translate(10px, 10px);
   }
 }
 
@@ -183,9 +193,6 @@
   background-repeat: no-repeat;
   background-image: url('./img/menu.svg');
 
-  @media (min-width: $mobileDevice) {
-    transform: translate(-10px, -14px);
-  }
   @media (min-width: $tabletDevice) {
     transform: translate(10px, -6px);
   }

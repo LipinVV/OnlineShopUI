@@ -28,15 +28,12 @@
 
 .landing__wrapper {
   width: 100%;
+  padding-bottom: 30px;
   @media (min-width: $desktopDevice) {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
     min-height: 700px;
-    //max-width: $desktopDevice;
-  }
-  @media (min-width: $largeDesktopDevice) {
-    //max-width: $largeDesktopDevice;
   }
 }
 
