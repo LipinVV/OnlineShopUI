@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, {useContext, useEffect} from 'react'
 import {CartProductInterface} from '../ShoppingCart/types'
 import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
@@ -19,6 +19,10 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
 
     const totalPrice: number = getTotalPriceForProduct(product)
     const isExistInCart = state.cart.some(element => element.id === product.id);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='shopping-card' key={keyHandler(product.id)} >
             <div className='shopping-card__img'>Product<img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>

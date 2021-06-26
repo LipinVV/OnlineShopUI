@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 import { productType } from './types';
 import './product.scss';
 import starIconUrl from './img/ratingStar.svg';
@@ -14,6 +14,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
     const styles = {
         'backgroundImage': `url(${previewUrl})`
     }
+
     return (
         <div className='productCard__preview-wrapper'>
             <div className='productCard__PreviewUrl' style={styles}>

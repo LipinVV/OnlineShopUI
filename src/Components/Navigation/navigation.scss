@@ -4,10 +4,6 @@
   margin: 0 auto;
   color: $pureBlack;
 
-  @media (min-width: $mobileDevice) {
-    //max-width: $mobileDevice;
-  }
-
   @media (min-width: $tabletDevice) {
     max-width: $tabletDevice;
     display: grid;

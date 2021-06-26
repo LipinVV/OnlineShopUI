@@ -1,5 +1,5 @@
 import { filterTypes } from "./types";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 const availableOptions: filterTypes = {
     colors: ['black', 'white', 'grey'],
@@ -13,7 +13,6 @@ const availableOptions: filterTypes = {
 };
 
 export const Filter = ({ options, optionsChanged }: any) => {
-
     const [rating, setRating] = useState(false);
     const handleChangeCheckBox = () => {
         setRating((prevState: any) => !prevState)

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {BrowserRouter as Router, Switch, Route, Link, useParams} from 'react-router-dom';
 import {getProductsByCategory} from '../../Data/data';
@@ -11,6 +11,9 @@ import {keyHandler} from "../../../Services/keyHandler";
 export const CategoryPage = () => {
     const {state} = useContext(StoreContext)
     const parameters = useParams<{ id: string, category: string }>();
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='categoryPage'>
             <h1 className='categoryPage__header'>

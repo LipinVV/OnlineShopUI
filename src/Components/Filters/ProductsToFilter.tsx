@@ -1,10 +1,8 @@
 import { keyHandler } from "../../Services/keyHandler";
 import './filter.scss'
-import { SingleCard } from "../Product/SingleCard";
 import { ProductCard } from "../Product/ProductCard";
 
 export const ProductsToFilter = ({ products = [] }: any) => {
-    // console.log('products', products)
     return (
         <div className='products-to-filter-wrapper'>
             <h3>ProductList</h3>

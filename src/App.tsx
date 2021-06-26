@@ -1,4 +1,4 @@
-import React, { useReducer, Dispatch } from 'react';
+import React, { useEffect, useReducer, Dispatch } from 'react';
 import './App.scss';
 import { Categories } from './Components/Categories/Categories'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

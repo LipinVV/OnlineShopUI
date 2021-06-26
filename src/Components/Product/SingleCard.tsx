@@ -23,6 +23,10 @@ export const SingleCard = ({ id, title, price, previewUrl, rating, salesCount, o
     const productHandler = state.cart.find(item => item.id === id) // экземляр массива
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         if(productHandler) {
             setCounter(productHandler.quantity)
         }

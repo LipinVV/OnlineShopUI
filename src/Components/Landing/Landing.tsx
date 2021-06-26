@@ -5,10 +5,12 @@ import {LandingCategories} from "./LandingCategories/LandingCategories";
 import {Categories} from "../Categories/Categories";
 import {BestSellers} from "./BestSellers/BestSellers";
 import {ShowRoom} from "./ShowRoom/ShowRoom";
+import {useEffect} from "react";
 
 export const Landing = () => {
-
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='landing'>
             <div className='landing__wrapper'>

@@ -1,7 +1,7 @@
 import {Filter} from "./Filter";
 import {ProductsToFilter} from "./ProductsToFilter";
 import {StoreContext} from '../../App';
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {filterTypes} from "./types";
 import {getTotalPriceForProduct} from "../../Services/products";
 import '../Pagination/pagination.scss'

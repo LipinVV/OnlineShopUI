@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 import { StoreContext } from '../../App';
 import { ProductCard } from '../Product/ProductCard';
 import './wishlist.scss';
@@ -7,6 +7,9 @@ import {keyHandler} from "../../Services/keyHandler";
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)
     const favouriteProducts = state.products.filter(product => product.isFavourite)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='wishlist'>
             <div className='wishlist__wrapper'>

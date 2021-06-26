@@ -3,8 +3,6 @@ import './landingCategories.scss';
 
 export const LandingCategories = () => {
 
-
-
     return (
         <div className='landing-categories'>
             <Link className='landing-categories__link' to='/chairs'>Office Chair</Link>
