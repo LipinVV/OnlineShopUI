@@ -2,11 +2,12 @@ import {useContext} from "react";
 import {StoreContext} from "../../../App";
 import {ProductCard} from "../../Product/ProductCard";
 import {keyHandler} from "../../../Services/keyHandler";
+import {productType} from "../../Product/types";
 
 export const BestSellersBase = () => {
     const {state} = useContext(StoreContext);
     const SALES_COUNTER = 280;
-    const currentItems = state.products.filter((a: any) => a.salesCount > SALES_COUNTER).sort((a, b) => b.salesCount - a.salesCount);
+    const currentItems = state.products.filter((product: productType) => product.salesCount > SALES_COUNTER).sort((a, b) => b.salesCount - a.salesCount);
     return (
         <div className='bestsellers-base'>
             <h1 className='bestsellers-base-header'>Our products with top-selling rate: more than {SALES_COUNTER} of each one sold out!</h1>

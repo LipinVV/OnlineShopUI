@@ -20,7 +20,7 @@ export const Navigation = () => {
 
     const [search, setSearch] = useState('');
 
-    const handleSearcher = (evt: any) => {
+    const handleSearcher = (evt: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = evt.target;
         setSearch(value);
     }
@@ -34,8 +34,8 @@ export const Navigation = () => {
         }
     })
 
-    const handleKeyPress: any = (evt: any) => {
-        if (evt.keyCode === 27) {
+    const handleKeyPress: any = (evt: React.KeyboardEvent<any>) => {
+        if (evt.code === 'Enter') {
             setSearch('')
         }
     }

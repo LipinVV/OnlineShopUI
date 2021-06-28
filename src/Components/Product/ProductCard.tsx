@@ -4,7 +4,7 @@ import './product.scss';
 import starIconUrl from './img/ratingStar.svg';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import { StoreContext } from '../../App'
+import {ACTION, StoreContext} from '../../App'
 import {keyHandler} from "../../Services/keyHandler";
 
 
@@ -21,7 +21,7 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
                 <button
                     className={isFavourite ? 'productCard__button productCard__button_liked' : 'productCard__button'}
                     type='button'
-                    onClick={() => dispatch({ action: 'ADD_TO_WISHLIST', productId: id })}
+                    onClick={() => dispatch({ action: ACTION.ADD_TO_WISHLIST, data: {productId: id} })}
                 >
                     {isFavourite}
                 </button>

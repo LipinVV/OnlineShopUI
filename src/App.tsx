@@ -1,11 +1,11 @@
-import React, { useEffect, useReducer, Dispatch } from 'react';
+import React, { useReducer, Dispatch } from 'react';
 import './App.scss';
 import { Categories } from './Components/Categories/Categories'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { ProductPage } from './Components/Product/ProductPage';
 import { CategoryPage } from './Components/Categories/ItemTypes/CategoryPage'
-import { Products } from './Components/Data/data'
+import { products } from './Components/Data/data'
 import { Wishlist } from './Components/WishList/WishList';
 import { productType } from './Components/Product/types';
 import { ShoppingList } from './Components/ShoppingCart/ShoppingList'
@@ -16,36 +16,38 @@ import {FilteredList} from "./Components/Filters/FilteredList";
 import {Landing} from "./Components/Landing/Landing";
 import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
 
-type InitialStateType = {
+type StateType = {
   products: productType[],
   cart: CartProductInterface[]
 }
 
-export const INITIAL_STATE: InitialStateType = {
-  products: Products,
+export const INITIAL_STATE: StateType = {
+  products: products,
   cart: []
 }
 
-export const ACTION = {
-  ADD_TO_WISHLIST: 'ADD_TO_WISHLIST',
-  ADD_TO_BUY: 'ADD_TO_BUY',
-  REMOVE: 'REMOVE',
-  DELETE_ALL_PRODUCTS: 'DELETE_ALL_PRODUCTS',
-  INCREMENT_QUANTITY: 'INCREMENT_QUANTITY',
-  DECREMENT_QUANTITY: 'DECREMENT_QUANTITY',
-  CHOOSE_PRODUCT_COLOR: 'CHOOSE_PRODUCT_COLOR',
-  DELETE_ALL_PRODUCTS_IN_WISHLIST: 'DELETE_ALL_PRODUCTS_IN_WISHLIST'
+export enum ACTION {
+  ADD_TO_WISHLIST = 'ADD_TO_WISHLIST',
+  ADD_TO_BUY = 'ADD_TO_BUY',
+  REMOVE = 'REMOVE',
+  DELETE_ALL_PRODUCTS = 'DELETE_ALL_PRODUCTS',
+  INCREMENT_QUANTITY = 'INCREMENT_QUANTITY',
+  DECREMENT_QUANTITY = 'DECREMENT_QUANTITY',
+  CHOOSE_PRODUCT_COLOR = 'CHOOSE_PRODUCT_COLOR',
+  DELETE_ALL_PRODUCTS_IN_WISHLIST = 'DELETE_ALL_PRODUCTS_IN_WISHLIST'
 }
-//@ts-ignore - ругается ТС
-export const StoreContext = React.createContext<{ state: InitialStateType, dispatch: Dispatch<any> }>();
 
-const reducer = (currentState: any, payLoad: any): InitialStateType  => {
+// const dispatch1: ACTION = ACTION.ADD_TO_WISHLIST  <== difference, make a concrete CONST through enum
+type ActionType = {action: ACTION, data: any}
+export const StoreContext = React.createContext<{ state: StateType, dispatch: Dispatch<ActionType> }>({state: INITIAL_STATE, dispatch: () => null});
+
+const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
   switch (payLoad.action) {
     case ACTION.ADD_TO_WISHLIST:
       return {
         ...currentState,
-        products: currentState.products.map((product: any) => {
-          if (product.id === payLoad.productId) {
+        products: currentState.products.map((product: productType) => {
+          if (product.id === payLoad.data.productId) {
             return {
               ...product,
               isFavourite: !product.isFavourite
@@ -56,7 +58,7 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
       };
 
     case ACTION.ADD_TO_BUY:
-      const newCartProducts = [...currentState.cart, payLoad.product]
+      const newCartProducts = [...currentState.cart, payLoad.data.product]
       return {
         ...currentState,
         cart: newCartProducts
@@ -65,13 +67,13 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
       case ACTION.REMOVE:
       return {
         ...currentState,
-        cart: currentState.cart.filter((product: any) => product.id !== payLoad.productId),
+        cart: currentState.cart.filter((product: productType) => product.id !== payLoad.data.productId),
       }
     case ACTION.INCREMENT_QUANTITY:
       return {
         ...currentState,
-        cart: currentState.cart.map((product: any) => {
-            if (product.id === payLoad.productId) {
+        cart: currentState.cart.map((product: CartProductInterface) => {
+            if (product.id === payLoad.data.productId) {
               return {
                 ...product,
                 quantity: product?.quantity ? product.quantity + 1 : 1
@@ -83,8 +85,8 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
     case ACTION.DECREMENT_QUANTITY:
       return {
         ...currentState,
-        cart: currentState.cart.map((product: any) => {
-          if (product.id === payLoad.productId) {
+        cart: currentState.cart.map((product: CartProductInterface) => {
+          if (product.id === payLoad.data.productId) {
             return {
               ...product,
               quantity: product?.quantity <= 1 ? product.quantity = 1 : product.quantity - 1
@@ -96,10 +98,10 @@ const reducer = (currentState: any, payLoad: any): InitialStateType  => {
     case ACTION.CHOOSE_PRODUCT_COLOR:
       return {
         ...currentState,
-        cart: currentState.cart.map((product: any) => {
+        cart: currentState.cart.map((product: CartProductInterface) => {
             return {
               ...product,
-              color: payLoad.productColor
+              color: payLoad.data.productColor
             }
         })
       }

@@ -1,8 +1,9 @@
 import React, {useContext, useEffect} from 'react';
-import { StoreContext } from '../../App';
+import {ACTION, StoreContext} from '../../App';
 import { ProductCard } from '../Product/ProductCard';
 import './wishlist.scss';
 import {keyHandler} from "../../Services/keyHandler";
+import {productType} from "../Product/types";
 
 export const Wishlist = () => {
     const { state, dispatch } = useContext(StoreContext)
@@ -15,7 +16,7 @@ export const Wishlist = () => {
             <div className='wishlist__wrapper'>
                 {favouriteProducts.length === 0 ? <h1 className='wishlist__header'>Please add something!</h1> : <h1 className='wishlist__header'>Your WishList:</h1>}
                 <div className='wishlist__card-wrapper'>
-                    {favouriteProducts.map((product: any) => (
+                    {favouriteProducts.map((product: productType) => (
                         <ProductCard
                             key={keyHandler(product.id)}
                             id={product.id}
@@ -35,7 +36,7 @@ export const Wishlist = () => {
             {favouriteProducts.length > 0 ? <button
                 className='wishlist__remove-button'
                 type='button'
-                onClick={() => dispatch({ action: "DELETE_ALL_PRODUCTS_IN_WISHLIST" })}>
+                onClick={() => dispatch({ action: ACTION.DELETE_ALL_PRODUCTS_IN_WISHLIST, data: null})}>
                 Delete all products
                 </button> : null
             }

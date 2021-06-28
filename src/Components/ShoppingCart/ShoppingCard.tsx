@@ -11,10 +11,10 @@ interface ShoppingCardProps {
 export const ShoppingCard = ({ product }: ShoppingCardProps) => {
     const {state, dispatch } = useContext(StoreContext)
     const countHandlerIncrementer = () => {
-        dispatch({action: ACTION.INCREMENT_QUANTITY, productId: product.id})
+        dispatch({action: ACTION.INCREMENT_QUANTITY, data: {productId: product.id}})
     }
     const countHandlerDecrementer = () => {
-        dispatch({action: ACTION.DECREMENT_QUANTITY, productId: product.id})
+        dispatch({action: ACTION.DECREMENT_QUANTITY, data: {productId: product.id}})
     }
 
     const totalPrice: number = getTotalPriceForProduct(product)
@@ -47,7 +47,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                                     if(isExistInCart) {
                                         dispatch({
                                             action: ACTION.CHOOSE_PRODUCT_COLOR,
-                                            productColor: value
+                                            data: {productColor: value}
                                         })}
                                 }
                                 }
@@ -72,7 +72,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
             <div className='shopping-card__price-title'>Price
             {Boolean(totalPrice) && <div className='shopping-card__price'>${totalPrice * product.quantity}</div>}
             </div>
-                <button className='shopping-card__remove-item' type='button' onClick={() => dispatch({ action: ACTION.REMOVE, productId: product.id })}></button>
+                <button className='shopping-card__remove-item' type='button' onClick={() => dispatch({ action: ACTION.REMOVE, data: {productId: product.id}})}></button>
         </div>
     )
 }

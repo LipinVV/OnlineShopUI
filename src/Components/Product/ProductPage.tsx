@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import { Products } from '../Data/data';
+import { products } from '../Data/data';
 import { SingleCard } from './SingleCard';
 import { productType } from './types';
 
 export const ProductPage = () => {
 
     const parameters = useParams<{ id: string, category: string }>();
-    const product: productType | undefined = Products.find(product => product.id.toString() === parameters.id)
+    const product: productType | undefined = products.find(product => product.id.toString() === parameters.id)
 
     return (
         <div className='product-page'>

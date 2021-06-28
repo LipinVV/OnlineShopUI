@@ -3,9 +3,8 @@ import { productType } from "../Product/types"
 export const getProductsByCategory = (category: string, products: productType[]): productType[] => {
     return products.filter(product => product.category === category);
 }
-
 export const getCategory = (category: string): productType[] => {
-    return Products.filter(product => product.category === category);
+    return products.filter(product => product.category === category);
 }
 
 // enumerable перечисляемые свойства = {}
@@ -17,7 +16,7 @@ export enum CATEGORY {
     CARPET = 'carpets',
     CUPBOARD = 'cupboards'
 }
-export const Products: productType[] = [
+export const products: productType[] = [
     {
         id: 3875945,
         category: CATEGORY.SOFA,

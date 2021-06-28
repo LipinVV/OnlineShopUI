@@ -5,8 +5,9 @@ import {getProductsByCategory} from '../../Data/data';
 import {ProductCard} from '../../Product/ProductCard';
 import './categoryPage.scss';
 import {StoreContext} from '../../../App'
-import {getFullProductName} from "../../../Services/naming";
+// import {getFullProductName} from "../../../Services/naming";
 import {keyHandler} from "../../../Services/keyHandler";
+import {getFullCategoryName} from "../../../Services/naming";
 
 export const CategoryPage = () => {
     const {state} = useContext(StoreContext)
@@ -18,7 +19,7 @@ export const CategoryPage = () => {
         <div className='categoryPage'>
             <h1 className='categoryPage__header'>
                 <div className='categoryPage__info'>
-                    <div className='categoryPage__name'>{getFullProductName(parameters)}</div>
+                    <div className='categoryPage__name'>{getFullCategoryName(parameters)}</div>
                     <div className='categoryPage__seeProducts'>See All</div>
                 </div>
             </h1>

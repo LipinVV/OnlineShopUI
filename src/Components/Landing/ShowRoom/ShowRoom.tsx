@@ -3,6 +3,7 @@ import {StoreContext} from "../../../App";
 import {ProductCard} from "../../Product/ProductCard";
 import {keyHandler} from "../../../Services/keyHandler";
 import './showroom.scss'
+import {productType} from "../../Product/types";
 
 export const ShowRoom = () => {
     const {state} = useContext(StoreContext);
@@ -18,12 +19,12 @@ export const ShowRoom = () => {
             return () => window.clearInterval(id);
         }
     }, [running]);
-    const chairs:any = currentItems.filter(product => product.category === 'chairs');
-    const desks: any = currentItems.filter(product => product.category === 'desks');
-    const sofas: any = currentItems.filter(product => product.category === 'sofas');
-    const beds: any = currentItems.filter(product => product.category === 'beds');
-    const carpets: any = currentItems.filter(product => product.category === 'carpets');
-    const cupboards: any = currentItems.filter(product => product.category === 'cupboards');
+    const chairs:productType[] = currentItems.filter(product => product.category === 'chairs');
+    const desks: productType[] = currentItems.filter(product => product.category === 'desks');
+    const sofas: productType[]  = currentItems.filter(product => product.category === 'sofas');
+    const beds: productType[]  = currentItems.filter(product => product.category === 'beds');
+    const carpets: productType[]  = currentItems.filter(product => product.category === 'carpets');
+    const cupboards: productType[]  = currentItems.filter(product => product.category === 'cupboards');
     const array = [cupboards, chairs, desks, beds, carpets, sofas];
 
     const slider = (seconds:any, item:any) => {
@@ -56,7 +57,7 @@ export const ShowRoom = () => {
         <div>
             <h1 className='showroom__header'>Our ShowRoom:</h1>
         <div className='showroom'>
-            {timer === 30 ? sofas.map((product:any )=> (
+            {timer === 30 ? sofas.map((product:productType)=> (
                     <ProductCard
                         key={keyHandler(product.id)}
                         id={product.id}
@@ -70,7 +71,7 @@ export const ShowRoom = () => {
                         isFavourite={product.isFavourite}
                         toBuy={product.toBuy}
                     />)) :
-                current.map((product:any )=> (
+                current.map((product:productType)=> (
                 <ProductCard
                     key={keyHandler(product.id)}
                     id={product.id}

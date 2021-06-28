@@ -1,13 +1,14 @@
 import { keyHandler } from "../../Services/keyHandler";
 import './filter.scss'
 import { ProductCard } from "../Product/ProductCard";
+import {productType} from "../Product/types";
 
 export const ProductsToFilter = ({ products = [] }: any) => {
     return (
         <div className='products-to-filter-wrapper'>
             <h3>ProductList</h3>
             <div className='products-to-filter'>
-                {products.map((product: any) => (
+                {products.map((product: productType) => (
                     <ProductCard
                         key={keyHandler(product.id)}
                         id={product.id}
