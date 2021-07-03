@@ -1,9 +1,10 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import {CartProductInterface} from '../ShoppingCart/types'
 import {ACTION, StoreContext} from '../../App';
 import './shoppingCart.scss';
 import {getTotalPriceForProduct} from "../../Services/products";
 import {keyHandler} from "../../Services/keyHandler";
+import {getFullName} from "../../Services/naming";
 
 interface ShoppingCardProps {
     product: CartProductInterface
@@ -20,12 +21,9 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
     const totalPrice: number = getTotalPriceForProduct(product)
     const isExistInCart = state.cart.some(element => element.id === product.id);
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
     return (
         <div className='shopping-card' key={keyHandler(product.id)} >
-            <div className='shopping-card__img'>Product<img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
+            <div className='shopping-card__img'><img className='shopping-card__img-preview' src={product.previewUrl} alt='product'></img></div>
             <div className='shopping-card__title'>{product.title}</div>
             <div className='shopping-card__counter'>
                 <div className='shopping-card__quantity'>Quantity</div>
@@ -35,7 +33,7 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                     <button className='shopping-card__btn-plus' type='button' onClick={countHandlerIncrementer}></button>
                 </div>
             </div>
-            {Boolean(product.options?.length) && <div>{product.options?.map(option => {
+            {Boolean(product.options?.length) && <div className='shopping-card__options'>{product.options?.map(option => {
                 if (option.type === 'select') {
                     return (
                         <div className='shopping-card__colors' key={keyHandler(product.id)}>
@@ -60,8 +58,8 @@ export const ShoppingCard = ({ product }: ShoppingCardProps) => {
                 }
                 if (option.type === 'boolean') {
                     return (
-                        <div key={keyHandler(product.id)} >
-                            <span>{option.title}</span>
+                        <div className='shopping-card__warranty' key={keyHandler(product.id)} >
+                            <span>{getFullName(option.title)}</span>
                             {typeof option.value === 'boolean' &&
                                 <input checked={option.value} type='checkbox'/>
                             }

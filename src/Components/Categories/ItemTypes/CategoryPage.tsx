@@ -6,7 +6,7 @@ import {ProductCard} from '../../Product/ProductCard';
 import './categoryPage.scss';
 import {StoreContext} from '../../../App'
 import {keyHandler} from "../../../Services/keyHandler";
-import {getFullCategoryName} from "../../../Services/naming";
+import {getFullName} from "../../../Services/naming";
 
 export const CategoryPage = () => {
     const {state} = useContext(StoreContext)
@@ -18,7 +18,7 @@ export const CategoryPage = () => {
         <div className='categoryPage'>
             <h1 className='categoryPage__header'>
                 <div className='categoryPage__info'>
-                    <div className='categoryPage__name'>{getFullCategoryName(parameters.category)}</div>
+                    <div className='categoryPage__name'>{getFullName(parameters.category)}</div>
                     <div className='categoryPage__seeProducts'>See All</div>
                 </div>
             </h1>

@@ -150,6 +150,8 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  display: grid;
+  grid-gap: 10px;
 }
 
 .single-card__photos {
@@ -374,6 +376,11 @@
     grid-template-rows: 1fr;
     grid-template-columns: 0.8fr 0.9fr 1.2fr;
   }
+}
+
+.single-card__warranty {
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .single-card__btn-close {

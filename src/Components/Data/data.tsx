@@ -104,7 +104,7 @@ export const products: productType[] = [
         salesCount: 105,
         isFavourite: false,
         toBuy: false,
-        options: [{type: 'select', title: 'color', value: false}]
+        options: [{type: 'select', title: 'color', value: ['white']}]
     },
     {
         id: 567414,

@@ -14,7 +14,6 @@ const availableOptions: filterTypes = {
 
 export const Filter = ({ options, optionsChanged }: any) => {
     //   Object { colors: [], categories: [], rating: false, minPrice: 0, maxPrice: 0, sortByAlphabet: false, sortFromTheTop: true, sortFromTheBottom: false } ~~~~~ function optionsChanged(newFilter)
-    console.log(options, optionsChanged)
     const [rating, setRating] = useState(false);
     const handleChangeCheckBox = () => {
         setRating((prevState: boolean) => !prevState)

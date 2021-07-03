@@ -5,6 +5,7 @@ import {productType} from './types'
 import starIconUrl from './img/ratingStar.svg'
 import {ACTION, StoreContext} from '../../App'
 import {keyHandler} from "../../Services/keyHandler";
+import {getFullName} from "../../Services/naming";
 
 export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, options, discount = 0}: productType) => {
     const history = useHistory();
@@ -37,13 +38,19 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
         setPopUp(popUp + 1)
     }
 
+    const [warranty, setWarranty] = useState(true);
+    const warrantyHandler = () => {
+        setWarranty(prevState => !prevState)
+    }
+
     return (
         <div className='single-card'>
             <div className='single-card__header'>Product Detail</div>
             <div className='single-card__details'>
                 <ul className='single-card__photos'>
-                    <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}
-                                                          alt='product'></img></li>
+                    <li className='single-card__img'>
+                        <img className='single-card__img-preview' src={previewUrl} alt='product'></img>
+                    </li>
                     <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}
                                                           alt='product'></img></li>
                     <li className='single-card__img'><img className='single-card__img-preview' src={previewUrl}
@@ -70,8 +77,7 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
                         if (option.type === 'select') {
                             return (
                                 <div className='single-card__colors' key={keyHandler(id)}>
-                                    <label
-                                        className='single-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
+                                    <label className='single-card__label'>{option.title[0].toUpperCase() + option.title.slice(1)}</label>
                                     {Array.isArray(option.value) &&
                                     <select
                                         onChange={(evt) => {
@@ -86,7 +92,7 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
                                         }
                                         className='single-card__select'>{option.value.map(value =>
                                         <option value={value} className='single-card__option'
-                                                key={keyHandler(id)}>{value[0].toUpperCase() + value.slice(1)}</option>
+                                                key={keyHandler(id)}>{getFullName(value)}</option>
                                     )}</select>
                                     }
                                 </div>
@@ -94,12 +100,11 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
                         }
                         if (option.type === 'boolean') {
                             return (
-                                <div key={keyHandler(rating)}>
-                                    <span>{option.title}</span>
+                                <label key={keyHandler(rating)} className='single-card__warranty'>{getFullName(option.title)}
                                     {typeof option.value === 'boolean' &&
-                                    <input key={keyHandler(rating)} checked={option.value} type='checkbox'/>
+                                    <input key={keyHandler(rating)} checked={warranty} onChange={warrantyHandler} type='checkbox'/>
                                     }
-                                </div>
+                                </label>
                             )
                         }
                     })}
@@ -133,9 +138,9 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
                                     clickHandler()
                                     dispatch({
                                         action: ACTION.ADD_TO_BUY,
-                                    data: {
-                                        product: {
-                                            id,
+                                        data: {
+                                            product: {
+                                                id,
                                                 title,
                                                 price,
                                                 previewUrl,
@@ -144,15 +149,16 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
                                                 options,
                                                 discount,
                                                 quantity: counter
-                                        } // данные для модификации store
-                                    }
+                                            } // данные для модификации store
+                                        }
                                     })
                                 }
                             }
                             }
                         >
                             Add to Cart
-                            <div className={popUp <= 0 ? 'single-card__pop-up' : 'single-card__pop-up-increment'}>Added
+                            <div
+                                className={popUp <= 0 ? 'single-card__pop-up' : 'single-card__pop-up-increment'}>Added
                                 to cart: {popUp}</div>
                         </button>
                         <button
