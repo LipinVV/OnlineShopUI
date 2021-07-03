@@ -1,10 +1,11 @@
 import {Filter} from "./Filter";
 import {ProductsToFilter} from "./ProductsToFilter";
 import {StoreContext} from '../../App';
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {filterTypes} from "./types";
 import {getTotalPriceForProduct} from "../../Services/products";
 import '../Pagination/pagination.scss'
+import {productType} from "../Product/types";
 
 export const FilteredList = () => {
     const {state} = useContext(StoreContext)
@@ -21,28 +22,28 @@ export const FilteredList = () => {
         sortFromTheBottom: false
     })
 
-    const getFilteredProducts = (productsFromGlobalState: any, filter: filterTypes) => {
+    const getFilteredProducts = (productsFromGlobalState: productType[], filter: filterTypes) => {
         let filteredProducts = productsFromGlobalState;
         if (Boolean(filter.categories.length)) {
-            filteredProducts = filteredProducts.filter((product: any) => {
+            filteredProducts = filteredProducts.filter((product: productType) => {
                 return filter.categories.includes(product.category)
             })
         }
 
         if (Boolean(filter.rating)) {
-            filteredProducts = filteredProducts.filter((product: any) => {
+            filteredProducts = filteredProducts.filter((product: productType) => {
                 return product.rating > 3
             })
         }
 
         if (Boolean(filter.maxPrice)) {
-            filteredProducts = filteredProducts.filter((product: any) => {
+            filteredProducts = filteredProducts.filter((product: productType) => {
                 return getTotalPriceForProduct(product) <= filter.maxPrice;
             })
         }
 
         if (Boolean(filter.sortByAlphabet)) {
-            filteredProducts = filteredProducts.sort((productA: any, productB: any) => {
+            filteredProducts = filteredProducts.sort((productA: productType, productB: productType) => {
                 filter.sortFromTheTop = false;
                 filter.sortFromTheBottom = false;
                 return productA.title.localeCompare(productB.title)
@@ -50,25 +51,25 @@ export const FilteredList = () => {
         }
 
         if (Boolean(filter.sortFromTheTop)) {
-            filteredProducts = filteredProducts.sort((productA: any, productB: any) => {
+            filteredProducts = filteredProducts.sort((productA: productType, productB: productType) => {
                 return getTotalPriceForProduct(productB) - getTotalPriceForProduct(productA)
             })
         }
 
         if (Boolean(filter.sortFromTheBottom)) {
-            filteredProducts = filteredProducts.sort((productA: any, productB: any) => {
+            filteredProducts = filteredProducts.sort((productA: productType, productB: productType) => {
                 return getTotalPriceForProduct(productA) - getTotalPriceForProduct(productB)
             })
         }
 
         if (Boolean(filter.minPrice)) {
-            filteredProducts = filteredProducts.filter((product: any) => {
+            filteredProducts = filteredProducts.filter((product: productType) => {
                 return getTotalPriceForProduct(product) >= filter.minPrice;
             })
         }
 
         if (Boolean(filter.colors.length)) {
-            filteredProducts = filteredProducts.filter((product: any, index: any) => {
+            filteredProducts = filteredProducts.filter((product: any) => {
                 const productColors = product?.options?.find((option: any) => option.title === 'color')
                 if (productColors?.value?.length) {
                     return productColors.value.some((color: any) => filter.colors.includes(color))

@@ -1,5 +1,5 @@
 import { filterTypes } from "./types";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const availableOptions: filterTypes = {
     colors: ['black', 'white', 'grey'],
@@ -13,9 +13,11 @@ const availableOptions: filterTypes = {
 };
 
 export const Filter = ({ options, optionsChanged }: any) => {
+    //   Object { colors: [], categories: [], rating: false, minPrice: 0, maxPrice: 0, sortByAlphabet: false, sortFromTheTop: true, sortFromTheBottom: false } ~~~~~ function optionsChanged(newFilter)
+    console.log(options, optionsChanged)
     const [rating, setRating] = useState(false);
     const handleChangeCheckBox = () => {
-        setRating((prevState: any) => !prevState)
+        setRating((prevState: boolean) => !prevState)
         optionsChanged({
             ...options,
             rating: !rating
@@ -24,7 +26,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
 
     const [maxValue, setMaxValue] = useState(0);
     const [minValue, setMinValue] = useState(0);
-    const handleChangeMaxValue = ((evt: any) => {
+    const handleChangeMaxValue = ((evt: React.ChangeEvent<any>) => {
         const { value } = evt.target
         setMaxValue(value)
         let newMaxPrice = +value;
@@ -36,7 +38,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
         }
     })
 
-    const handleChangeMinValue = ((evt: any) => {
+    const handleChangeMinValue = ((evt: React.ChangeEvent<any>) => {
         const { value } = evt.target
         setMinValue(value)
         let newMinPrice = +value;
@@ -50,7 +52,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const windowSize = window.outerWidth;
     const renderFilterHandler = ((size: number) => {
         return size >= 1024;
-    }) // css
+    })
     const [showFilter, setShowFilter] = useState(renderFilterHandler(windowSize));
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
@@ -59,9 +61,9 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const [sortByTheHighest, setSortByTheHighest] = useState(true);
     const sortingByTheHighestHandler = () => {
         if(sortByTheLowest) {
-            setSortByTheLowest((prevState: any) => !prevState)
+            setSortByTheLowest((prevState: boolean) => !prevState)
         }
-        setSortByTheHighest((prevState: any) => !prevState)
+        setSortByTheHighest((prevState: boolean) => !prevState)
         optionsChanged({
             ...options,
             sortFromTheTop: !sortByTheHighest,
@@ -72,9 +74,9 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const [sortByTheLowest, setSortByTheLowest] = useState(false);
     const sortingByTheLowestHandler = () => {
         if(sortByTheHighest) {
-            setSortByTheHighest((prevState: any) => !prevState)
+            setSortByTheHighest((prevState: boolean) => !prevState)
         }
-        setSortByTheLowest((prevState: any) => !prevState)
+        setSortByTheLowest((prevState: boolean) => !prevState)
         optionsChanged({
             ...options,
             sortFromTheBottom: !sortByTheLowest,
@@ -93,7 +95,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                 <div className='filtered-results-controls'>
                     <div className='filtered-results-categories'>
                         <h4>Category</h4>
-                        {availableOptions.categories.map((category: any) => {
+                        {availableOptions.categories.map((category: string) => {
                             return (
                                 <div key={category}
                                      className='filtered-results-category-wrapper'>
@@ -107,7 +109,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                                     newCategories.push(category)
                                                 } else {
                                                     newCategories = newCategories.filter(
-                                                        (selectedCategory: any) => category !== selectedCategory)
+                                                        (selectedCategory: string) => category !== selectedCategory)
                                                 }
                                                 optionsChanged({
                                                     ...options,
@@ -132,7 +134,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                         </label>
                     </div>
                     <div><h4>Color</h4>
-                        {availableOptions.colors.map((color: any) => {
+                        {availableOptions.colors.map((color: string) => {
                             return (
                                 <div key={color}>
                                     <label className='filtered-results-coloring'>
@@ -144,7 +146,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                                     newColors.push(color)
                                                 } else {
                                                     newColors = newColors.filter(
-                                                        (selectedColor: any) => color !== selectedColor)
+                                                        (selectedColor: string) => color !== selectedColor)
                                                 }
                                                 optionsChanged({
                                                     ...options,

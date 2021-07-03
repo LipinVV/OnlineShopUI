@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './categories.scss'
@@ -7,7 +7,6 @@ import {getFullCategoryName} from "../../Services/naming";
 import {keyHandler} from "../../Services/keyHandler";
 
 const itemTypes = Object.values(CATEGORY);
-console.log('itemTypes', itemTypes)
 export const Categories = () => {
     return (
         <nav className='categories__navigation'>
