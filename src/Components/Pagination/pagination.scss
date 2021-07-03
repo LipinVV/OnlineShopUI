@@ -37,14 +37,14 @@
 }
 
 .pagination-controls {
-    padding: 40px 20px 0 20px;
+    padding-top: 40px;
 }
 
 .pagination-buttons {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 50px;
+    grid-gap: 20px;
 }
 
 .pagination-button {
@@ -53,6 +53,7 @@
     border-radius: 10px;
     background-color: $pureWhite;
     padding: 10px;
+    min-width: 100px;
 }
 
 .pagination-current-page {
@@ -61,5 +62,5 @@
     grid-template-rows: 1fr;
     width: 100%;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
 }

@@ -55,15 +55,6 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
     }
-    
-    const [sortByAlphabet, setSortByAlphabet] = useState(false);
-    const sortByAlphabetHandler = () => {
-        setSortByAlphabet((prevState: any) => !prevState)
-        optionsChanged({
-            ...options,
-            sortByAlphabet: !sortByAlphabet
-        })
-    }
 
     const [sortByTheHighest, setSortByTheHighest] = useState(true);
     const sortingByTheHighestHandler = () => {
@@ -90,6 +81,10 @@ export const Filter = ({ options, optionsChanged }: any) => {
             sortFromTheTop: !sortByTheHighest,
         })
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div className='filtered-results-menu'>
@@ -162,7 +157,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                     <div>
                         <div>
                             <h4>Price</h4>
-                            <form className='filtered-results-max-price'>
+                            <div className='filtered-results-max-price'>
                                 <label className='filtered-results-price-label'>$</label>
                                 <input
                                     className='filtered-results-price-input'
@@ -170,24 +165,14 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                     type='number'
                                     onChange={handleChangeMaxValue}
                                 />
-                            </form>
-                            <form className='filtered-results-min-price'>
+                            </div>
+                            <div className='filtered-results-min-price'>
                                 <label className='filtered-results-price-label'>$</label>
                                 <input className='filtered-results-price-input'
                                     placeholder='Minimum Price'
                                     type='number'
                                     onChange={handleChangeMinValue}
                                 />
-                            </form>
-                            <div>
-                                <h4>Sort by the name</h4>
-                                <label className='filtered-results-sort-by-the-name' >
-                                    <input
-                                        type='checkbox'
-                                        checked={sortByAlphabet}
-                                        onChange={sortByAlphabetHandler}
-                                    />
-                                </label>
                             </div>
                             <div>
                                 <h4>Sort by price ∇</h4>

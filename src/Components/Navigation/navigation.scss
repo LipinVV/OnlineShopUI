@@ -223,9 +223,11 @@
 }
 
 .app__link {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 22px;
+  font-weight: 600;
   text-align: center;
+  padding: 8px 0 8px 0  ;
   @media (min-width: $tabletDevice) {
     display: flex;
     justify-content: center;
@@ -249,7 +251,7 @@
 }
 
 .app__link-route {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 22px;
   text-decoration: none;
   color: $pureBlack;

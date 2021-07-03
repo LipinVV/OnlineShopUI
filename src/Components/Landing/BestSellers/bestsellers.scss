@@ -2,7 +2,10 @@
 
 .bestsellers-wrapper {
   display: grid;
-  padding-bottom: 30px;
+  padding: 0 20px 30px 20px;
+  @media (min-width: $desktopDevice) {
+    padding: 0 0 30px 0;
+  }
 }
 
 .bestsellers {
@@ -14,16 +17,12 @@
     max-width: $mobileDevice;
   }
 
-
   @media (min-width: $tabletDevice) {
     max-width: $tabletDevice;
     grid-gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr 1fr;
     padding: 0;
-  }
-  @media (min-width: $largeTabletDevice) {
-    max-width: $largeTabletDevice;
   }
 
   @media (min-width: $desktopDevice) {
@@ -35,13 +34,14 @@
     min-width: $largeDesktopDevice;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: 1fr;
+    padding: 0;
   }
 }
 
 .bestsellers__header {
   width: 100%;
   margin: 0;
-  padding: 20px;
+  padding: 20px 0 20px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -64,8 +64,13 @@
   display: flex;
   justify-content: flex-start;
   padding: 20px;
-  font-size: 40px;
-  line-height: 40px;
-  font-weight: 800;
   margin: 0;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 800;
+  @media (min-width: $desktopDevice) {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 800;
+  }
 }
