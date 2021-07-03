@@ -2,7 +2,9 @@
 
 .bestsellers-wrapper {
   display: grid;
-  padding: 0 20px 30px 20px;
+  @media (min-width: $mobileDevice) {
+    padding: 0 20px 30px 20px;
+  }
   @media (min-width: $desktopDevice) {
     padding: 0 0 30px 0;
   }
@@ -27,8 +29,10 @@
 
   @media (min-width: $desktopDevice) {
     max-width: $desktopDevice;
-    padding: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding-top: 20px;
+    grid-gap: 45px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+
   }
   @media (min-width: $largeDesktopDevice) {
     min-width: $largeDesktopDevice;
@@ -40,10 +44,11 @@
 
 .bestsellers__header {
   width: 100%;
-  margin: 0;
+  margin: 0 auto;
   padding: 20px 0 20px 0;
   display: flex;
   justify-content: space-between;
+  min-height: 60px;
 }
 
 .bestsellers__header-link {

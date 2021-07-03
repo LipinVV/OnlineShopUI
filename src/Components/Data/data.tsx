@@ -20,7 +20,7 @@ export const products: productType[] = [
     {
         id: 3875945,
         category: CATEGORY.SOFA,
-        title: 'Fullset Grey Sofa With Pillow',
+        title: 'Fullset Grey Beauty',
         price: 799,
         discount: 13,
         previewUrl: 'https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -33,7 +33,7 @@ export const products: productType[] = [
     {
         id: 34214145,
         category: CATEGORY.SOFA,
-        title: 'Green Slepper Sofa',
+        title: 'Green Slepper Puffy',
         price: 120,
         discount: 0,
         previewUrl: 'https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -45,7 +45,7 @@ export const products: productType[] = [
     {
         id: 384575475,
         category: CATEGORY.SOFA,
-        title: 'Morning Fantasy Sofa',
+        title: 'Morning Fantasy',
         price: 350,
         discount: 17,
         previewUrl: 'https://images.unsplash.com/photo-1616628198585-6add765244e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -210,7 +210,7 @@ export const products: productType[] = [
     {
         id: 3426364,
         category: CATEGORY.BED,
-        title: 'Heart Perl',
+        title: 'Heart Perl Shining',
         price: 380,
         discount: 20,
         previewUrl: 'https://rukminim1.flixcart.com/image/612/612/kc54ivk0/sofa-bed/y/3/n/double-brown-polyester-swsb1001-flipkart-perfect-homes-studio-original-imaftbz8xyygg4fp.jpeg?q=70',

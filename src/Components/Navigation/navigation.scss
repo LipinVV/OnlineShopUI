@@ -32,10 +32,13 @@
     grid-template-columns: 3fr 4fr 1fr;
   }
   @media (min-width: $desktopDevice) {
-    margin: 0 auto;
+    margin: 0 30px 0 45px;
     padding: 25px 0 25px 0;
     grid-template-columns: 1fr 0.5fr 1fr 2fr 0.5fr 0.5fr 1fr 1fr;
     grid-gap: 15px;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    margin: 0 30px 0 30px;
   }
 }
 
@@ -44,6 +47,9 @@
   padding-left: 50px;
   display: flex;
   align-items: center;
+  @media (min-width: $tabletDevice) {
+    padding-left: 30px;
+  }
   @media (min-width: $desktopDevice) {
     padding-left: 0;
   }

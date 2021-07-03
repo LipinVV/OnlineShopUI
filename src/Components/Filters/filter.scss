@@ -8,16 +8,17 @@
     max-width: $tabletDevice;
   }
 
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    grid-template-columns: 1fr 3fr;
+    padding: 0;
+  }
+
   @media (min-width: $largeTabletDevice) {
     max-width: $largeTabletDevice;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
-  }
-
-  @media (min-width: $desktopDevice) {
-    max-width: $desktopDevice;
-    grid-template-columns: 1fr 3fr;
   }
 
   @media (min-width: $largeDesktopDevice) {
@@ -64,7 +65,7 @@
   }
   @media (min-width: $desktopDevice) {
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1.5fr 1.5fr 5fr;
+    grid-template-rows: 2fr 1fr 1.5fr 5fr;
   }
 }
 
@@ -79,7 +80,7 @@
 }
 
 .filtered-results-price-label {
-  min-width: 50px;
+  min-width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,14 +90,30 @@
 .filtered-results-price-input {
   border: none;
   width: 100%;
-  padding-left: 20px;
+  padding-left: 10px;
+  min-height: 30px;
+  @media (min-width: $desktopDevice) {
+    padding-left: 20px;
+  }
 }
 
 .filtered-results-category,
-.filtered-results-rating {
+.filtered-results-rating,
+.filtered-results-coloring {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 8fr;
+  @media (min-width: $mobileDevice) {
+    grid-template-columns: 1fr 8fr;
+  }
+  @media (min-width: $tabletDevice) {
+    grid-template-columns: 1fr 9fr;
+  }
+  @media (min-width: $desktopDevice) {
+    grid-template-columns: 1fr 10fr;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    grid-template-columns: 1fr 15fr;
+  }
 }
 
 .products-to-filter {
@@ -110,4 +127,30 @@
   @media (min-width: $desktopDevice) {
     display: grid;
   }
+}
+
+.filtered-results__sorting-input {
+  display: none;
+}
+
+.filtered-results__sorting-by-price {
+  display: grid;
+  grid-gap: 20px;
+  padding-top: 20px;
+}
+
+.filtered-results-unsorted,
+.filtered-results-sorted {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  min-height: 30px;
+}
+
+.filtered-results-sorted {
+  color: red;
+}
+
+.filtered-results-category-wrapper {
+  padding-bottom: 3px;
 }

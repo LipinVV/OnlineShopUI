@@ -95,9 +95,11 @@ export const Filter = ({ options, optionsChanged }: any) => {
                         <h4>Category</h4>
                         {availableOptions.categories.map((category: any) => {
                             return (
-                                <div key={category}>
+                                <div key={category}
+                                     className='filtered-results-category-wrapper'>
                                     <label className='filtered-results-category' >
                                         <input
+                                            className='filtered-results-category-input'
                                             type='checkbox'
                                             onChange={(evt) => {
                                                 let newCategories = options.categories;
@@ -122,6 +124,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                         <h4>Rating</h4>
                         <label className='filtered-results-rating' >
                             <input
+                                className='filtered-results-category-input'
                                 type='checkbox'
                                 checked={rating}
                                 onChange={handleChangeCheckBox}
@@ -132,7 +135,7 @@ export const Filter = ({ options, optionsChanged }: any) => {
                         {availableOptions.colors.map((color: any) => {
                             return (
                                 <div key={color}>
-                                    <label className='' >
+                                    <label className='filtered-results-coloring'>
                                         <input
                                             type='checkbox'
                                             onChange={(evt) => {
@@ -174,20 +177,18 @@ export const Filter = ({ options, optionsChanged }: any) => {
                                     onChange={handleChangeMinValue}
                                 />
                             </div>
-                            <div>
-                                <h4>Sort by price ∇</h4>
-                                <label className='filtered-results-sort-from-highest' >
+                            <div className='filtered-results__sorting-by-price'>
+                                <label className={sortByTheHighest ? 'filtered-results-sorted' : 'filtered-results-unsorted'}>Sort by price ∇
                                     <input
+                                        className='filtered-results__sorting-input'
                                         type='checkbox'
                                         checked={sortByTheHighest}
                                         onChange={sortingByTheHighestHandler}
                                     />
                                 </label>
-                            </div>
-                            <div>
-                                <h4>Sort by price ∆</h4>
-                                <label className='filtered-results-sort-from-lowest' >
+                                <label className={!sortByTheHighest ? 'filtered-results-sorted' : 'filtered-results-unsorted'} >Sort by price ∆
                                     <input
+                                        className='filtered-results__sorting-input'
                                         type='checkbox'
                                         // disabled={sortByTheLowest}
                                         checked={sortByTheLowest}
