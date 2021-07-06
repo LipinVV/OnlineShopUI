@@ -59,7 +59,7 @@ export const Navigation = () => {
                             : null}
                     </li>
                     <li className='app__link-desktop__gallery'>
-                        <Link className='app__link-gallery' to='/gallery'>Gallery</Link></li>
+                        <Link className='app__link-gallery' to='/admin'>Admin</Link></li>
                     <li className='navigation__search'>
                         <input
                             className='navigation__search-input'

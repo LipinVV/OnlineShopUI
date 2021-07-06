@@ -1,0 +1,58 @@
+@import 'src/App';
+.admin-page {
+  margin: 0;
+  padding: 0;
+}
+
+.admin-form {
+  display: grid;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding-bottom: 40px;
+  }
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+  }
+}
+
+.admin-form__label {
+  display: grid;
+  text-align: center;
+  @media (min-width: $mobileDevice) {
+    grid-gap: 10px;
+  }
+}
+
+.admin-form__input {
+  @media (min-width: $mobileDevice) {
+    min-height: 40px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+.admin-form__submit-button {
+  @media (min-width: $mobileDevice) {
+    margin: 0 auto;
+    min-width: 200px;
+    min-height: 40px;
+    font-size: 25px;
+    color: $pureWhite;
+    background-color: $pureBlack;
+    border: none;
+  }
+}
