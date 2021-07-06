@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {createClient} from '@supabase/supabase-js'
 import './admin.scss'
+import {products} from "../Components/Data/data";
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
-
 
 export const Admin = () => {
     const [title, setTitle] = useState('');
@@ -13,18 +13,25 @@ export const Admin = () => {
     const [salesCount, setSalesCount] = useState('');
 
     const clickHandler = async () => {
-        const {data, error} = await supabase
-            .from('products')
-            .insert([
-                {title: title, category: category, price: price, discount: discount, rating: rating, salesCount: salesCount}
-            ])
-        console.log('data', data, 'error', error)
+        try {
+            const {data, error} = await supabase
+                .from('products')
+                .insert([
+                    {title: title, category: category, price: price, discount: discount, rating: rating, sold: salesCount}
+                ])
+            console.log(data)
+        } catch (error) {
+            console.log('error', error)
+        }
     }
 
-    const [inputValue, setInputValue] = useState("")
-    const inputHandler = (evt: any) => {
-        const {value} = evt.target;
-        setInputValue(prevState => value)
+    const dataFetcher = async () => {
+        try {
+            const {data, error}: any = await supabase.from('products').select()
+            console.log('error', error, data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return <div className='admin-page'>
@@ -52,6 +59,11 @@ export const Admin = () => {
                 type='button'
                 onClick={clickHandler}
             >Submit
+            </button>
+            <button
+                type='button'
+                onClick={dataFetcher}
+            >Data fetcher
             </button>
         </form>
 

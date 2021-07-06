@@ -1,6 +1,6 @@
 {
   "compilerOptions": { // These options make up the bulk of TypeScript’s configuration and it covers how the language should work.
-    "target": "es5", // You might choose to set a lower target if your code is deployed to older environments, or a higher target if your code is guaranteed to run in newer environments.
+    "target": "es2017", // You might choose to set a lower target if your code is deployed to older environments, or a higher target if your code is guaranteed to run in newer environments.
     "lib": [ // TypeScript includes a default set of type definitions for built-in JS APIs (like Math), as well as type definitions for things found in browser environments (like document). 
       "dom", // TypeScript also includes APIs for newer JS features matching the target you specify; for example the definition for Map is available if target is ES6 or newer.
       "dom.iterable",
