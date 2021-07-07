@@ -56,3 +56,15 @@
     border: none;
   }
 }
+
+.admin-form__upload-button {
+  @media (min-width: $mobileDevice) {
+    margin: 0 auto;
+    min-width: 200px;
+    min-height: 40px;
+    font-size: 25px;
+    color: $pureWhite;
+    background-color: $pureBlue;
+    border: none;
+  }
+}

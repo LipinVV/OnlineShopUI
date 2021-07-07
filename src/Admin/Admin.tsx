@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {createClient} from '@supabase/supabase-js'
 import './admin.scss'
 import {products} from "../Components/Data/data";
+import {SingleCard} from "../Components/Product/SingleCard";
+import {productType} from "../Components/Product/types";
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 
 export const Admin = () => {
@@ -19,21 +21,25 @@ export const Admin = () => {
                 .insert([
                     {title: title, category: category, price: price, discount: discount, rating: rating, sold: salesCount}
                 ])
-            console.log(data)
         } catch (error) {
             console.log('error', error)
         }
     }
-
+    const [products, setProducts] = useState<productType[]>([])
     const dataFetcher = async () => {
         try {
             const {data, error}: any = await supabase.from('products').select()
-            console.log('error', error, data)
+            const preparedData = data?.map((product: any) => {
+                return {...product, isFavourite: false, toBuy: false}
+            })
+            setProducts(preparedData)
         } catch (error) {
             console.log(error)
         }
     }
-
+    console.log('products', products)
+    // @ts-ignore
+    // @ts-ignore
     return <div className='admin-page'>
         <form className='admin-form'>Dear Admin, fill this product's form:
             <label className='admin-form__label'>Title
@@ -61,11 +67,27 @@ export const Admin = () => {
             >Submit
             </button>
             <button
+                className='admin-form__submit-button'
                 type='button'
                 onClick={dataFetcher}
             >Data fetcher
             </button>
         </form>
-
+        <div>Render place
+            {products.map(product => (
+                <SingleCard
+                id={product.id}
+                category={product?.category}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+                salesCount={product.salesCount}
+                previewUrl={""}
+                discount={product.discount}
+                isFavourite={product.isFavourite}
+                toBuy={product.toBuy}
+                />
+            ))}
+        </div>
     </div>
 }
