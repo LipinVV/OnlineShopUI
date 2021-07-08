@@ -54,7 +54,19 @@
     color: $pureWhite;
     background-color: $pureBlack;
     border: none;
+    cursor: pointer;
   }
+}
+
+.admin-form__submit-button-disabled {
+  margin: 0 auto;
+  min-width: 200px;
+  min-height: 40px;
+  font-size: 25px;
+  color: $pureWhite;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.87);
 }
 
 .admin-form__upload-button {
@@ -66,8 +78,10 @@
     color: $pureWhite;
     background-color: $pureBlue;
     border: none;
+    cursor: pointer;
   }
 }
+
 
 .admin-form__options-label {
   display: flex;

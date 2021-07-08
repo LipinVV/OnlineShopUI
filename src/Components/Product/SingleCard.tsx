@@ -23,9 +23,9 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
     const isExistInCart = state.cart.some(element => element.id === id);
     const productHandler = state.cart.find(item => item.id === id) // экземляр массива
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+    // useEffect(() => {
+    //     window.scrollTo(0, 0)
+    // }, [])
 
     useEffect(() => {
         if (productHandler) {
