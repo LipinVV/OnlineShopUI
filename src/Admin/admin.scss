@@ -68,3 +68,23 @@
     border: none;
   }
 }
+
+.admin-form__options-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  min-height: 50px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.admin-form__options-input {
+  margin-top: 20px;
+}
+
+.select-options {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 200px;
+}
