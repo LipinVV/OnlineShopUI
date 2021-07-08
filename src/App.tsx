@@ -132,24 +132,23 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
         }
     }
 }
-
+export const dataFetcher = async () => {
+    try {
+        const {data}: any = await supabase.from('data').select()
+        INITIAL_STATE.products = data?.map((product: any) => {
+            return {...product, isFavourite: false, toBuy: false}
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 //
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-    const dataFetcher = async () => {
-        try {
-            const {data}: any = await supabase.from('data').select()
-            INITIAL_STATE.products = data?.map((product: any) => {
-                return {...product, isFavourite: false, toBuy: false}
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const somedata:productType[] = []
+
     useEffect(() => {
         dataFetcher()
-    }, somedata)
+    }, [])
     return (
         <StoreContext.Provider value={{state, dispatch}}>
             <div className='App'>

@@ -14,7 +14,6 @@ export const ProductCard = ({ id, category, title, price, previewUrl, rating, sa
     const styles = {
         'backgroundImage': `url(${previewUrl})`
     }
-    console.log('Sstate', id)
     return (
         <div className='productCard__preview-wrapper'>
             <div className='productCard__PreviewUrl' style={styles}>
