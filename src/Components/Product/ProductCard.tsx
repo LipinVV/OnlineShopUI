@@ -9,12 +9,12 @@ import {keyHandler} from "../../Services/keyHandler";
 
 
 export const ProductCard = ({ id, category, title, price, previewUrl, rating, salesCount, discount = 0, isFavourite }: productType) => {
-    const { dispatch } = useContext(StoreContext);
+    const { state, dispatch } = useContext(StoreContext);
     const totalPrice: number = Math.ceil(price - ((discount / 100) * price));
     const styles = {
         'backgroundImage': `url(${previewUrl})`
     }
-
+    console.log('Sstate', id)
     return (
         <div className='productCard__preview-wrapper'>
             <div className='productCard__PreviewUrl' style={styles}>

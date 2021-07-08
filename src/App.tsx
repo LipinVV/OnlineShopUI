@@ -1,11 +1,11 @@
-import React, {useReducer, Dispatch} from 'react';
+import React, {Dispatch, useEffect, useReducer} from 'react';
 import './App.scss';
 import {Categories} from './Components/Categories/Categories'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {ProductPage} from './Components/Product/ProductPage';
 import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage'
-import {products} from './Components/Data/data'
+import {products} from './Services/categoryHandler'
 import {Wishlist} from './Components/WishList/WishList';
 import {productType} from './Components/Product/types';
 import {ShoppingList} from './Components/ShoppingCart/ShoppingList'
@@ -16,12 +16,15 @@ import {FilteredList} from "./Components/Filters/FilteredList";
 import {Landing} from "./Components/Landing/Landing";
 import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
 import {Admin} from './Admin/Admin'
+import {createClient} from "@supabase/supabase-js";
+
+const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 
 type StateType = {
     products: productType[],
     cart: CartProductInterface[]
 }
-
+console.log('APP', products)
 export const INITIAL_STATE: StateType = {
     products: products,
     cart: []
@@ -133,7 +136,20 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
 //
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-
+    const dataFetcher = async () => {
+        try {
+            const {data}: any = await supabase.from('data').select()
+            INITIAL_STATE.products = data?.map((product: any) => {
+                return {...product, isFavourite: false, toBuy: false}
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const somedata:productType[] = []
+    useEffect(() => {
+        dataFetcher()
+    }, somedata)
     return (
         <StoreContext.Provider value={{state, dispatch}}>
             <div className='App'>

@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {createClient} from '@supabase/supabase-js'
 import './admin.scss'
 import {keyHandler} from "../Services/keyHandler";
-import {SingleCard} from "../Components/Product/SingleCard";
-import {productType} from "../Components/Product/types";
+
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
-// из-за айдишников в диспатчах не добавляются в вишлист и не происходит переход на SingleCard
-// https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
+
 export const Admin = () => {
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
@@ -44,10 +42,11 @@ export const Admin = () => {
     const options = {type: select, title: optionsTitle, value: value.length === 0 ? false : value}
     const clickHandler = async () => {
         try {
-            const {data, error} = await supabase
-                .from('products2')
+            const {data} = await supabase
+                .from('data')
                 .insert([
                     {
+                        id: keyHandler(9999),
                         title: title,
                         category: category,
                         price: price,
@@ -63,22 +62,6 @@ export const Admin = () => {
             console.log('error', error)
         }
     }
-    const [products, setProducts] = useState<productType[] >([])
-    const dataFetcher = async () => {
-        try {
-            const {data, error}: any = await supabase.from('products2').select()
-            const preparedData = data?.map((product: any) => {
-                return {...product, isFavourite: false, toBuy: false}
-            })
-            setProducts(preparedData)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    useEffect(() => {
-        dataFetcher()
-    }, [])
-    console.log(products.map(item =>item.options?.map((a: any) => a.type)))
     return <div className='admin-page'>
         <form className='admin-form'>Dear Admin, fill this product's form:
             <label className='admin-form__label'>Title
@@ -109,31 +92,39 @@ export const Admin = () => {
                 <input className='admin-form__input' onChange={(evt) => setPathToURL(evt.target.value)} type='text'
                        value={pathToURL}/>
             </label>
-            <div className='select-options'>Select options:
-                <label className='admin-form__options-label'>Color options
-                    <input className='admin-form__options-input' onChange={addType} type='radio' value='select'
-                           checked={select === 'select'}/>
-                </label>
-                <label className='admin-form__options-label'>Warranty options
-                    <input className='admin-form__options-input' onChange={addType} type='radio' value='boolean'
-                           checked={select === 'boolean'}/>
-                </label>
+            <div className='admin-product-options'>
+                <div className='admin-form__select-options'>Product with colors or warranty?
+                    <label
+                        className={select === 'select' ? 'admin-form__options-label-chosen' : 'admin-form__options-label'}>With
+                        colors
+                        <input className='admin-form__options-input' onChange={addType} type='radio' value='select'
+                               checked={select === 'select'}/>
+                    </label>
+                    <label
+                        className={select === 'boolean' ? 'admin-form__options-label-chosen' : 'admin-form__options-label'}>With
+                        warranty
+                        <input className='admin-form__options-input' onChange={addType} type='radio' value='boolean'
+                               checked={select === 'boolean'}/>
+                    </label>
+                </div>
+                {select === 'select' ?
+                    <div className='admin-form__color-options'>
+                        <h3>Choose color (required):</h3>
+                        {colors.map((elem, index) => (
+                            <label key={keyHandler(index)}
+                                   className={value.includes(elem) ? 'admin-form__options-label-chosen' : 'admin-form__options-label'}>{elem}
+                                <input className='admin-form__options-input' onChange={valueHandler} type='checkbox'
+                                       checked={value.includes(elem)}
+                                       name={elem}/>
+                            </label>
+                        ))}
+                    </div>
+                    :
+                    <div>
+                        Warranty is 'false' as a default value
+                    </div>
+                }
             </div>
-            {select === 'select' ?
-                <div>
-                    {colors.map((elem, index) => (
-                        <label key={keyHandler(index)} className='admin-form__options-label'>{elem}
-                            <input className='admin-form__options-input' onChange={valueHandler} type='checkbox'
-                                   checked={value.includes(elem)}
-                                   name={elem}/>
-                        </label>
-                    ))}
-                </div>
-                :
-                <div>
-                    Warranty is 'false' as default value
-                </div>
-            }
             <button
                 disabled={trigger && value.length === 0}
                 className={trigger && value.length === 0 ? 'admin-form__submit-button-disabled' : 'admin-form__submit-button'}
@@ -141,31 +132,6 @@ export const Admin = () => {
                 onClick={clickHandler}
             >{trigger && value.length === 0 ? 'Cannot submit' : 'Submit'}
             </button>
-            {/*<button*/}
-            {/*    className='admin-form__submit-button'*/}
-            {/*    type='button'*/}
-            {/*    onClick={dataFetcher}*/}
-            {/*>Data fetcher*/}
-            {/*</button>*/}
         </form>
-        <div>
-            <h1>Rendering zone</h1>
-            {products?.map((product, index)=> (
-                <SingleCard
-                    key={keyHandler(index)}
-                    id={Number(keyHandler(index))}
-                    category={product?.category}
-                    title={product.title}
-                    price={product.price}
-                    rating={product.rating}
-                    salesCount={product.salesCount}
-                    previewUrl={product.previewUrl}
-                    discount={product.discount}
-                    isFavourite={product.isFavourite}
-                    toBuy={product.toBuy}
-                    options={product.options}
-                />
-            ))}
-        </div>
     </div>
 }

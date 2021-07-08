@@ -11,7 +11,6 @@ export const SingleCard = ({id, title, price, previewUrl, rating, salesCount, op
     const history = useHistory();
     const {state, dispatch} = useContext(StoreContext);
     const [counter, setCounter] = useState(1);
-
     const countHandlerIncrementer = () => {
         setCounter(counter + 1)
     }
