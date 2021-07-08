@@ -13,14 +13,16 @@ export const Admin = () => {
     const [discount, setDiscount] = useState('');
     const [rating, setRating] = useState('');
     const [salesCount, setSalesCount] = useState('');
+    const [pathToURL, setPathToURL] = useState('');
 
     const clickHandler = async () => {
         try {
             const {data, error} = await supabase
                 .from('products')
                 .insert([
-                    {title: title, category: category, price: price, discount: discount, rating: rating, sold: salesCount}
+                    {title: title, category: category, price: price, discount: discount, rating: rating, sold: salesCount, previewUrl: pathToURL}
                 ])
+            console.log('sent data =>', data)
         } catch (error) {
             console.log('error', error)
         }
@@ -60,6 +62,10 @@ export const Admin = () => {
             <label className='admin-form__label'>Sales count
                 <input className='admin-form__input' onChange={(evt) => setSalesCount(evt.target.value)} type='number' value={salesCount}/>
             </label>
+            // https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
+            <label className='admin-form__label'>URL
+                <input className='admin-form__input' onChange={(evt) => setPathToURL(evt.target.value)} type='text' value={pathToURL}/>
+            </label>
             <button
                 className='admin-form__submit-button'
                 type='button'
@@ -73,8 +79,9 @@ export const Admin = () => {
             >Data fetcher
             </button>
         </form>
-        <div>Render place
-            {products.map(product => (
+        <div>
+            <h1>Rendering zone</h1>
+            {products?.map(product => (
                 <SingleCard
                 id={product.id}
                 category={product?.category}
@@ -82,7 +89,7 @@ export const Admin = () => {
                 price={product.price}
                 rating={product.rating}
                 salesCount={product.salesCount}
-                previewUrl={""}
+                previewUrl={product.previewUrl}
                 discount={product.discount}
                 isFavourite={product.isFavourite}
                 toBuy={product.toBuy}
@@ -91,3 +98,6 @@ export const Admin = () => {
         </div>
     </div>
 }
+
+// options: [{type: 'select', title: 'color', value: ['black', 'white']}]
+// options: [{type: 'boolean', title: 'warranty', value: true}]
