@@ -5,7 +5,6 @@ import {Categories} from './Components/Categories/Categories'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {ProductPage} from './Components/Product/ProductPage';
 import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage'
-import {products} from './Services/categoryHandler'
 import {Wishlist} from './Components/WishList/WishList';
 import {productType} from './Components/Product/types';
 import {ShoppingList} from './Components/ShoppingCart/ShoppingList'
@@ -24,12 +23,23 @@ type StateType = {
     products: productType[],
     cart: CartProductInterface[]
 }
-console.log('APP', products)
 export const INITIAL_STATE: StateType = {
-    products: products,
+    products: [],
     cart: []
 }
+console.log('INITIAL_STATE.1', INITIAL_STATE)
+export const dataFetcher = async () => {
+    try {
+        const {data}: any = await supabase.from('data').select()
+        return INITIAL_STATE.products = data.map((product: productType[]) => {
+            return {...product, isFavourite: false, toBuy: false}
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
+console.log('INITIAL_STATE.2', INITIAL_STATE)
 export enum ACTION {
     ADD_TO_WISHLIST = 'ADD_TO_WISHLIST',
     ADD_TO_BUY = 'ADD_TO_BUY',
@@ -132,22 +142,12 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
         }
     }
 }
-export const dataFetcher = async () => {
-    try {
-        const {data}: any = await supabase.from('data').select()
-        INITIAL_STATE.products = data?.map((product: any) => {
-            return {...product, isFavourite: false, toBuy: false}
-        })
-    } catch (error) {
-        console.log(error)
-    }
-}
-//
+
+// postgres causes stress
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-
     useEffect(() => {
-        dataFetcher()
+        dataFetcher().then(r => r)
     }, [])
     return (
         <StoreContext.Provider value={{state, dispatch}}>
@@ -175,9 +175,3 @@ function App() {
 }
 
 export default App;
-
-
-// Вопросы
-
-// 1) пагинация на фильтре : определить ли все стили из фильтра.ссс или можно брать из пагинации.ссс
-// 2)

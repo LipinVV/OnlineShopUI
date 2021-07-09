@@ -7,13 +7,11 @@ import './categoryPage.scss';
 import {StoreContext} from '../../../App'
 import {keyHandler} from "../../../Services/keyHandler";
 import {getFullName} from "../../../Services/naming";
-import { dataFetcher } from '../../../App'
 
 export const CategoryPage = () => {
     const {state} = useContext(StoreContext)
     const parameters = useParams<{ id: string, category: string }>();
     useEffect(() => {
-        dataFetcher()
         window.scrollTo(0, 0)
     }, [])
     console.log('state.products', state.products)

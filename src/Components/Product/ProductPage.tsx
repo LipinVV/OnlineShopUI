@@ -1,12 +1,11 @@
 import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
-import { INITIAL_STATE } from '../../App'
+import {INITIAL_STATE} from '../../App'
 import { SingleCard } from './SingleCard';
 import { productType } from './types';
 
 export const ProductPage = () => {
-
     const parameters = useParams<{ id: string, category: string }>();
     const product: productType | undefined = INITIAL_STATE.products.find(product => product.id === Number(parameters.id))
     return (

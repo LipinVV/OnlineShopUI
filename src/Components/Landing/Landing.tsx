@@ -6,8 +6,11 @@ import {Categories} from "../Categories/Categories";
 import {BestSellers} from "./BestSellers/BestSellers";
 import {ShowRoom} from "./ShowRoom/ShowRoom";
 import {useEffect} from "react";
+import {INITIAL_STATE} from "../../App";
+
 
 export const Landing = () => {
+    console.log('INITIAL_STATE', INITIAL_STATE)
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './categories.scss'
