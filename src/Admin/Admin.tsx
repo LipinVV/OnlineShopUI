@@ -4,7 +4,7 @@ import './admin.scss'
 import {keyHandler} from "../Services/keyHandler";
 
 
-const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
+export const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 
 export const Admin = () => {
     const [title, setTitle] = useState('');
@@ -128,7 +128,7 @@ export const Admin = () => {
             <button
                 disabled={trigger && value.length === 0}
                 className={trigger && value.length === 0 ? 'admin-form__submit-button-disabled' : 'admin-form__submit-button'}
-                type='button'
+                type='submit'
                 onClick={clickHandler}
             >{trigger && value.length === 0 ? 'Cannot submit' : 'Submit'}
             </button>

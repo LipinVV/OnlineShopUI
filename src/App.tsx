@@ -14,11 +14,14 @@ import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
 import {Landing} from "./Components/Landing/Landing";
 import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
-import {Admin} from './Admin/Admin'
+import {Admin} from './Admin/Admin';
 import {createClient} from "@supabase/supabase-js";
+import {SignUp} from "./Components/Acess/SignUp";
+import {Login} from "./Components/Acess/Login";
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
-
+console.log(supabase.auth.session()?.user)
+const userLoggedIn = supabase.auth.session()?.user;
 type StateType = {
     products: productType[],
     cart: CartProductInterface[]
@@ -40,6 +43,7 @@ export const dataFetcher = async () => {
 }
 
 console.log('INITIAL_STATE.2', INITIAL_STATE)
+
 export enum ACTION {
     ADD_TO_WISHLIST = 'ADD_TO_WISHLIST',
     ADD_TO_BUY = 'ADD_TO_BUY',
@@ -152,22 +156,29 @@ function App() {
     return (
         <StoreContext.Provider value={{state, dispatch}}>
             <div className='App'>
-                <Router>
-                    <Navigation/>
-                    <Switch>
-                        <Route path='/categories'>
-                            <Categories/>
-                        </Route>
-                        <Route path='/admin'><Admin/></Route>
-                        <Route path='/bestsellers'><BestSellersBase/></Route>
-                        <Route exact path='/filter'><FilteredList/></Route>
-                        <Route exact path='/shoppingCart'><ShoppingList/></Route>
-                        <Route exact path='/wishlist'><Wishlist/></Route>
-                        <Route exact path='/:category'><CategoryPage/></Route>
-                        <Route path='/:category/:id'><ProductPage/></Route>
-                        <Route path='/'><Landing/></Route>
-                    </Switch>
-                </Router>
+                {userLoggedIn ? <Router>
+                        <Navigation/>
+                        <Switch>
+                            <Route path='/categories'>
+                                <Categories/>
+                            </Route>
+                            <Route path='/login'><Login/></Route>
+                            <Route path='/signUp'><SignUp/></Route>
+                            <Route path='/admin'><Admin/></Route>
+                            <Route path='/bestsellers'><BestSellersBase/></Route>
+                            <Route exact path='/filter'><FilteredList/></Route>
+                            <Route exact path='/shoppingCart'><ShoppingList/></Route>
+                            <Route exact path='/wishlist'><Wishlist/></Route>
+                            <Route exact path='/:category'><CategoryPage/></Route>
+                            <Route path='/:category/:id'><ProductPage/></Route>
+                            <Route path='/'><Landing/></Route>
+                        </Switch>
+                    </Router> :
+                    <Router>
+                        <Navigation/>
+                        <Login/>
+                    </Router>
+                }
             </div>
             <Footer/>
         </StoreContext.Provider>
