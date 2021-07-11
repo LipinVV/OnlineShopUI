@@ -2,7 +2,7 @@ import React, {Dispatch, useEffect, useReducer} from 'react';
 import './App.scss';
 import {Categories} from './Components/Categories/Categories'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import {ProductPage} from './Components/Product/ProductPage';
 import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage'
 import {Wishlist} from './Components/WishList/WishList';
@@ -20,17 +20,19 @@ import {SignUp} from "./Components/Access/SignUp";
 import {Login} from "./Components/Access/Login";
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
-console.log(supabase.auth.session()?.user)
+
 const userLoggedIn = supabase.auth.session()?.user;
 type StateType = {
     products: productType[],
     cart: CartProductInterface[]
+    isUserLoggedIn: boolean
 }
 export const INITIAL_STATE: StateType = {
     products: [],
-    cart: []
+    cart: [],
+    isUserLoggedIn: Boolean(supabase.auth.session()?.user?.id)
 }
-console.log('INITIAL_STATE.1', INITIAL_STATE)
+// console.log('INITIAL_STATE.1', INITIAL_STATE)
 export const dataFetcher = async () => {
     try {
         const {data}: any = await supabase.from('data').select()
@@ -42,7 +44,7 @@ export const dataFetcher = async () => {
     }
 }
 
-console.log('INITIAL_STATE.2', INITIAL_STATE)
+// console.log('INITIAL_STATE.2', INITIAL_STATE)
 
 export enum ACTION {
     ADD_TO_WISHLIST = 'ADD_TO_WISHLIST',
@@ -53,7 +55,9 @@ export enum ACTION {
     DECREMENT_QUANTITY = 'DECREMENT_QUANTITY',
     CHOOSE_PRODUCT_COLOR = 'CHOOSE_PRODUCT_COLOR',
     DELETE_ALL_PRODUCTS_IN_WISHLIST = 'DELETE_ALL_PRODUCTS_IN_WISHLIST',
-    GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
+    GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS',
+    LOGIN = 'LOGIN',
+    LOGOUT = 'LOGOUT'
 }
 
 // const dispatch1: ACTION = ACTION.ADD_TO_WISHLIST  <== difference, make a concrete CONST through enum
@@ -146,12 +150,37 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
             return {
                 ...currentState,
                 products: payLoad.data
+            };
+
+        case ACTION.LOGIN: {
+            return {
+                ...currentState,
+                isUserLoggedIn: true
             }
+            // if(!INITIAL_STATE.isUserLoggedIn) {
+            //     return {
+            //         ...currentState,
+            //         isUserLoggedIn: true
+            //     }
+            // } else {
+            //     return {
+            //         ...currentState,
+            //         isUserLoggedIn: false
+            //     }
+            // }
+        }
+        case ACTION.LOGOUT: {
+            return {
+                ...currentState,
+                isUserLoggedIn: false
+            }
+        }
         default: {
             return currentState
         }
     }
 }
+
 // postgres causes stress
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -160,32 +189,42 @@ function App() {
             dispatch({action: ACTION.GET_ALL_PRODUCTS, data: products})
         })
     }, [])
+    console.log('in APP component login / logout status is: ', state.isUserLoggedIn)
     return (
         <StoreContext.Provider value={{state, dispatch}}>
             <div className='App'>
-                {userLoggedIn ? <Router>
-                        <Navigation/>
-                        <Switch>
-                            <Route path='/categories'>
-                                <Categories/>
-                            </Route>
-                            <Route path='/login'><Login/></Route>
-                            <Route path='/signUp'><SignUp/></Route>
-                            <Route path='/admin'><Admin/></Route>
-                            <Route path='/bestsellers'><BestSellersBase/></Route>
-                            <Route exact path='/filter'><FilteredList/></Route>
-                            <Route exact path='/shoppingCart'><ShoppingList/></Route>
-                            <Route exact path='/wishlist'><Wishlist/></Route>
-                            <Route exact path='/:category'><CategoryPage/></Route>
-                            <Route path='/:category/:id'><ProductPage/></Route>
-                            <Route path='/'><Landing/></Route>
-                        </Switch>
-                    </Router> :
-                    <Router>
-                        {userLoggedIn ? <SignUp /> : null}
-                        <Login/>
-                    </Router>
-                }
+                <Router>
+                    <Navigation/>
+                    <Switch>
+                        {!state.isUserLoggedIn ?
+                            <>
+                                <Route path='/signUp'><SignUp/></Route>
+                                <Route path='/login'><Login/></Route>
+                            </> : null
+                        }
+                    </Switch>
+                    {state.isUserLoggedIn ?
+                        <>
+                            <Switch>
+                                <Route path='/categories'>
+                                    <Categories/>
+                                </Route>
+                                <Route path='/login'><Login/></Route>
+                                <Route path='/signUp'><SignUp/></Route>
+                                <Route path='/admin'><Admin/></Route>
+                                <Route path='/bestsellers'><BestSellersBase/></Route>
+                                <Route exact path='/filter'><FilteredList/></Route>
+                                <Route exact path='/shoppingCart'><ShoppingList/></Route>
+                                <Route exact path='/wishlist'><Wishlist/></Route>
+                                <Route exact path='/:category'><CategoryPage/></Route>
+                                <Route path='/:category/:id'><ProductPage/></Route>
+                                <Route path='/'><Landing/></Route>
+                            </Switch>
+                        </>
+                        :
+                        <Redirect to='/signUp'/>
+                    }
+                </Router>
             </div>
             <Footer/>
         </StoreContext.Provider>
@@ -193,3 +232,128 @@ function App() {
 }
 
 export default App;
+
+{/*<Route path='/categories'>*/
+}
+{/*    <Categories/>*/
+}
+{/*</Route>*/
+}
+{/*<Route path='/login'><Login/></Route>*/
+}
+{/*<Route path='/signUp'><SignUp/></Route>*/
+}
+
+{/*{state.isUserLoggedIn && <Router>*/
+}
+{/*    <Navigation/>*/
+}
+{/*    <Switch>*/
+}
+{/*        <Route path='/categories'>*/
+}
+{/*            <Categories/>*/
+}
+{/*        </Route>*/
+}
+{/*        <Route path='/login'><Login/></Route>*/
+}
+{/*        <Route path='/signUp'><SignUp/></Route>*/
+}
+{/*        <Route path='/admin'><Admin/></Route>*/
+}
+{/*        <Route path='/bestsellers'><BestSellersBase/></Route>*/
+}
+{/*        <Route exact path='/filter'><FilteredList/></Route>*/
+}
+{/*        <Route exact path='/shoppingCart'><ShoppingList/></Route>*/
+}
+{/*        <Route exact path='/wishlist'><Wishlist/></Route>*/
+}
+{/*        <Route exact path='/:category'><CategoryPage/></Route>*/
+}
+{/*        <Route path='/:category/:id'><ProductPage/></Route>*/
+}
+{/*        <Route path='/'><Landing/></Route>*/
+}
+{/*    </Switch>*/
+}
+{/*</Router>*/
+}
+{/*}*/
+}
+{/*{!state.isUserLoggedIn &&*/
+}
+{/*<Router>*/
+}
+{/*    <Login/>*/
+}
+{/*</Router>*/
+}
+{/*}*/
+}
+
+{/*<Router>*/
+}
+{/*    <Navigation/>*/
+}
+{/*    <Switch>*/
+}
+{/*        {state.isUserLoggedIn &&*/
+}
+{/*        <><Route path='/categories'>*/
+}
+{/*            <Categories/>*/
+}
+{/*        </Route>*/
+}
+{/*            <Route path='/login'><Login/></Route>*/
+}
+{/*            <Route path='/signUp'><SignUp/></Route>*/
+}
+{/*            <Route path='/admin'><Admin/></Route>*/
+}
+{/*            <Route path='/bestsellers'><BestSellersBase/></Route>*/
+}
+{/*            <Route exact path='/filter'><FilteredList/></Route>*/
+}
+{/*            <Route exact path='/shoppingCart'><ShoppingList/></Route>*/
+}
+{/*            <Route exact path='/wishlist'><Wishlist/></Route>*/
+}
+{/*            <Route exact path='/:category'><CategoryPage/></Route>*/
+}
+{/*            <Route path='/:category/:id'><ProductPage/></Route>*/
+}
+{/*            <Route path='/'><Landing/></Route></>*/
+}
+{/*        }*/
+}
+{/*        {!state.isUserLoggedIn ? <Login /> : null}*/
+}
+{/*    </Switch>*/
+}
+{/*</Router>*/
+}
+
+// <Router>
+//     <Navigation/>
+//     <Switch>
+//         {state.isUserLoggedIn &&
+//         <><Route path='/categories'>
+//             <Categories/>
+//         </Route>
+//             <Route path='/login'><Login/></Route>
+//             <Route path='/signUp'><SignUp/></Route>
+//             <Route path='/admin'><Admin/></Route>
+//             <Route path='/bestsellers'><BestSellersBase/></Route>
+//             <Route exact path='/filter'><FilteredList/></Route>
+//             <Route exact path='/shoppingCart'><ShoppingList/></Route>
+//             <Route exact path='/wishlist'><Wishlist/></Route>
+//             <Route exact path='/:category'><CategoryPage/></Route>
+//             <Route path='/:category/:id'><ProductPage/></Route>
+//             <Route path='/'><Landing/></Route></>
+//         }
+//         {!state.isUserLoggedIn && <Redirect to='/login'/>}
+//     </Switch>
+// </Router>

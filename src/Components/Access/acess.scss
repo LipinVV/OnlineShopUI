@@ -1,4 +1,11 @@
 @import "src/App";
+.market-place {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
 
 .market-place__bg {
   background-image: url('./img/LoginBG.png');
@@ -18,7 +25,7 @@
 .market-place__header {
   margin: 0;
   font-size: 35px;
- line-height: 35px;
+  line-height: 35px;
   text-align: center;
   padding-bottom: 40px;
 }
@@ -103,7 +110,8 @@
 
 .login__link,
 .login__logout-btn,
-.login__logout-homepage {
+.login__logout-homepage,
+.sign-up__link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,4 +136,11 @@
 .login__logout {
   display: grid;
   grid-gap: 30px;
+}
+
+.sign-up__link {
+  font-size: 25px;
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+  }
 }

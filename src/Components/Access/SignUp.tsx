@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {MarketPlace} from "./MarketPlace";
 import './acess.scss'
 import {supabase} from "../../Admin/Admin";
+import {Link} from "react-router-dom";
+import {StoreContext} from "../../App";
 
 
 export const SignUp = () => {
@@ -9,7 +11,7 @@ export const SignUp = () => {
     const [userMail, setUserMail] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [userPassword, setUserPassword] = useState('');
-
+    const { state, dispatch } = useContext(StoreContext)
     const signUp = async () => {
         const { user, session, error } = await supabase.auth.signUp({
             email: userMail,
@@ -40,6 +42,8 @@ export const SignUp = () => {
                 <div className='sign-up__btn-wrapper'>
                     <button className='sign-up__button' type='submit' onClick={signUp}>Register</button>
                 </div>
+                {!state.isUserLoggedIn ? <Link className='sign-up__link' to={state.isUserLoggedIn ? '/' : '/login'}>Already our client? Click
+                    here!</Link> : null}
             </div>
         </div>
     )

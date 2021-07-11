@@ -7,7 +7,6 @@ import {keyHandler} from "../../Services/keyHandler";
 import {createClient} from "@supabase/supabase-js";
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
-const userLoggedIn = supabase.auth.session()?.user;
 
 export const Navigation = () => {
 
@@ -17,7 +16,7 @@ export const Navigation = () => {
     }
     const [subMenu, setSubMenu] = useState(true);
     const subMenuToggleHandler = () => {
-        if(userLoggedIn)
+        if(state.isUserLoggedIn)
         setSubMenu(!subMenu)
     }
 
@@ -74,7 +73,7 @@ export const Navigation = () => {
                             onChange={handleSearcher}
                             onKeyDown={handleKeyPress}
                             value={search}
-                            disabled={!userLoggedIn}
+                            disabled={!state.isUserLoggedIn}
                         />
                         <button className='navigation__search-btn'></button>
                     </li>
