@@ -1,5 +1,20 @@
 @import "src/App";
 
+.market-place__bg {
+  background-image: url('./img/LoginBG.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media (min-width: $mobileDevice) {
+    min-width:  $mobileDevice;
+    min-height: $mobileDevice;
+  }
+
+  @media (min-width: $desktopDevice) {
+    min-width: $tabletDevice;
+    min-height: $tabletDevice;
+  }
+}
+
 .market-place__header {
   margin: 0;
   font-size: 35px;
@@ -33,13 +48,15 @@
   }
 }
 
-.sign-up__input {
+.sign-up__input,
+.login-block__input {
   min-height: 40px;
   font-size: 30px;
   line-height: 30px;
 }
 
-.sign-up__button {
+.sign-up__button,
+.login__logout-btn {
   font-size: 20px;
   line-height: 20px;
   margin: 0;
@@ -50,9 +67,65 @@
   }
 }
 
-.sign-up__btn-wrapper {
+.sign-up__btn-wrapper,
+.login__logout {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login__enter,
+.login__exit {
+  display: grid;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding-bottom: 40px;
+  }
+  @media (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+  @media (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
+  @media (min-width: $largeDesktopDevice) {
+    max-width: $largeDesktopDevice;
+  }
+}
+
+.login__link,
+.login__logout-btn,
+.login__logout-homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 28px;
+  line-height: 28px;
+  margin: 0 auto;
+  padding: 0;
+  color: $pureWhite;
+  background-color: $pureBlue;
+  min-height: 45px;
+  min-width: 375px;
+  cursor: pointer;
+}
+
+.login__logout-homepage {
+  color: $pureBlack;
+  background-color: $pureWhite;
+  border: 1px solid $pureBlack;
+}
+
+.login__logout {
+  display: grid;
+  grid-gap: 30px;
 }

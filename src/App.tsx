@@ -34,7 +34,7 @@ console.log('INITIAL_STATE.1', INITIAL_STATE)
 export const dataFetcher = async () => {
     try {
         const {data}: any = await supabase.from('data').select()
-        return INITIAL_STATE.products = data.map((product: productType[]) => {
+        return data.map((product: productType[]) => {
             return {...product, isFavourite: false, toBuy: false}
         })
     } catch (error) {
@@ -52,7 +52,8 @@ export enum ACTION {
     INCREMENT_QUANTITY = 'INCREMENT_QUANTITY',
     DECREMENT_QUANTITY = 'DECREMENT_QUANTITY',
     CHOOSE_PRODUCT_COLOR = 'CHOOSE_PRODUCT_COLOR',
-    DELETE_ALL_PRODUCTS_IN_WISHLIST = 'DELETE_ALL_PRODUCTS_IN_WISHLIST'
+    DELETE_ALL_PRODUCTS_IN_WISHLIST = 'DELETE_ALL_PRODUCTS_IN_WISHLIST',
+    GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 }
 
 // const dispatch1: ACTION = ACTION.ADD_TO_WISHLIST  <== difference, make a concrete CONST through enum
@@ -141,17 +142,23 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
                     }
                 })
             };
+        case ACTION.GET_ALL_PRODUCTS:
+            return {
+                ...currentState,
+                products: payLoad.data
+            }
         default: {
             return currentState
         }
     }
 }
-
 // postgres causes stress
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
     useEffect(() => {
-        dataFetcher().then(r => r)
+        dataFetcher().then(products => {
+            dispatch({action: ACTION.GET_ALL_PRODUCTS, data: products})
+        })
     }, [])
     return (
         <StoreContext.Provider value={{state, dispatch}}>
@@ -175,7 +182,7 @@ function App() {
                         </Switch>
                     </Router> :
                     <Router>
-                        <Navigation/>
+                        {userLoggedIn ? <SignUp /> : null}
                         <Login/>
                     </Router>
                 }

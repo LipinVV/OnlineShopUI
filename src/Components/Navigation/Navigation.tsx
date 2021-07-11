@@ -17,6 +17,7 @@ export const Navigation = () => {
     }
     const [subMenu, setSubMenu] = useState(true);
     const subMenuToggleHandler = () => {
+        if(userLoggedIn)
         setSubMenu(!subMenu)
     }
 
@@ -105,7 +106,7 @@ export const Navigation = () => {
                     <li className='app__link'><Link className='app__link-route' to='/login'>Login</Link></li>
                 </ul> : null}
             </nav>
-            {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown '>{filterLogic.map((elem,index) => {
+            {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown'>{filterLogic.map((elem,index) => {
                 return <div
                     key={keyHandler(index)}
                     style={{ 'backgroundImage': `url(${elem.previewUrl})` }}

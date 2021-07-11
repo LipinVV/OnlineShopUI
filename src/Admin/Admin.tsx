@@ -57,7 +57,7 @@ export const Admin = () => {
                         options: [options]
                     }
                 ])
-            console.log('sent data =>', data)
+            // console.log('sent data =>', data)
         } catch (error) {
             console.log('error', error)
         }
