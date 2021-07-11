@@ -16,8 +16,8 @@ import {Landing} from "./Components/Landing/Landing";
 import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
 import {Admin} from './Admin/Admin';
 import {createClient} from "@supabase/supabase-js";
-import {SignUp} from "./Components/Acess/SignUp";
-import {Login} from "./Components/Acess/Login";
+import {SignUp} from "./Components/Access/SignUp";
+import {Login} from "./Components/Access/Login";
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 console.log(supabase.auth.session()?.user)
