@@ -27,7 +27,7 @@ export const Login = () => {
 
     return (
         <div className='login'>
-            {!supabase.auth.session()?.user ? <form className='login__enter'>
+            {!supabase.auth.session()?.user ? <div className='login__enter'>
                         <MarketPlace/>
                     <h2 className='login__header'>Login to Shop Bag</h2>
                     <label className='login__label'>
@@ -40,15 +40,15 @@ export const Login = () => {
                                value={userPassword} placeholder='Password' required={true}/>
                     </label>
                     <Link className='login__link' to={state.isUserLoggedIn ? '/' : '/login'} onClick={signIn}>Login</Link>
-                </form> :
-                <form className='login__exit'>
+                </div> :
+                <div className='login__exit'>
                     <MarketPlace/>
                     <h2>You can sign out:</h2>
                     <div className='login__logout'>
                         <button className='login__logout-btn' type='button' onClick={signOut}>Logout</button>
                         <Link className='login__logout-homepage' to={state.isUserLoggedIn ? '/' : '/login'}>To the Homepage!</Link>
                     </div>
-                </form>
+                </div>
             }
         </div>
     )

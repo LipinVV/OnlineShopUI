@@ -65,13 +65,6 @@
   }
 }
 
-.sign-up__input,
-.login-block__input {
-  min-height: 40px;
-  font-size: 30px;
-  line-height: 30px;
-}
-
 .sign-up__button,
 .login__logout-btn {
   font-size: 20px;
@@ -123,11 +116,23 @@
 }
 
 .login__label {
-  margin: 0 auto;
+  @media (min-width: $mobileDevice) {
+    max-width: $mobileDevice / 1.2;
+    margin: 0 auto;
+  }
+}
+
+.sign-up__input,
+.login-block__input {
+  min-height: 40px;
+  font-size: 30px;
+  line-height: 30px;
+  max-width: $mobileDevice / 1.2;
 }
 
 .login__header {
   text-align: center;
+  max-width: $mobileDevice;
 }
 
 .login__link,
