@@ -117,7 +117,7 @@
 
 .login__label {
   @media (min-width: $mobileDevice) {
-    max-width: $mobileDevice / 1.2;
+    max-width: $mobileDevice / 1.1;
     margin: 0 auto;
   }
 }
@@ -127,12 +127,12 @@
   min-height: 40px;
   font-size: 30px;
   line-height: 30px;
-  max-width: $mobileDevice / 1.2;
+  max-width: $mobileDevice / 1.1;
 }
 
 .login__header {
   text-align: center;
-  max-width: $mobileDevice;
+  width: 100%;
 }
 
 .login__link,
