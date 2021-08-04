@@ -79,8 +79,8 @@ export const Navigation = () => {
                     </li>
                     <Link className='app__link-desktop__cart' to='/shoppingCart'>{state.cart.length === 0 ? '' : state.cart.length}</Link>
                     <Link className='app__link-desktop__wishlist' to='/wishlist'></Link>
-                    <Link className='app__link-desktop__sign' to='/signUp'>Sign Up</Link>
-                    <Link className='app__link-desktop__login' to='/login'>Login</Link>
+                    {!state.isUserLoggedIn && <Link className='app__link-desktop__sign' to='/signUp'>Sign Up</Link>}
+                    <Link className='app__link-desktop__login' to='/login'>{state.isUserLoggedIn ? 'Logout' : 'Login'}</Link>
                     <li className='navigation__mobile-menu'>
                         <button onClick={menuToggleHandler} className='navigation__menu-btn'></button>
                     </li>
@@ -101,8 +101,8 @@ export const Navigation = () => {
                     </li>
                     <li className='app__link'><Link className='app__link-route' to='/shoppingCart'>Shopping Cart</Link></li>
                     <li className='app__link'><Link className='app__link-route' to='/wishlist'>WishList</Link></li>
-                    <li className='app__link'><Link className='app__link-route' to='/signUp'>Sign Up</Link></li>
-                    <li className='app__link'><Link className='app__link-route' to='/login'>Login</Link></li>
+                    {!state.isUserLoggedIn && <li className='app__link'><Link className='app__link-route' to='/signUp'>Sign Up</Link></li>}
+                    <li className='app__link'><Link className='app__link-route' to='/login'>{state.isUserLoggedIn ? 'Logout' : 'Login'}</Link></li>
                 </ul> : null}
             </nav>
             {search !== '' && search.length >= 1 && !style ? <div className='navigation__dropdown'>{filterLogic.map((elem,index) => {

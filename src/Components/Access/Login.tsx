@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 import {ACTION, StoreContext} from "../../App";
 
 export const Login = () => {
-    const [userMail, setUserMail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+    const [userMail, setUserMail] = useState('vit.lipin@gmail.com');
+    const [userPassword, setUserPassword] = useState('password');
     const isUserLoggedIn: boolean = Boolean(supabase.auth.session()?.user?.id)
     const [status, setStatus] = useState(isUserLoggedIn)
     const { state, dispatch } = useContext(StoreContext)

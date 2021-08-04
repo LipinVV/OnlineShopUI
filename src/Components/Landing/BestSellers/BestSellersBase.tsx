@@ -6,7 +6,7 @@ import {productType} from "../../Product/types";
 
 export const BestSellersBase = () => {
     const {state} = useContext(StoreContext);
-    const SALES_COUNTER = 280;
+    const SALES_COUNTER = 50;
     const currentItems = state.products.filter((product: productType) => product.salesCount > SALES_COUNTER).sort((a, b) => b.salesCount - a.salesCount);
     return (
         <div className='bestsellers-base'>

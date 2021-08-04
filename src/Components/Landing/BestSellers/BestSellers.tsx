@@ -9,7 +9,7 @@ import {productType} from "../../Product/types";
 export const BestSellers = () => {
     const {state} = useContext(StoreContext);
 
-    const currentItems = state.products.filter((product: productType) => product.salesCount > 250).sort((a, b) => b.salesCount - a.salesCount).slice(0, 4);
+    const currentItems = state.products.filter((product: productType) => product.salesCount > 50).sort((a, b) => b.salesCount - a.salesCount).slice(0, 4);
     return (
         <div className='bestsellers-wrapper'>
             <h1 className='bestsellers__header'>Best Sellers: <Link className='bestsellers__header-link' to='/bestsellers'>See All</Link></h1>
