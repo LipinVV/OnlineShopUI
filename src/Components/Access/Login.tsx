@@ -29,7 +29,7 @@ export const Login = () => {
         <div className='login'>
             {!supabase.auth.session()?.user ? <form className='login__enter'>
                         <MarketPlace/>
-                    <h2>Login to Shop Bag</h2>
+                    <h2 className='login__header'>Login to Shop Bag</h2>
                     <label className='login__label'>
                         <input className='login-block__input' onChange={(evt) => setUserMail(evt.target.value)} type='text'
                                value={userMail} placeholder='Email' required={true}/>
