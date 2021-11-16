@@ -1,12 +1,11 @@
-import '../../App.scss'
-import './landing.scss'
 import {Link} from "react-router-dom";
 import {LandingCategories} from "./LandingCategories/LandingCategories";
 import {Categories} from "../Categories/Categories";
 import {BestSellers} from "./BestSellers/BestSellers";
 import {ShowRoom} from "./ShowRoom/ShowRoom";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {INITIAL_STATE} from "../../App";
+import './landing.scss';
 
 
 export const Landing = () => {

@@ -1,5 +1,5 @@
-import React, {useState, useContext} from "react";
 import {StoreContext} from '../../App';
+import React, {useState, useContext} from "react";
 import {ProductCard} from "../Product/ProductCard";
 import {keyHandler} from '../../Services/keyHandler'
 import './pagination.scss'

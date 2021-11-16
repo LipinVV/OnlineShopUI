@@ -1,9 +1,9 @@
-import React, {useContext, useState} from 'react';
-import {MarketPlace} from "./MarketPlace";
-import './acess.scss'
 import {supabase} from "../../Admin/Admin";
-import {Link} from "react-router-dom";
 import {StoreContext} from "../../App";
+import React, {useContext, useState} from 'react';
+import {Link} from "react-router-dom";
+import {MarketPlace} from "./MarketPlace";
+import './acess.scss';
 
 
 export const SignUp = () => {
@@ -11,7 +11,7 @@ export const SignUp = () => {
     const [userMail, setUserMail] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const { state, dispatch } = useContext(StoreContext)
+    const { state } = useContext(StoreContext);
     const signUp = async () => {
         const { user, session, error } = await supabase.auth.signUp({
             email: userMail,

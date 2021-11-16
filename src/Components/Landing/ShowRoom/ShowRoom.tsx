@@ -1,9 +1,9 @@
-import {useState, useEffect, useContext} from "react";
 import {StoreContext} from "../../../App";
+import React, {useState, useEffect, useContext} from "react";
 import {ProductCard} from "../../Product/ProductCard";
 import {keyHandler} from "../../../Services/keyHandler";
-import './showroom.scss'
 import {productType} from "../../Product/types";
+import './showroom.scss';
 
 export const ShowRoom = () => {
     const {state} = useContext(StoreContext);

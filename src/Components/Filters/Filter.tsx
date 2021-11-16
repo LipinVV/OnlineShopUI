@@ -1,5 +1,5 @@
-import { filterTypes } from "./types";
 import React, {useEffect, useState} from "react";
+import { filterTypes } from "./types";
 
 const availableOptions: filterTypes = {
     colors: ['black', 'white', 'grey'],
@@ -35,7 +35,6 @@ export const Filter = ({ options, optionsChanged }: any) => {
             })
         }
     })
-
     const handleChangeMinValue = ((evt: React.ChangeEvent<any>) => {
         const { value } = evt.target
         setMinValue(value)
@@ -55,7 +54,6 @@ export const Filter = ({ options, optionsChanged }: any) => {
     const filterShowHandler = () => {
         setShowFilter(!showFilter)
     }
-
     const [sortByTheHighest, setSortByTheHighest] = useState(true);
     const sortingByTheHighestHandler = () => {
         if(sortByTheLowest) {

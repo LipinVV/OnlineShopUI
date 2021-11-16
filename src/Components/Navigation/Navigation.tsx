@@ -1,12 +1,9 @@
+import { StoreContext } from '../../App';
 import { Link } from "react-router-dom";
 import React, {useContext, useState} from "react";
-import './navigation.scss'
-import '../../App.scss'
-import { StoreContext } from '../../App';
 import {keyHandler} from "../../Services/keyHandler";
-import {createClient} from "@supabase/supabase-js";
+import './navigation.scss';
 
-const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 
 export const Navigation = () => {
 

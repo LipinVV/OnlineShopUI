@@ -1,4 +1,4 @@
-import { CATEGORY } from '../Data/data'
+import {CATEGORY} from "../Categories/Categories";
 
 export type productType = {
     id: number,

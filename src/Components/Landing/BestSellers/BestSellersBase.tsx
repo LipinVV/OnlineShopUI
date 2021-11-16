@@ -1,5 +1,5 @@
-import {useContext} from "react";
 import {StoreContext} from "../../../App";
+import React, {useContext} from "react";
 import {ProductCard} from "../../Product/ProductCard";
 import {keyHandler} from "../../../Services/keyHandler";
 import {productType} from "../../Product/types";

@@ -1,11 +1,11 @@
+import {StoreContext} from '../../App';
 import {Filter} from "./Filter";
 import {ProductsToFilter} from "./ProductsToFilter";
-import {StoreContext} from '../../App';
 import React, {useContext, useState} from "react";
-import {filterTypes} from "./types";
 import {getTotalPriceForProduct} from "../../Services/products";
-import '../Pagination/pagination.scss'
+import {filterTypes} from "./types";
 import {productType} from "../Product/types";
+import '../Pagination/pagination.scss';
 
 export const FilteredList = () => {
     const {state} = useContext(StoreContext)

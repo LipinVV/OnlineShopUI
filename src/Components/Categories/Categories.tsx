@@ -1,10 +1,17 @@
-import React, {useEffect} from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import './categories.scss'
-import { CATEGORY } from '../Data/data'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {getFullName} from "../../Services/naming";
 import {keyHandler} from "../../Services/keyHandler";
+import './categories.scss';
+
+export enum CATEGORY {
+    SOFA = 'sofas',
+    CHAIR = 'chairs',
+    DESK = 'desks',
+    BED = 'beds',
+    CARPET = 'carpets',
+    CUPBOARD = 'cupboards'
+}
 
 const itemTypes = Object.values(CATEGORY);
 export const Categories = () => {

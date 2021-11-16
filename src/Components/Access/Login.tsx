@@ -1,28 +1,23 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {MarketPlace} from "./MarketPlace";
 import {supabase} from "../../Admin/Admin";
-import {Link} from "react-router-dom";
+import React, {useContext, useState} from 'react';
 import {ACTION, StoreContext} from "../../App";
+import {MarketPlace} from "./MarketPlace";
+import {Link} from "react-router-dom";
 
 export const Login = () => {
     const [userMail, setUserMail] = useState('vit.lipin@gmail.com');
     const [userPassword, setUserPassword] = useState('password');
-    const isUserLoggedIn: boolean = Boolean(supabase.auth.session()?.user?.id)
-    const [status, setStatus] = useState(isUserLoggedIn)
     const { state, dispatch } = useContext(StoreContext)
-    // vit.lipin@gmail.com
     const signIn = async () => {
         const {user, session, error} = await supabase.auth.signIn({
             email: userMail,
             password: userPassword,
         })
-        console.log('session', session)
         dispatch({action: ACTION.LOGIN, data: null})
     }
     const signOut = async () => {
         const {error} = await supabase.auth.signOut()
         dispatch({action: ACTION.LOGOUT, data: null})
-        // setStatus(!status)
     }
 
     return (
@@ -53,4 +48,3 @@ export const Login = () => {
         </div>
     )
 }
-// vit.lipin@gmail.com

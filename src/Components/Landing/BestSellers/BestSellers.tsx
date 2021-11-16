@@ -2,9 +2,9 @@ import {StoreContext} from "../../../App";
 import {useContext} from "react";
 import {ProductCard} from "../../Product/ProductCard";
 import {keyHandler} from "../../../Services/keyHandler";
-import './bestsellers.scss'
 import {Link} from "react-router-dom";
 import {productType} from "../../Product/types";
+import './bestsellers.scss';
 
 export const BestSellers = () => {
     const {state} = useContext(StoreContext);

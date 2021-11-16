@@ -1,7 +1,7 @@
 import { keyHandler } from "../../Services/keyHandler";
-import './filter.scss'
 import { ProductCard } from "../Product/ProductCard";
 import {productType} from "../Product/types";
+import './filter.scss';
 
 export const ProductsToFilter = ({ products = [] }: any) => {
     return (
