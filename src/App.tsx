@@ -1,21 +1,21 @@
 import {createClient} from "@supabase/supabase-js";
-import {Categories} from './Components/Categories/Categories';
-import {ProductPage} from './Components/Product/ProductPage';
-import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage';
-import {Wishlist} from './Components/WishList/WishList';
-import {ShoppingList} from './Components/ShoppingCart/ShoppingList';
-import {Footer} from "./Components/Footer/Footer";
-import {Navigation} from "./Components/Navigation/Navigation";
-import {FilteredList} from "./Components/Filters/FilteredList";
-import {Landing} from "./Components/Landing/Landing";
-import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
-import {Admin} from './Admin/Admin';
-import {SignUp} from "./Components/Access/SignUp";
-import {Login} from "./Components/Access/Login";
-import {productType} from './Components/Product/types';
+import {Categories} from './components/Categories/Categories';
+import {ProductPage} from './components/Product/ProductPage';
+import {CategoryPage} from './components/Categories/ItemTypes/CategoryPage';
+import {Wishlist} from './components/WishList/WishList';
+import {ShoppingList} from './components/ShoppingCart/ShoppingList';
+import {Footer} from "./components/Footer/Footer";
+import {Navigation} from "./components/Navigation/Navigation";
+import {FilteredList} from "./components/Filters/FilteredList";
+import {Landing} from "./components/Landing/Landing";
+import {BestSellersBase} from "./components/Landing/BestSellers/BestSellersBase";
+import {Admin} from './admin/Admin';
+import {SignUp} from "./components/Access/SignUp";
+import {Login} from "./components/Access/Login";
+import {productType} from './components/Product/types';
 import React, {Dispatch, useEffect, useReducer} from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
-import {CartProductInterface} from './Components/ShoppingCart/types';
+import {CartProductInterface} from './components/ShoppingCart/types';
 import './App.scss';
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
