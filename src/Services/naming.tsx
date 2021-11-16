@@ -1,4 +1,3 @@
-
 export const getFullName= (product: string) => {
     if(!product) {
         return product.toUpperCase() + product.slice(1)

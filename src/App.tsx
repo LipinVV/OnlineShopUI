@@ -1,38 +1,37 @@
-import React, {Dispatch, useEffect, useReducer} from 'react';
-import './App.scss';
-import {Categories} from './Components/Categories/Categories'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {createClient} from "@supabase/supabase-js";
+import {Categories} from './Components/Categories/Categories';
 import {ProductPage} from './Components/Product/ProductPage';
-import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage'
+import {CategoryPage} from './Components/Categories/ItemTypes/CategoryPage';
 import {Wishlist} from './Components/WishList/WishList';
-import {productType} from './Components/Product/types';
-import {ShoppingList} from './Components/ShoppingCart/ShoppingList'
-import {CartProductInterface} from './Components/ShoppingCart/types'
+import {ShoppingList} from './Components/ShoppingCart/ShoppingList';
 import {Footer} from "./Components/Footer/Footer";
 import {Navigation} from "./Components/Navigation/Navigation";
 import {FilteredList} from "./Components/Filters/FilteredList";
 import {Landing} from "./Components/Landing/Landing";
 import {BestSellersBase} from "./Components/Landing/BestSellers/BestSellersBase";
 import {Admin} from './Admin/Admin';
-import {createClient} from "@supabase/supabase-js";
 import {SignUp} from "./Components/Access/SignUp";
 import {Login} from "./Components/Access/Login";
+import {productType} from './Components/Product/types';
+import React, {Dispatch, useEffect, useReducer} from 'react';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {CartProductInterface} from './Components/ShoppingCart/types';
+import './App.scss';
 
 const supabase = createClient('https://xhvnywjafhcirlskluzp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTU5MjA4OSwiZXhwIjoxOTQxMTY4MDg5fQ.wmUD2lxoMGSRnK5gRaNpxUDVPOd5fH6C41GZdOm_at0')
 
-const userLoggedIn = supabase.auth.session()?.user;
 type StateType = {
     products: productType[],
     cart: CartProductInterface[]
-    isUserLoggedIn: boolean
+    isUserLoggedIn: boolean,
 }
+
 export const INITIAL_STATE: StateType = {
     products: [],
     cart: [],
-    isUserLoggedIn: Boolean(supabase.auth.session()?.user?.id)
+    isUserLoggedIn: Boolean(supabase.auth.session()?.user?.id),
 }
-// console.log('INITIAL_STATE.1', INITIAL_STATE)
+
 export const dataFetcher = async () => {
     try {
         const {data}: any = await supabase.from('data').select()
@@ -40,11 +39,9 @@ export const dataFetcher = async () => {
             return {...product, isFavourite: false, toBuy: false}
         })
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
-
-// console.log('INITIAL_STATE.2', INITIAL_STATE)
 
 export enum ACTION {
     ADD_TO_WISHLIST = 'ADD_TO_WISHLIST',
@@ -60,7 +57,6 @@ export enum ACTION {
     LOGOUT = 'LOGOUT'
 }
 
-// const dispatch1: ACTION = ACTION.ADD_TO_WISHLIST  <== difference, make a concrete CONST through enum
 type ActionType = { action: ACTION, data: any }
 export const StoreContext = React.createContext<{ state: StateType, dispatch: Dispatch<ActionType> }>({
     state: INITIAL_STATE,
@@ -82,14 +78,12 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
                     return product;
                 })
             };
-
         case ACTION.ADD_TO_BUY:
             const newCartProducts = [...currentState.cart, payLoad.data.product]
             return {
                 ...currentState,
                 cart: newCartProducts
             };
-
         case ACTION.REMOVE:
             return {
                 ...currentState,
@@ -151,23 +145,11 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
                 ...currentState,
                 products: payLoad.data
             };
-
         case ACTION.LOGIN: {
             return {
                 ...currentState,
                 isUserLoggedIn: true
             }
-            // if(!INITIAL_STATE.isUserLoggedIn) {
-            //     return {
-            //         ...currentState,
-            //         isUserLoggedIn: true
-            //     }
-            // } else {
-            //     return {
-            //         ...currentState,
-            //         isUserLoggedIn: false
-            //     }
-            // }
         }
         case ACTION.LOGOUT: {
             return {
@@ -181,7 +163,6 @@ const reducer = (currentState: StateType, payLoad: ActionType): StateType => {
     }
 }
 
-// postgres causes stress
 function App() {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
     useEffect(() => {
@@ -189,7 +170,6 @@ function App() {
             dispatch({action: ACTION.GET_ALL_PRODUCTS, data: products})
         })
     }, [])
-    console.log('in APP component login / logout status is: ', state.isUserLoggedIn)
     return (
         <StoreContext.Provider value={{state, dispatch}}>
             <div className='App'>
@@ -232,160 +212,3 @@ function App() {
 }
 
 export default App;
-
-{/*<Route path='/categories'>*/
-}
-{/*    <Categories/>*/
-}
-{/*</Route>*/
-}
-{/*<Route path='/login'><Login/></Route>*/
-}
-{/*<Route path='/signUp'><SignUp/></Route>*/
-}
-
-{/*{state.isUserLoggedIn && <Router>*/
-}
-{/*    <Navigation/>*/
-}
-{/*    <Switch>*/
-}
-{/*        <Route path='/categories'>*/
-}
-{/*            <Categories/>*/
-}
-{/*        </Route>*/
-}
-{/*        <Route path='/login'><Login/></Route>*/
-}
-{/*        <Route path='/signUp'><SignUp/></Route>*/
-}
-{/*        <Route path='/admin'><Admin/></Route>*/
-}
-{/*        <Route path='/bestsellers'><BestSellersBase/></Route>*/
-}
-{/*        <Route exact path='/filter'><FilteredList/></Route>*/
-}
-{/*        <Route exact path='/shoppingCart'><ShoppingList/></Route>*/
-}
-{/*        <Route exact path='/wishlist'><Wishlist/></Route>*/
-}
-{/*        <Route exact path='/:category'><CategoryPage/></Route>*/
-}
-{/*        <Route path='/:category/:id'><ProductPage/></Route>*/
-}
-{/*        <Route path='/'><Landing/></Route>*/
-}
-{/*    </Switch>*/
-}
-{/*</Router>*/
-}
-{/*}*/
-}
-{/*{!state.isUserLoggedIn &&*/
-}
-{/*<Router>*/
-}
-{/*    <Login/>*/
-}
-{/*</Router>*/
-}
-{/*}*/
-}
-
-{/*<Router>*/
-}
-{/*    <Navigation/>*/
-}
-{/*    <Switch>*/
-}
-{/*        {state.isUserLoggedIn &&*/
-}
-{/*        <><Route path='/categories'>*/
-}
-{/*            <Categories/>*/
-}
-{/*        </Route>*/
-}
-{/*            <Route path='/login'><Login/></Route>*/
-}
-{/*            <Route path='/signUp'><SignUp/></Route>*/
-}
-{/*            <Route path='/admin'><Admin/></Route>*/
-}
-{/*            <Route path='/bestsellers'><BestSellersBase/></Route>*/
-}
-{/*            <Route exact path='/filter'><FilteredList/></Route>*/
-}
-{/*            <Route exact path='/shoppingCart'><ShoppingList/></Route>*/
-}
-{/*            <Route exact path='/wishlist'><Wishlist/></Route>*/
-}
-{/*            <Route exact path='/:category'><CategoryPage/></Route>*/
-}
-{/*            <Route path='/:category/:id'><ProductPage/></Route>*/
-}
-{/*            <Route path='/'><Landing/></Route></>*/
-}
-{/*        }*/
-}
-{/*        {!state.isUserLoggedIn ? <Login /> : null}*/
-}
-{/*    </Switch>*/
-}
-{/*</Router>*/
-}
-
-// <Router>
-//     <Navigation/>
-//     <Switch>
-//         {state.isUserLoggedIn &&
-//         <><Route path='/categories'>
-//             <Categories/>
-//         </Route>
-//             <Route path='/login'><Login/></Route>
-//             <Route path='/signUp'><SignUp/></Route>
-//             <Route path='/admin'><Admin/></Route>
-//             <Route path='/bestsellers'><BestSellersBase/></Route>
-//             <Route exact path='/filter'><FilteredList/></Route>
-//             <Route exact path='/shoppingCart'><ShoppingList/></Route>
-//             <Route exact path='/wishlist'><Wishlist/></Route>
-//             <Route exact path='/:category'><CategoryPage/></Route>
-//             <Route path='/:category/:id'><ProductPage/></Route>
-//             <Route path='/'><Landing/></Route></>
-//         }
-//         {!state.isUserLoggedIn && <Redirect to='/login'/>}
-//     </Switch>
-// </Router>
-
-// апишите single page application, предлагающий пользователю пройти опрос.
-//
-//     На стартовом экране нужно вывести приветствие:
-//     "Здравствуйте, примите, пожалуйста, участие в опросе."
-// Под приветственным сообщением нужно разместить первый вопрос:
-//     1. Укажите пол
-// Мужской
-// Женский
-// После ответа на первый вопрос нужно вывести на экран второй вопрос:
-//     2. В каком городе Вы живете
-// (выпадающий список)
-// Москва
-// Санкт-Петербург
-// Казань
-// Нижний Новгород
-// После ответа на второй вопрос нужно вывести на экран сообщение:
-//     "Благодарим за участие!
-// Ваше мнение очень важно для нас."
-// Под вопросами нужно разместить форму добавления комментариев.
-//
-//
-//     Тех. требования:
-// 1. Используйте React + Redux
-// 2. Поддержка браузера Сhrome > 43
-// 3. Адаптивная верстка (desktop/tablet/mobile)
-// 4. Прогресс прохождения опросника должен сохраняться при перезагрузке страницы
-// 5. Валидация комментариев - email и не менее 3х символов в тексте комментария.
-//
-//     Пожелание:
-// Добавить возможность выбора языка Английский / Русский.
-//     Для хранения переводов использовать файл (формат JSON).

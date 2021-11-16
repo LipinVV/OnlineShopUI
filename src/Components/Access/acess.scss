@@ -67,8 +67,8 @@
 
 .sign-up__button,
 .login__logout-btn {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 15px;
   margin: 0;
   padding: 0;
 
@@ -143,8 +143,8 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 28px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 20px;
   margin: 0 auto;
   padding: 0;
   color: $pureWhite;
@@ -162,6 +162,7 @@
   color: $pureBlack;
   background-color: $pureWhite;
   border: 1px solid $pureBlack;
+  font-size: 15px;
 }
 
 .login__logout {
