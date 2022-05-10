@@ -1,4 +1,4 @@
-## This project is similar to the common online-shop.
+## This project is similar to the common online-shop, builded on ReactJS / React Context/ TypeScript / FireBase / Supabase / SCSS
 
 
 ## Available Scripts
